@@ -5,4 +5,14 @@ from abc import ABC, abstractmethod
 class Monoid(ABC):
 
 	@abstractmethod
-	pass
+	def __add__(self):
+		pass
+	@abstractmethod
+	def __mul__(self):
+		pass
+	@abstractmethod
+	def get_identity(self):
+		pass
+	@abstractmethod
+	def get_absorbing(self):
+		pass
