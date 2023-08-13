@@ -4,9 +4,9 @@ from element import Element
 import math
 
 class tropical_Element(Element):
-    def __init__(self):
+    def __init__(self,a):
         super().__init__()
-        self.__tr = 0           #Tropical element
+        self.__tr = a           #Tropical element
 
     def get_tr_element(self):   #Get the real value of the tropical element
         return(self.__tr)
@@ -15,14 +15,10 @@ class tropical_Element(Element):
         self.__tr = e
 
     def __add__(self,e):            #define the plus operator for trppical elements
-        a=tropical_Element()
-        a.set_tr_element(min(self.__tr,e.get_tr_element()))
-        return(a)
+        return(tropical_Element(min(self.__tr,e.get_tr_element())))
     
     def __mul__(self,e):            #define the multiple operator for trppical elements
-        a=tropical_Element()
-        a.set_tr_element(self.__tr+e.get_tr_element())
-        return(a)
+        return(tropical_Element(self.__tr+e.get_tr_element()))
     
     def get_identity(self):   #put infinity as neutral element for the oplus operator
         return (math.inf)
