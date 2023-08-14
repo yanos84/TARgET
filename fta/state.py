@@ -1,0 +1,27 @@
+#from abc import ABC, abstractclassmethod
+class State:
+    #@abstractclassmethod
+    def __init__(self,name=None,final=False, init=False):
+        self._name = name
+        self._is_Final = final
+        self._is_Initial =  init
+    
+    @property
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self,value):
+        self._name= value
+    @name.deleter
+    def name(self):
+        del self._name
+        
+    @property
+    def is_Final(self):
+        return self._is_Final
+    @is_Final.setter
+    def is_Final(self,value):
+        self._is_Final= value
+    @is_Final.deleter
+    def is_Final(self):
+        del self._is_Final
