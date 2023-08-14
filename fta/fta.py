@@ -5,4 +5,6 @@ from abc import ABC, abstractmethod
 class Fta(ABC):
 
 	@abstractmethod
-	pass
+	def __init__(self, fta_name, fta_states):
+		self._name = fta_name
+		self._states = fta_states
