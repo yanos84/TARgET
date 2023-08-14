@@ -7,4 +7,5 @@ class Fta(ABC):
 	@abstractmethod
 	def __init__(self, fta_name, fta_states):
 		self._name = fta_name
-		self._states = fta_states
+		self._states = []
+		self._states.append(fta_states)
