@@ -1,7 +1,7 @@
 # TARgET
-## OVERVIW
+## OVERVIEW
 
-"TARgET: Tree Automata and Regular Expression Toolkit is a cutting-edge solution meticulously crafted to empower users in the realm of tree automata and regular expressions. With TARgET, you're not just getting a toolkit; you're gaining a powerful ally that opens up a world of possibilities.
+"TARgET: <ins>T</ins>ree <ins>A</ins>utomata and <ins>Reg</ins>ular <ins>E</ins>xpression <ins>T</ins>oolkit is a cutting-edge solution meticulously crafted to empower users in the realm of tree automata and regular expressions. With TARgET, you're not just getting a toolkit; you're gaining a powerful ally that opens up a world of possibilities.
 
 Designed with both newcomers and seasoned practitioners in mind, TARgET provides a seamless avenue to harness the full potential of operations that have been meticulously defined within this intricate field. Our toolkit stands as a testament to the fusion of theory and practicality, offering a bridge between complex concepts and real-world applications.
 
@@ -12,3 +12,35 @@ However, TARgET doesn't stop at predefined operations. We understand that innova
 At the heart of TARgET lies Python, the versatile and expressive programming language. This choice ensures that our toolkit integrates seamlessly into your existing workflows, allowing you to wield the power of tree automata and regular expressions with the comfort and familiarity of Python.
 
 In the landscape of computational linguistics, formal language theory, and beyond, TARgET shines as an indispensable companion. Whether you're diving into research, seeking solutions to intricate problems, or pioneering new frontiers, TARgET is here to illuminate your path and amplify your capabilities."
+
+## GETTING STARTED 
+
+TODO
+
+## CONCEPTS  AND TERMINOLIGY
+
+TO DO
+
+## OPERATIONS AND FUNCTIONS
+
+TO DO
+
+## DEVELOPING NEW FUNCTIONALITIES
+
+TO DO
+
+## API REFERENCE
+
+TO DO
+
+## TROUBLESHOOTING AND FAQs
+
+TO DO
+
+## CONTRIBUTION
+
+TO DO
+
+## ADITIONAL RESOURCES
+
+TO DO
