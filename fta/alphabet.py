@@ -17,7 +17,7 @@ class Alpha:
 # A ranked (garded) symbol is an alphabet with a function (randk) that indicate the number of its children. A ranked tree can be defined in the tree package
 class ranked_Alpha(Alpha):
     def __init__(self, name, rank):
-        super().__init__(self, name)
+        super().__init__(name)
         self._rank = rank
 
     # The property rank is added to the class
@@ -25,5 +25,5 @@ class ranked_Alpha(Alpha):
     def rank(self):
         return self._rank
     @rank.setter
-    def name(self, value):
+    def rank(self, value):
         self._rank = value
