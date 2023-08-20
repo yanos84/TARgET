@@ -1,4 +1,12 @@
-#This is the abstract class FTA from which all tree automata variantes should inherit.
+"""
+******************This is the abstract class FTA from which all tree automata variantes should inherit*****************
+
+
+ It contains the name of the automaton, the list of its states. Despite the fact that the ascendent and the descendent 
+ rules can be written similarly, we avoid to declare the rules in the Fta class to allow the user to define more 
+ elaborate Fta types like transducers and weighed automata.
+
+"""
 
 from abc import ABC, abstractmethod, abstractproperty
 
@@ -9,6 +17,7 @@ class Fta(ABC):
 		self._name = fta_name
 		self._states = []
 		self._states.append(fta_states)
+	
 
 	#@abstractmethod
 	def add_state(self,s_name):

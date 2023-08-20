@@ -1,4 +1,6 @@
 # impmlementation of ranked finite tree automata
+# The class imports ranked alphabets and ascendent rules. On can define ascendency or descendency in the acceptor engine.
+
 
 from fta import Fta
 from state import State
@@ -10,7 +12,7 @@ class ranked_Fta(Fta):
 
     def __init__(self, fta_name=None, fta_states=[]):
         super().__init__(fta_name,fta_states)
-        self.alphabet
+        self._alphabet
 
 
 """

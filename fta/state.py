@@ -1,4 +1,4 @@
-#from abc import ABC, abstractclassmethod
+# This class defines states as a structure containing a string name and its nature (final, intitial or normal)
 class State:
     #@abstractclassmethod
     def __init__(self,name=None,final=False, init=False):
