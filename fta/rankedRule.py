@@ -76,8 +76,20 @@ class ranked_Rule(Rule):
             raise Exception ("The rank of the function is not equal to the states number in the rule")
             return False
 
+    def get_rule_as_str(self):
+        return self.func.name+"("+' '.join([i.name+"," for i in self.input ])[:-1]+")---->"+self.output.name
+
+    def print_Rule(self):
+        """
+        Prints the transiton rule under its formal form
+        
+        """
+        _str = self.func.name
+        print(self.get_rule_as_str)
 
 
+
+"""
 #Example usage
 
 symb = ranked_Alpha(name="f", rank=2)
@@ -92,9 +104,6 @@ print(st)
 rule = ranked_Rule(symbol = symb)
 rule.input = st
 rule.output = u
-try:
-    rule.is_valid()
-    print(rule.is_valid)
-except:
-    print("somtning occured")
+rule.print_Rule()
 
+"""
