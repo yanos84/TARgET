@@ -27,6 +27,8 @@ class ranked_Fta(Fta):
 -------------Testing -------------------------------------------------------
 """
 
+
+#Example usage
 symb = ranked_Alpha(name="f", rank=2)
 s= State(name="q1", final=False, init=False)
 t=State(name="q2", final=False, init=False)

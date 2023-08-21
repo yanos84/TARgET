@@ -17,6 +17,15 @@ class State:
     def is_Final(self):
         return self._is_Final
     @is_Final.setter
-    def is_Final(self,value):
+    def is_Final(self,value:bool):
         self._is_Final= value
     
+    @property
+    def is_Initial(self):
+        return self._is_Initial
+    @is_Final.setter
+    def is_Initial(self,value:bool):
+        self._is_Final= value
+
+    def __eq__(self, __value: object) -> bool:
+        return (self.name, self.is_Final, self.is_Initial) == (__value.name, __value.is_Final, __value.is_Initial)
