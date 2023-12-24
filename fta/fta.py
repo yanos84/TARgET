@@ -10,13 +10,22 @@
 
 from abc import ABC, abstractmethod, abstractproperty
 from state import State
+from typing import List
 
 class Fta(ABC):
+	"""
+	An abstract class defining finite tree automata. All tree automata inherits directly or indirectly from Fta
+
+	Attributes:
+		_name: contains conventional fta name
+		_states: The list of fta states
+
+	"""
 
 	@abstractmethod
 	def __init__(self, fta_name, fta_states):
 		self._name = fta_name
-		self._states = []
+		self._states : List[State]
 		self._states = fta_states
 	
 
