@@ -25,16 +25,26 @@ class Fta(ABC):
 	@abstractmethod
 	def __init__(self, fta_name, fta_states):
 		self._name = fta_name
-		self._states : List[State]
+		self._states : List[State] = []
 		self._states = fta_states
 	
 
 	#@abstractmethod
 	def add_state(self,s_name):
-		if s_name not in self._states:
-			self._states.append(s_name)
-		else:
-			raise Exception("no duplicated states are allowed")
+		try:
+			if self._states != None:
+				for i in self._states:
+					if i._name == s_name:
+						raise ValueError("no duplicated states are allowed")
+					else:
+						_state :State = State()
+						_state.name = s_name
+						self._states.append(_state)		
+		except ValueError as e:
+			print(f"Exception: {e}")
+	
+	def extend_States_list(self, s_list):
+		self._states.extend(s_list)
 		
 	def remove_from_states(self, s_name):
 		self._states.remove(s_name)
