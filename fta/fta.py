@@ -25,10 +25,8 @@ class Fta(ABC):
 	@abstractmethod
 	def __init__(self, fta_name, fta_states):
 		self._name = fta_name
-		self._states : List[State] = []
-		self._states = fta_states
-	
-
+		self._states : List[State] = fta_states
+		
 	#@abstractmethod
 	def add_state(self,s_name):
 		try:
