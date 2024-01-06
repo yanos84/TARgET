@@ -33,7 +33,7 @@ class Union():
 
     def nondeterministic_union(self):
         self.union_Fta.name = "Union "+self._A1.name+"_"+self._A2.name
-        #self.union_Fta.
+        
         """
         Unifies two fta. It simply applies union on alphabet, transitions and states sets.
         """
