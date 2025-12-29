@@ -7,10 +7,9 @@ All the transition verifications are implemented here.
 """
 
 from .rule import Rule
-#from alphabet import Ranked_Symbol
-from typing import List
 from .state import State
 from core.symbol import Ranked_Symbol
+from typing import List
 
 class ranked_Rule(Rule):
     """
@@ -86,7 +85,7 @@ class ranked_Rule(Rule):
         
         """
         _str = self.func.name
-        print(self.get_rule_as_str)
+        print(self.get_rule_as_str())
 
 
 

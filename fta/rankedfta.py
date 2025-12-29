@@ -2,10 +2,10 @@
 # The class imports ranked alphabets and ascendent rules. On can define ascendency or descendency in the acceptor engine.
 
 
-from fta import Fta
-from state import State
-from alphabet import Ranked_Symbol
-from rankedRule import ranked_Rule
+from .abst_fta import Fta
+from .state import State
+from core.symbol import Ranked_Symbol
+from .rankedRule import ranked_Rule
 from typing import List
 
 class ranked_Fta(Fta):

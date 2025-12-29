@@ -9,7 +9,7 @@
 """
 
 from abc import ABC, abstractmethod
-from state import State
+from .state import State
 from typing import List
 
 class Fta(ABC):

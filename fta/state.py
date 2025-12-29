@@ -24,7 +24,7 @@ class State:
     def is_Initial(self):
         return self._is_Initial
     @is_Final.setter
-    def is_Initial(self,value:bool):
+    def is_Final(self,value:bool):
         self._is_Final= value
 
     def __eq__(self, __value: object) -> bool:
