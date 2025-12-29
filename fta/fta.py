@@ -8,7 +8,7 @@
 
 """
 
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from state import State
 from typing import List
 
@@ -69,11 +69,7 @@ class Fta(ABC):
 	#	   del self._name
 
 	
-def main ():
-    pass
- 
-if __name__ == '__main__':
-    main()
+
 
 
 	

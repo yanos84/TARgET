@@ -6,10 +6,11 @@ All the transition verifications are implemented here.
 
 """
 
-from rule import Rule
-from alphabet import ranked_Alpha
+from .rule import Rule
+#from alphabet import Ranked_Symbol
 from typing import List
-from state import State
+from .state import State
+from core.symbol import Ranked_Symbol
 
 class ranked_Rule(Rule):
     """
@@ -20,20 +21,20 @@ class ranked_Rule(Rule):
         input(List[State]): the list of the input 
         output(State): the output state of the transition
     """
-    def __init__(self, symbol:ranked_Alpha =None, input_states : List[State] = None, output_state : State= None):
+    def __init__(self, symbol:Ranked_Symbol =None, input_states : List[State] = None, output_state : State= None):
 
         """
         Initialize a transition rule
 
         Args:
-        func (ranked_Alpha): a ranked symbol instanciated from the ranked_Alpha class
+        func (Ranked_Symbol): a ranked symbol instanciated from the Ranked_Symbol class
         input(List[State]): the list of the input 
         output(State): the output state of the transition    
         """
         super().__init__()
         self._func= symbol
         self._input: List[State] =input_states
-        self._output:[State] = None
+        self._output:State = None
 
     
     """
@@ -89,21 +90,23 @@ class ranked_Rule(Rule):
 
 
 
-"""
+
 #Example usage
 
-symb = ranked_Alpha(name="f", rank=2)
-print(symb.name, symb.rank)
-s= State(name="q1", final=False, init=False)
-t=State(name="q2", final=False, init=False)
-u=State(name="q3", final=False, init=False)
-st = []
-st.append(s)
-st.append(t)
-print(st)
-rule = ranked_Rule(symbol = symb)
-rule.input = st
-rule.output = u
-rule.print_Rule()
+if __name__ == '__main__':
 
-"""
+    symb = Ranked_Symbol(name="f", rank=2)
+    print(symb.name, symb.rank)
+    s= State(name="q1", final=False, init=False)
+    t=State(name="q2", final=False, init=False)
+    u=State(name="q3", final=False, init=False)
+    st = []
+    st.append(s)
+    st.append(t)
+    print(st)
+    rule = ranked_Rule(symbol = symb)
+    rule.input = st
+    rule.output = u
+    rule.print_Rule()
+
+

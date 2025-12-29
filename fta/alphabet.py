@@ -1,7 +1,7 @@
 # defines the alphabet class. It is a simple class that allows to use basic automata and expressions. More elaborated alphabet classes should be defined in the alphabet package
 # All symbolic alphabets inherit from the Alpha class. It only has a name that plays the role of the symbol itself.
 
-class Alpha:
+'''class Symbol:
     def __init__(self,name):
         self._name = name
     
@@ -15,7 +15,7 @@ class Alpha:
     
 
 # A ranked (garded) symbol is an alphabet with a function (randk) that indicate the number of its children. A ranked tree can be defined in the tree package
-class ranked_Alpha(Alpha):
+class Ranked_Symbol(Symbol):
     def __init__(self, name, rank):
         super().__init__(name)
         self._rank = rank
@@ -26,4 +26,4 @@ class ranked_Alpha(Alpha):
         return self._rank
     @rank.setter
     def rank(self, value):
-        self._rank = value
+        self._rank = value'''
