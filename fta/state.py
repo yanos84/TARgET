@@ -27,5 +27,10 @@ class State:
     def is_Final(self,value:bool):
         self._is_Final= value
 
-    def __eq__(self, __value: object) -> bool:
-        return (self.name, self.is_Final, self.is_Initial) == (__value.name, __value.is_Final, __value.is_Initial)
+    def __eq__(self, other):
+        if not isinstance(other, State):
+            return False
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
