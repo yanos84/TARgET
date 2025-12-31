@@ -1,78 +1,33 @@
-"""****Tree implementation***********"""
+from abc import ABC, abstractmethod
+from typing import List, Optional
 
-from typing import List
+class AbstractTree(ABC):
 
-class Tree:
+    def __init__(self, symbol: str):
+        self.symbol = symbol
+        self._children: List["AbstractTree"] = []
+        self._parent: Optional["AbstractTree"] = None
 
-	"""
-	A class impmlementing tree structure.
+    @property
+    def children(self) -> List["AbstractTree"]:
+        return self._children
 
-	Attributes:
-		_children: List [Tree] : A list containing direct children of the class root
-		data: contains the information (the symbol) of the tree's root
-		_parent: Contains the parent of the tree in question 
-	"""
+    @property
+    def parent(self) -> Optional["AbstractTree"]:
+        return self._parent
 
-	def __init__(self, data:str=None):
+    def add_child(self, child: "AbstractTree"):
+        if not isinstance(child, AbstractTree):
+            raise TypeError("Child must be a tree")
+        child._parent = self
+        self._children.append(child)
 
-		"""
-		Initialize the tree construction
+    @abstractmethod
+    def is_well_formed(self) -> bool:
+        """Checks structural constraints (ranked/unranked)"""
+        pass
 
-		Args:
-			_children: List [Tree] : A list containing direct children of the class root
-			data: contains the information (the symbol) of the tree's root
-			_parent: Contains the parent of the tree in question 	
-		"""
-		self._children = None
-		self.data = data
-		self._parent : Tree
-
-	"""
-    Defining setters and getters for the class attributes
-    """ 
-    
-	@property
-	def children(self):
-		return self._children
-	@children.setter
-	def children(self, _value):
-		if not isinstance(_value, list):
-			raise TypeError("children must be trees")
-		self._children = _value
-	
-	def __str__(self) -> str:
-		"""
-		Overriding __str__ for the object Tree
-
-		Returns:
-			str: recursively transforms the tree to string
-		"""
-		_str = self.data + "("
-		if self.children !=None:
-			for i in self.children:
-				_str = _str + str(i)+","
-		_str = _str[:-1]
-		_str  = _str +  ")"
-		return _str
-
-	def add_Child(self, value):
-		if not (isinstance(value, Tree)):
-			raise TypeError("Child must be a tree")
-		else:
-			self.children.append(value)
-
-
-# Example usage
-if __name__ == "__main__":
-    t=Tree("t")
-    u=Tree("u")
-    v=Tree("v")
-    w=Tree("w")
-    child = []
-    child.append(w)
-    v.children = child
-    child = []
-    child.append(u)
-    child.append(v)
-    t.children = child
-    print(t)
+    def __str__(self) -> str:
+        if not self.children:
+            return self.symbol
+        return f"{self.symbol}({','.join(str(c) for c in self.children)})"
