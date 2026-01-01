@@ -2,12 +2,14 @@ from .symbol import Ranked_Symbol
 from .tree import AbstractTree
 
 class RankedTree(AbstractTree):
+    ''' A tree structure where each node is associated with a ranked symbol. '''
 
     def __init__(self, symbol: Ranked_Symbol):
         super().__init__(symbol.name)
         self.ranked_symbol = symbol
 
     def add_child(self, child: "RankedTree"):
+        ''' Add a child to the tree, ensuring it does not exceed the rank of the symbol. '''
         if len(self.children) >= self.ranked_symbol.rank:
             raise ValueError(
                 f"Symbol {self.symbol} has rank {self.ranked_symbol.rank}"
@@ -15,6 +17,7 @@ class RankedTree(AbstractTree):
         super().add_child(child)
 
     def is_well_formed(self) -> bool:
+        ''' Check if the tree is well-formed according to the ranked symbol's rank. '''
         if len(self.children) != self.ranked_symbol.rank:
             return False
         return all(child.is_well_formed() for child in self.children)
