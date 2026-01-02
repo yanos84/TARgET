@@ -33,7 +33,7 @@ class ranked_Rule(Rule):
         super().__init__()
         self._func= symbol
         self._input: List[State] =input_states
-        self._output:State = None
+        self._output:State = output_state
 
     
     """
