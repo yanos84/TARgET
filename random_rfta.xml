@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<RankedFta name="random_fta" type="Ranked">
+  <States>
+    <State name="q0" final="false"/>
+    <State name="q1" final="true"/>
+    <State name="q2" final="true"/>
+    <State name="q3" final="true"/>
+    <State name="q4" final="false"/>
+    <State name="q5" final="false"/>
+  </States>
+  <Symbols>
+    <Symbol name="f0" arity="2"/>
+    <Symbol name="f1" arity="0"/>
+    <Symbol name="f2" arity="2"/>
+    <Symbol name="f3" arity="1"/>
+  </Symbols>
+  <transitions>
+    <rule>
+      <symbol name="f0"/>
+      <input>
+        <state name="q0"/>
+        <state name="q1"/>
+      </input>
+      <output state="q4"/>
+    </rule>
+    <rule>
+      <symbol name="f0"/>
+      <input>
+        <state name="q3"/>
+        <state name="q4"/>
+      </input>
+      <output state="q5"/>
+    </rule>
+    <rule>
+      <symbol name="f3"/>
+      <input>
+        <state name="q1"/>
+      </input>
+      <output state="q4"/>
+    </rule>
+    <rule>
+      <symbol name="f2"/>
+      <input>
+        <state name="q4"/>
+        <state name="q0"/>
+      </input>
+      <output state="q1"/>
+    </rule>
+    <rule>
+      <symbol name="f3"/>
+      <input>
+        <state name="q2"/>
+      </input>
+      <output state="q1"/>
+    </rule>
+    <rule>
+      <symbol name="f1"/>
+      <input/>
+      <output state="q2"/>
+    </rule>
+    <rule>
+      <symbol name="f0"/>
+      <input>
+        <state name="q0"/>
+        <state name="q0"/>
+      </input>
+      <output state="q2"/>
+    </rule>
+    <rule>
+      <symbol name="f2"/>
+      <input>
+        <state name="q4"/>
+        <state name="q4"/>
+      </input>
+      <output state="q4"/>
+    </rule>
+    <rule>
+      <symbol name="f0"/>
+      <input>
+        <state name="q5"/>
+        <state name="q2"/>
+      </input>
+      <output state="q4"/>
+    </rule>
+    <rule>
+      <symbol name="f2"/>
+      <input>
+        <state name="q4"/>
+        <state name="q3"/>
+      </input>
+      <output state="q2"/>
+    </rule>
+    <rule>
+      <symbol name="f1"/>
+      <input/>
+      <output state="q5"/>
+    </rule>
+    <rule>
+      <symbol name="f0"/>
+      <input>
+        <state name="q0"/>
+        <state name="q1"/>
+      </input>
+      <output state="q2"/>
+    </rule>
+    <rule>
+      <symbol name="f0"/>
+      <input>
+        <state name="q5"/>
+        <state name="q5"/>
+      </input>
+      <output state="q3"/>
+    </rule>
+    <rule>
+      <symbol name="f2"/>
+      <input>
+        <state name="q2"/>
+        <state name="q5"/>
+      </input>
+      <output state="q1"/>
+    </rule>
+    <rule>
+      <symbol name="f2"/>
+      <input>
+        <state name="q2"/>
+        <state name="q4"/>
+      </input>
+      <output state="q5"/>
+    </rule>
+  </transitions>
+</RankedFta>
