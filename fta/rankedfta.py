@@ -21,7 +21,7 @@ class ranked_Fta(Fta):
     - print_Fta: Method to print the details of the ranked finite tree automaton    
     '''
 
-    def __init__(self, fta_name=None, alphabet:List[Ranked_Symbol]= None, fta_states:List[State]=None, transitions : List[ranked_Rule]=None):
+    def __init__(self, fta_name='default_fta', alphabet:List[Ranked_Symbol]= None, fta_states:List[State]=None, transitions : List[ranked_Rule]=None):
         super().__init__(fta_name,fta_states)
         self.alphabet : List[Ranked_Symbol] = alphabet
         self.transitions : List[ranked_Rule] = transitions

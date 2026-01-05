@@ -78,3 +78,5 @@ class AbstractFtaUnion(ABC):
         Factory method to create the concrete FTA object.
         """
         pass
+
+
