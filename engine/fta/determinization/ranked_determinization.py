@@ -10,7 +10,7 @@ def canonical_name(states):
     states: iterable[State]
     returns: canonical string name encoding the subset
     """
-    return ",".join(sorted(s.name for s in states))
+    return "{" + ",".join(sorted(s.name for s in states)) + "}"
 
 
 def get_or_create_state(states, cache):
@@ -29,9 +29,13 @@ def get_or_create_state(states, cache):
 
 def decode_state(state):
     """
-    Used only during construction if needed.
+    Extract original state names from a deterministic state name.
     """
-    return set(state.name.split(","))
+    name = state.name.strip()
+    if name == "{}":
+        return set()
+    return set(name[1:-1].split(","))
+
 
 def determinize(fta):
     """
@@ -49,14 +53,27 @@ def determinize(fta):
     for rule in fta.transitions:
         if rule.func.rank == 0:
             s = get_or_create_state([rule.output], det_states_cache)
+
+            det_rule = ranked_Rule(
+                symbol=rule.func,
+                input_states=[],
+                output_state=s
+            )
+
+            if det_rule not in det_rules:
+                det_rules.append(det_rule)
+
             if s not in worklist:
                 worklist.append(s)
-
-    # --------------------------------------------------
+        # --------------------------------------------------
     # Step 2: main worklist loop
     # --------------------------------------------------
+    processed = set()
     while worklist:
         current = worklist.pop()
+        if current.name in processed:
+            continue
+        processed.add(current.name)
 
         for symbol in fta.alphabet:
             k = symbol.rank
@@ -103,8 +120,10 @@ def determinize(fta):
                     if new_rule not in det_rules:
                         det_rules.append(new_rule)
 
-                    if out_state not in worklist:
+                    if out_state not in processed:
                         worklist.append(out_state)
+
+
 
     # --------------------------------------------------
     # Step 3: build deterministic FTA
@@ -120,16 +139,24 @@ def determinize(fta):
 
 # Example usage:*
 if __name__ == "__main__":
-    from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
-    generator = RandomRankedFtaGenerator(
-    n_states=6,
-    n_symbols=4,
-    max_rank=2,
-    n_rules=5,
-    seed=1234
-)
-    
-    random_fta = generator.generate()
-    random_fta.print_Fta()
-    determ_fta = determinize(random_fta)
+    from core.symbol import Ranked_Symbol
+    q= State(name="q", final=False, init=False)
+    qg=State(name="qg", final=False, init=False)
+    qf=State(name="qf", final=True, init=False)
+    symb_f = Ranked_Symbol(name="f", rank=2)
+    symb_a = Ranked_Symbol(name="a", rank=0)
+    symb_g = Ranked_Symbol(name="g", rank=1)
+    rule1 = ranked_Rule(symbol = symb_a, input_states=[], output_state=q)
+    rule2 = ranked_Rule(symbol = symb_g, input_states=[q], output_state=qg)
+    rule3 = ranked_Rule(symbol = symb_f, input_states=[q, q], output_state=q)
+    rule4 = ranked_Rule(symbol = symb_g, input_states=[q], output_state=q)
+    rule5 = ranked_Rule(symbol = symb_g, input_states=[qg], output_state=qf)
+
+    fta = ranked_Fta(
+        fta_states=[q, qg, qf],
+        alphabet=[symb_a, symb_g, symb_f],
+        transitions=[rule1, rule2, rule3, rule4, rule5]
+    )
+
+    determ_fta = determinize(fta)
     determ_fta.print_Fta()
