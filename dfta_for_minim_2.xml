@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<RankedFta name="example_fta_2" type="Ranked">
+  <States>
+    <State name="qa" final="false"/>
+    <State name="qb" final="true"/>
+    <State name="qc" final="true"/>
+  </States>
+  <Symbols>
+    <Symbol name="f" arity="2"/>
+    <Symbol name="a" arity="0"/>
+    <Symbol name="b" arity="0"/>
+  </Symbols>
+  <transitions>
+    <rule>
+      <symbol name="a"/>
+      <input/>
+      <output state="qa"/>
+    </rule>
+    <rule>
+      <symbol name="b"/>
+      <input/>
+      <output state="qb"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qa"/>
+        <state name="qa"/>
+      </input>
+      <output state="qa"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qb"/>
+        <state name="qb"/>
+      </input>
+      <output state="qb"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qa"/>
+        <state name="qb"/>
+      </input>
+      <output state="qc"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qb"/>
+        <state name="qa"/>
+      </input>
+      <output state="qc"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qc"/>
+        <state name="qa"/>
+      </input>
+      <output state="qc"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qc"/>
+        <state name="qb"/>
+      </input>
+      <output state="qc"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qa"/>
+        <state name="qc"/>
+      </input>
+      <output state="qc"/>
+    </rule>
+    <rule>
+      <symbol name="f"/>
+      <input>
+        <state name="qb"/>
+        <state name="qc"/>
+      </input>
+      <output state="qc"/>
+    </rule>
+  </transitions>
+</RankedFta>

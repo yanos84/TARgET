@@ -47,7 +47,7 @@ class HedgeSemantics:
 
 #example usage
 if __name__ == "__main__":
-    from engine.determinism.determinism import Determinism
+    from engine.fta.determinism.determinism import Determinism
     from fta.rankedfta import ranked_Fta
     from fta.rankedRule import ranked_Rule
     from fta.state import State

@@ -1,34 +1,56 @@
 from collections import defaultdict
-from itertools import product
 from engine.fta.determinism.semantics import BottomUpRankedSemantics
 from engine.fta.determinism.determinism import Determinism
 from engine.fta.minimization.abs_minimize import abs_minimize
+from fta.rankedfta import ranked_Fta
+from fta.state import State
 
 class dfta_minimizer(abs_minimize):
+    '''
+    Minimizer for Deterministic Finite Tree Automata (DFTA) using
+    a standard partition refinement algorithm. 
+    '''
+
     def __init__(self):
         super().__init__()
 
 
+    def check_determinism(self, fta)->ranked_Fta:
+        '''
+        Check if the given FTA is deterministic using BottomUpRankedSemantics class. 
+        '''
+        semantics = BottomUpRankedSemantics()
+        return Determinism.check(fta.transitions, semantics)
+
+    def get_final_states(self, fta):
+        '''
+        Return the set of final states of the given FTA.
+        '''
+        return {s for s in fta.states_list if s.is_Final}
+    
+    def get_partition_index(self, partitions, state):
+        '''
+        Return the index of the partition (of sets of states) containing the given state.
+        '''
+        for i, p in enumerate(partitions):
+            if state in p:
+                return i
+        return None
+
 
     def minimize(self, fta):
-        semantics = BottomUpRankedSemantics()
+        '''
+        Minimize the given deterministic FTA using partition refinement.
+        Returns a new minimized DFTA.
+        '''
         #is_deterministic = Determinism.check(fta.transitions, semantics)
-        if not Determinism.check(fta.transitions, semantics):
+        if not self.check_determinism(fta):
             raise ValueError("FTA must be deterministic for minimization.")
         
         # Step 1: Initial partition
-        final = {s for s in fta.states_list if s.is_Final}
+        final = self.get_final_states(fta)
         non_final = set(fta.states_list) - final
         partitions = [final, non_final]
-
-        # Helper: find partition containing a state
-        def get_partition_index(state):
-            for i, p in enumerate(partitions):
-                if state in p:
-                    return i
-            return None
-
-
         changed = True
         while changed:
             changed = False
@@ -39,9 +61,10 @@ class dfta_minimizer(abs_minimize):
                 for state in p:
                     key = []
                     for t in fta.transitions:
-                        if t.output == state:
-                            child_partitions = tuple(get_partition_index(q) for q in t.input)
-                            key.append((t.func.name, child_partitions))
+                        if state in t.input:
+                            child_partitions = tuple(self.get_partition_index(partitions, q) for q in t.input)
+                            output_partition = self.get_partition_index(partitions, t.output)
+                            key.append((t.func.name, child_partitions, output_partition))
                     key = tuple(sorted(key))
                     groups[key].add(state)
                 
@@ -88,34 +111,11 @@ class dfta_minimizer(abs_minimize):
 
 # Example usage
 if __name__ == "__main__":
-    from core.symbol import Ranked_Symbol
-    from fta.state import State
-    from fta.rankedfta import ranked_Fta
-    from fta.rankedRule import ranked_Rule
+    from engine.utils.rankedFta_xml_import import load_fta_from_xml
+    fta = load_fta_from_xml("dfta_for_minim.xml")
 
-    # Define states
-    q0 = State("q0", final=False, init=True)
-    q1 = State("q1", final=True, init=False)
-    q2 = State("q2", final=True, init=False)
-
-    # Define symbols
-    f = Ranked_Symbol("f", rank=2)
-    a = Ranked_Symbol("a", rank=0)
-
-    # Define transitions
-    r1 = ranked_Rule(f, [q0, q0], q1)
-    r2 = ranked_Rule(f, [q1, q1], q1)
-    r3 = ranked_Rule(f, [q0, q1], q2)
-    r4 = ranked_Rule(a, [], q0)
-
-    # Create FTA
-    fta = ranked_Fta(
-        fta_name="example_fta",
-        alphabet=[f, a],
-        fta_states=[q0, q1, q2],
-        transitions=[r1, r2, r3, r4]
-    )
-
+    print("Original FTA:")
+    fta.print_Fta()
     print("Original FTA:")
     fta.print_Fta()
 
