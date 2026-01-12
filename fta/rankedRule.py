@@ -74,7 +74,6 @@ class ranked_Rule(Rule):
             return True
         else:
             raise Exception ("The rank of the function is not equal to the states number in the rule")
-            return False
 
     def get_rule_as_str(self):
         return self.func.name+"("+' '.join([i.name+"," for i in self.input ])[:-1]+")---->"+self.output.name
@@ -86,7 +85,16 @@ class ranked_Rule(Rule):
         """
         _str = self.func.name
         print(self.get_rule_as_str())
+    
+    def __eq__(self, other):
+        if not isinstance(other, ranked_Rule):
+            return NotImplemented
+        return (self.func == other.func and
+                self.input == other.input and
+                self.output == other.output )
 
+    def __hash__(self):
+        return hash((self.func, tuple(self.input), self.output))
 
 
 

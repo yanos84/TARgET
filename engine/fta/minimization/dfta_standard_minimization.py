@@ -2,6 +2,7 @@ from collections import defaultdict
 from engine.fta.determinism.semantics import BottomUpRankedSemantics
 from engine.fta.determinism.determinism import Determinism
 from engine.fta.minimization.abs_minimize import abs_minimize
+from fta.rankedRule import ranked_Rule
 from fta.rankedfta import ranked_Fta
 from fta.state import State
 
@@ -36,6 +37,15 @@ class dfta_minimizer(abs_minimize):
             if state in p:
                 return i
         return None
+    
+    def redendant_rules(self, rule:ranked_Rule, transitions: set)->bool:
+        '''
+        Check if a given rule is redundant in a set of transitions.
+        '''
+        for r in transitions:
+            if rule == r:
+                return True
+        return False
 
 
     def minimize(self, fta):
@@ -96,7 +106,8 @@ class dfta_minimizer(abs_minimize):
         for t in fta.transitions:
             new_inputs = [partition_states[q] for q in t.input]
             new_output = partition_states[t.output]
-            new_transitions.append(t.__class__(t.func, new_inputs, new_output))
+            if not self.redendant_rules(t.__class__(t.func, new_inputs, new_output), new_transitions):
+                new_transitions.append(t.__class__(t.func, new_inputs, new_output))
         
         # Create minimized FTA
         from fta.rankedfta import ranked_Fta

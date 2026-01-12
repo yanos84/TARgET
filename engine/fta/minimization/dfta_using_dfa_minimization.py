@@ -38,47 +38,45 @@ class dfta_using_fta_minimizer(dfta_minimizer):
         return fa_transitions
     
     def create_nfa_from_fta(self, fta)->mata_nfa.Nfa:
+        '''
+            Create an NFA from the given deterministic FTA.
+
+        '''
         raw_transitions=[]
         store = {}
-        states_index = self.create_states_index(fta)
-        print(states_index)
-        for rule in fta.transitions:
+        states_index = self.create_states_index(fta) # Map state names to indices in NFA and reserve 0 for new initial state
+        for rule in fta.transitions: # For each FTA rule,  compute its horizontal language transitions (those of the NFA)
             horizontal_lang = self.create_horizontal_language(rule, store, states_index)
             raw_transitions.extend(horizontal_lang)
         alphabet_to_id = {label: idx for idx, label in enumerate(store.keys())}  # Map each unique label to a unique integer ID
-        print(store)
-        aut = mata_nfa.Nfa(len(fta.states_list)+1)
-        
-        #init = len(fta.states_list)  # New initial state index
-        print("Initial state:", 0)
-        aut.make_initial_state(0)
+        aut = mata_nfa.Nfa(len(fta.states_list)+1)  # +1 for new initial state
+        aut.make_initial_state(0) # New initial state is 0
         for state in fta.states_list:
-            aut.add_transition(0, states_index[state.name], states_index[state.name])
-            print(f"Added transition from initial state {0} to state {states_index[state.name]}")
+            aut.add_transition(0, states_index[state.name], states_index[state.name]) # New transitions from new initial state to old initial states just to respect NFA format
+  
 
         final_states={states_index[state.name] for state in fta.states_list if state.is_Final}
-        print("Final states:", final_states)
-        sink_alphabet = len(alphabet_to_id)
         for state in final_states:
             aut.make_final_state(state)
             print(f"Made state {state} final")
             #aut.add_transition(state, sink_alphabet+j, state)
 
-
-
         for from_state, symbol, to_state in raw_transitions:
-            aut.add_transition(from_state, alphabet_to_id[symbol], to_state)
+            aut.add_transition(from_state, alphabet_to_id[symbol], to_state) # Add transition to NFA
         return aut
 
 
 
     def minimize(self, fta):
+        '''
+            Minimize the given deterministic FTA using NFA minimization techniques.
+            Returns a new minimized DFTA.
+        '''
         if not self.check_determinism(fta):
             raise ValueError("FTA must be deterministic for minimization.")
         nfa = self.create_nfa_from_fta(fta)
         if not nfa.is_deterministic():
             raise ValueError("Constructed NFA is not deterministic. But it should be.")
-        print(nfa)
         return mata_nfa.minimize(nfa)
         
         
