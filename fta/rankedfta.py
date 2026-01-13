@@ -32,6 +32,13 @@ class ranked_Fta(Fta):
         print("Alphabet: "+' '.join([i.name+ "(rank = "+ str(i.rank)+"), " for i in self.alphabet ])[:-1])
         print("Rules list:\n "+ ' '.join([i.get_rule_as_str()+"\n" for i in self.transitions]))
 
+    def __str__(self):
+        _name = "Fta name: "+self.name+"\n"
+        _states = "States list: "+' '.join([i.name+" (is final :"+ str(i.is_Final)+"), " for i in self.states_list])[:-1]+"\n"
+        _alphabet = "Alphabet: "+' '.join([i.name+ "(rank = "+ str(i.rank)+"), " for i in self.alphabet ])[:-1]+"\n"
+        _rules = "Rules list:\n "+ ' '.join([i.get_rule_as_str()+"\n" for i in self.transitions])+"\n"
+        return _name+_states+_alphabet+_rules   
+
 """
 -------------Testing -------------------------------------------------------
 """

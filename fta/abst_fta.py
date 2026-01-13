@@ -64,6 +64,9 @@ class Fta(ABC):
 	def name(self, value):
 		self._name = value
     
+
+	def __str__(self):
+		return super().__str__()
 	#@name.deleter
 	#def name(self):
 	#	   del self._name
