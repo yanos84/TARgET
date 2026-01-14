@@ -63,6 +63,13 @@ class Fta(ABC):
 	@name.setter
 	def name(self, value):
 		self._name = value
+	
+	def get_final_states(self)-> set:
+		final_states = set()
+		for state in self._states:
+			if state.is_Final:
+				final_states.add(state.name)
+		return final_states
     
 
 	def __str__(self):
