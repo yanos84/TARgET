@@ -28,5 +28,9 @@ class Ranked_Symbol(Symbol):
             self.rank == symb.rank
         )
 
+    def __hash__(self):
+        # Must match equality
+        return hash((self.name, self.rank))
+
     def __str__(self):
         return self.name

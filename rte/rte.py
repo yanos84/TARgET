@@ -9,10 +9,23 @@ from core.symbol import Symbol, Ranked_Symbol
 
 class Rte(ABC):
     '''
-	Docstring for Rte class
 		Abstract base class for Rational Tree Expressions (RTE).
 		Defines the interface for all RTE variants.
 	'''
+
+    def _key(self):
+        '''
+            Provides a unique key for the RTE instance.
+            Used for hashing and equality checks.
+        '''
+        pass
+
+    def __eq__(self, value):
+        return isinstance(value, Rte) and self._key() == value._key()
+    
+    def __hash__(self):
+        return hash(self._key())
+
     @abstractmethod
     def __str__(self):
         pass
@@ -23,59 +36,131 @@ class Rte(ABC):
 
 class Zero(Rte):
     '''
-	Docstring for Zero class
 		Represents the zero element in Rational Tree Expressions (RTE).	
 	'''	
     def __str__(self):
         return "0"
+    
+    def _key(self):
+        return ("Zero",)
 
 class One(Rte):
     '''
-	Docstring for One class
 		Represents the one element in Rational Tree Expressions (RTE).
 	'''
     def __str__(self):
         return "1"
 
+    def _key(self):
+        return ("One",)
 
 
-
-class Arity(Rte):
+class function(Rte):
     '''
-	Docstring for Arity
-		Represents an application of a symbol f to RTEs (E1,...En) -> f(E1,...,En).
+		Represents an application of a symbol f to RTEs (E1,...En) -> f(E1,...,En).    
 	'''
-    def __init__(self, symbol: Symbol, args: list[Rte]=[]):
-        assert len(args) == symbol.arity
+    def __init__(self, symbol: Symbol, args: list[Rte] | None = None):
+        '''
+        Initializes a Tree_node with a symbol and its arguments.
+        :param symbol: The symbol representing the function or constructor.
+        :param args: A list of RTEs representing the arguments to the symbol.
+        '''
         self.symbol = symbol
         self.args = args
 
+        if isinstance(symbol, Ranked_Symbol): # check if the RTE is well formed according to the rank of the symbol
+            if self.args is None:
+                self.args = []
+            if len(self.args) != symbol.rank and symbol.rank != 0:
+                raise ValueError(
+                    f"Symbol {symbol.name} has rank {symbol.rank}, "
+                    f"but got {len(self.args)} arguments"
+                )
+
+
+
     def __str__(self):
-        if self.symbol.arity == 0:
+        if self.args is None or len(self.args) == 0:
             return str(self.symbol)
         return f"{self.symbol}(" + ",".join(str(a) for a in self.args) + ")"
+    
+    def _key(self):
+        return (
+            "function",
+            self.symbol.name,
+            tuple(arg._key() for arg in self.args)
+        )
 
 class Plus(Rte):
+    '''
+        Represents the sum of multiple RTEs (E1 + E2 + ... + En).
+    '''
     def __init__(self, *terms):
-        self.terms = terms
+        flat = []
+        for t in terms:
+            if isinstance(t, Plus):
+                flat.extend(t.terms)
+            else:
+                flat.append(t)
+        # remove duplicates using equality
+        unique = set(flat)
+
+        # sort canonically
+        self.terms = tuple(sorted(unique, key=lambda x: x._key()))
 
     def __str__(self):
         return " + ".join(str(t) for t in self.terms)
     
+    def _key(self):
+        return ("Plus", tuple(t._key() for t in self.terms))
+    
 class CProduct(Rte):
-    def __init__(self, left: Rte, right: Rte):
+    def __init__(self, left: Rte, right: Rte, concat: Symbol):
+        '''Initializes a CProduct with left and right operands and a concatenation operator.
+                :param left: The left RTE operand.
+                :param right: The right RTE operand.
+                :param concat: The concatenation operator (must be a Symbol).
+        '''
+
+
+        if not isinstance(concat, Symbol):
+            raise ValueError("Concatenation operator must be a Symbol")
+        if isinstance(concat, Ranked_Symbol) and concat.rank != 0:
+            raise ValueError("Concatenation operator must be a leaf ranked Symbol (rank 0)")
+        
         self.left = left
         self.right = right
+        self.concat = concat
 
     def __str__(self):
-        return f"({self.left}).c({self.right})"
+        return f"({self.left}).{self.concat}({self.right})"
+    
+    def _key(self):
+        return (
+            "CProduct",
+            self.concat,
+            self.left._key(),
+            self.right._key()
+        )
 
 class CStar(Rte):
-    def __init__(self, expr: Rte):
+    def __init__(self, expr: Rte, concat : Symbol):
+        if not isinstance(concat, Symbol):
+            raise ValueError("Concatenation operator must be a Symbol")
+        if isinstance(concat, Ranked_Symbol) and concat.rank != 0:
+            raise ValueError("Concatenation operator must be a leaf ranked Symbol (rank 0)")
         self.expr = expr
+        self.concat = concat
 
     def __str__(self):
-        return f"({self.expr})*c"
+        return f"({self.expr})*{self.concat}"
+    
+    def _key(self):
+        return (
+            "CStar",
+            self.concat,
+            self.expr._key()
+        )
 
 # Example usage
 if __name__ == "__main__":
@@ -85,14 +170,17 @@ if __name__ == "__main__":
     x = Ranked_Symbol("x")
     f = Ranked_Symbol("f", 2)
     g = Ranked_Symbol("g", 1)
+    Ea = function(a, [])
+    Eb = function(b, [])
+    Ex = function(x, [])
     # trees
-    fab = Arity(f, [Arity(a), Arity(b)])
-    gx  = Arity(g, [Arity(x)])
+    fab = function(f, [Ea, Eb])
+    gx  = function(g, [Ex])
 
     # rational tree expression
     rte = Plus(
-        CStar(fab),
-        CProduct(fab, gx)
+        CStar(fab, b),
+        CProduct(fab, gx, a)
     )
 
     print(rte)
