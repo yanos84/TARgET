@@ -53,6 +53,21 @@ class One(Rte):
 
     def _key(self):
         return ("One",)
+    
+class Atom(Rte):
+    '''
+        Represents an atomic RTE, which is simply a symbol.
+    '''
+    def __init__(self, symbol: Symbol):
+        if isinstance(symbol, Ranked_Symbol) and symbol.rank != 0:
+            raise ValueError("Atom symbol must be a leaf ranked Symbol (rank 0)")
+        self.symbol = symbol
+
+    def __str__(self):
+        return str(self.symbol)
+    
+    def _key(self):
+        return ("Atom", self.symbol.name)
 
 
 class function(Rte):
@@ -130,7 +145,7 @@ class CProduct(Rte):
         
         self.left = left
         self.right = right
-        self.concat = concat
+        self.concat = concat.name
 
     def __str__(self):
         return f"({self.left}).{self.concat}({self.right})"
@@ -158,7 +173,7 @@ class CStar(Rte):
     def _key(self):
         return (
             "CStar",
-            self.concat,
+            self.concat.name,
             self.expr._key()
         )
 
@@ -170,9 +185,9 @@ if __name__ == "__main__":
     x = Ranked_Symbol("x")
     f = Ranked_Symbol("f", 2)
     g = Ranked_Symbol("g", 1)
-    Ea = function(a, [])
-    Eb = function(b, [])
-    Ex = function(x, [])
+    Ea = Atom(a)
+    Eb = Atom(b)
+    Ex = Atom(x)
     # trees
     fab = function(f, [Ea, Eb])
     gx  = function(g, [Ex])

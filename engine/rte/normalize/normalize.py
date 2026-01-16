@@ -1,9 +1,9 @@
-from rte.rte import Rte, Plus, CProduct, CStar, Zero, One, function
+from rte.rte import Rte, Plus, CProduct, CStar, Zero, One, function, Atom
 from core.symbol import Symbol, Ranked_Symbol
 class Normalizer():
     '''
         Abstract base class for RTE normalizers.
-        Defines the interface for all normalizer variants.
+        Defines the interface for all basic normalizer variants.
     '''
     def __init__(self):
         pass
@@ -28,6 +28,9 @@ class Normalizer():
 
         if isinstance(expr, CStar):
             return self.normalize_cstar(expr.expr, expr.concat)
+
+        if isinstance(expr, Atom):
+            return expr
 
         raise TypeError("Unknown RTE type")
 
@@ -92,7 +95,7 @@ class Normalizer():
 if __name__ == "__main__":
     normalizer = Normalizer()
 
-    ''' 
+
    # symbols
     a = Ranked_Symbol("a")
     b = Ranked_Symbol("b")
@@ -104,21 +107,20 @@ if __name__ == "__main__":
     gx = function(g, [function(a, [])])
 
     # rational tree expression
-    rte = Plus(
+    rte0 = Plus(
         CStar(fab, concat=a),
         CProduct(fab, gx, concat=a),
         CStar(fab, concat=a)
     )
-    '''
 
-    a = Ranked_Symbol("a")
-    b = Ranked_Symbol("b")
+
+
 
     rte = Plus(
-        function(a, []),
+        Atom(a),
         Plus(
-            function(a, []),
-            function(b, [])
+            Atom(a),
+            Atom(b)
         )
     )
 
