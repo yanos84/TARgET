@@ -121,7 +121,8 @@ class Plus(Rte):
         unique = set(flat)
 
         # sort canonically
-        self.terms = tuple(sorted(unique, key=lambda x: x._key()))
+        self.terms = tuple(sorted(unique, key=lambda x: x._key())) # save 
+
 
     def __str__(self):
         return " + ".join(str(t) for t in self.terms)

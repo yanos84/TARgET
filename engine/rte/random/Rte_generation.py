@@ -1,9 +1,14 @@
 import random
 from typing import Sequence
-from rte.rte import Rte, Symbol, Zero, One, Plus, CProduct, CStar, function, Atom
+from rte.rte import Rte, Zero, One, Plus, CProduct, CStar, function, Atom
 from core.symbol import Symbol, Ranked_Symbol  
 
+
+
 class RandomRteGenerator:
+    """
+        
+    """
     def __init__(
         self,
         symbols: Sequence[Symbol],
