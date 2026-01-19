@@ -1,5 +1,5 @@
 import math
-from semiring import Semiring
+from .semiring import Semiring
 
 class TropicalSemiring(Semiring):
     '''
@@ -42,10 +42,12 @@ class TropicalSemiring(Semiring):
         return f"𝕋({self.value})"
 
 # Example usage
-a = TropicalSemiring(3.0)
-b = TropicalSemiring(5.0)
-print(a + b)          # 𝕋(3.0   )   
-print(a * b)          # 𝕋(8.0   )
-print(TropicalSemiring.zero())  # 𝕋(∞)
-print(TropicalSemiring.one())   # 𝕋(0.0 )
+
+if __name__ == '__main__':
+    a = TropicalSemiring(3.0)
+    b = TropicalSemiring(5.0)
+    print(a + b)          # 𝕋(3.0   )   
+    print(a * b)          # 𝕋(8.0   )
+    print(TropicalSemiring.zero())  # 𝕋(∞)
+    print(TropicalSemiring.one())   # 𝕋(0.0 )
 
