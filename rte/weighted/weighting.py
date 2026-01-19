@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from algebric.semiring import Semiring
 from rte.rte import Rte, Zero, One, Atom, function, Plus, CProduct, CStar
+from rte.weighted.weight import Weight
 
 class RteWeighting(ABC):
     """
@@ -56,20 +57,12 @@ class SemiringRteWeighting(RteWeighting):
 
         raise TypeError(f"Unsupported RTE type: {type(rte)}")
 
-class SymbolWeightedRteWeighting(SemiringRteWeighting):
-    """
-    Weighted semantics compatible with weighted tree automata:
-    each symbol application contributes a weight.
-    """
-
-    def __init__(self, semiring_cls, symbol_weights: dict[str, Semiring]):
-        super().__init__(semiring_cls)
-        self.symbol_weights = symbol_weights
-
-    def symbol_weight(self, symbol_name: str) -> Semiring:
-        return self.symbol_weights.get(symbol_name, self.S.one())
+class SemiringRteWeighting(RteWeighting):
+    def __init__(self, semiring_cls):
+        self.S = semiring_cls
 
     def weight(self, rte: Rte) -> Semiring:
+
         if isinstance(rte, Zero):
             return self.S.zero()
 
@@ -77,48 +70,40 @@ class SymbolWeightedRteWeighting(SemiringRteWeighting):
             return self.S.one()
 
         if isinstance(rte, Atom):
-            # nullary symbol application
-            return self.symbol_weight(rte.symbol.name)
+            return self.S.one()      # neutral symbol
 
         if isinstance(rte, function):
-            # f(E1,...,En) → w(f) ⊗ Π w(Ei)
-            w = self.symbol_weight(rte.symbol.name)
-            for arg in rte.args:
-                w = w * self.weight(arg)
-            return w
+            return self.S.one()      # symbol itself has no weight
 
         if isinstance(rte, Plus):
-            w = self.S.zero()
-            for t in rte.terms:
-                w = w + self.weight(t)
-            return w
+            return sum(
+                (self.weight(t) for t in rte.terms),
+                self.S.zero()
+            )
 
         if isinstance(rte, CProduct):
             return self.weight(rte.left) * self.weight(rte.right)
 
         if isinstance(rte, CStar):
-            # standard assumption: star = 1
-            return self.S.one()
+            # semiring star or Kleene closure
+            return self.weight(rte.expr).star()
 
-        raise TypeError(f"Unsupported RTE type: {type(rte)}")
+        if isinstance(rte, Weight):
+            return rte.weight * self.weight(rte.expr)
+
+        raise TypeError(type(rte))
 
 #example usage
 
 if __name__ == "__main__":
-    from algebric.trop_semiring import TropicalSemiring
+    from algebric.trop_semiring import TropicalSemiring as TS
     from core.symbol import Ranked_Symbol
     from rte.weighted.weight_rte_print import WeightedRtePrinter as WRP
     f= Ranked_Symbol('f', rank = 2)
     a = Ranked_Symbol('a')
     b= Ranked_Symbol('b')
-    E = Plus(function(f, [Atom(a), Atom(b)]), function(f, [Atom(b), Atom(a)]))
-    print(E)
-    weights = {
-    "a": TropicalSemiring(1.0),
-    "b": TropicalSemiring(2.0),
-    "f": TropicalSemiring(4.0)
-}
-    W = SymbolWeightedRteWeighting(TropicalSemiring, weights)
-    print(W.weight(E))   # 𝕋(3.0)
-    printer = WRP(weights)
-    print(printer.print(E, W.weight(E)))
+    E = Weight(TS(1.0), Weight(TS(2.0),Plus(function(f, [Atom(a), Atom(b)]), function(f, [Atom(b), Atom(a)]))))
+    print("The weighted expression", E)
+
+    W = SemiringRteWeighting(TS)
+    print("The total weight is" , W.weight(E))   # 𝕋(3.0)
