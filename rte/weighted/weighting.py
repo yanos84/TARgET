@@ -104,6 +104,5 @@ if __name__ == "__main__":
     b= Ranked_Symbol('b')
     E = Weight(TS(1.0), Weight(TS(2.0),Plus(function(f, [Atom(a), Atom(b)]), function(f, [Atom(b), Atom(a)]))))
     print("The weighted expression", E)
-
     W = SemiringRteWeighting(TS)
     print("The total weight is" , W.weight(E))   # 𝕋(3.0)
