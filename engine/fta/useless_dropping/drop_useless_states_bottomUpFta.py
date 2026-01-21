@@ -11,8 +11,8 @@ def productive_states(fta):
         for rule in fta.transitions:
             # if the output is productive,
             # then its inputs are productive
-            if rule.output in productive:
-                for q in rule.input:
+            if rule.output_state in productive:
+                for q in rule.input_states:
                     if q not in productive:
                         productive.add(q)
                         changed = True
@@ -26,14 +26,14 @@ def reachable_states(fta):
     # arity-0 rules (constants)
     for rule in fta.transitions:
         if rule.func.rank == 0:
-            reachable.add(rule.output)
+            reachable.add(rule.output_state)
 
     while changed:
         changed = False
         for rule in fta.transitions:
-            if all(q in reachable for q in rule.input):
-                if rule.output not in reachable:
-                    reachable.add(rule.output)
+            if all(q in reachable for q in rule.input_states):
+                if rule.output_state not in reachable:
+                    reachable.add(rule.output_state)
                     changed = True
 
     return reachable
@@ -53,7 +53,7 @@ def drop_useless_states(fta):
     # filter transitions
     new_transitions = []
     for rule in fta.transitions:
-        if rule.output in useful and all(q in useful for q in rule.input):
+        if rule.output_state in useful and all(q in useful for q in rule.input_states):
             new_transitions.append(rule)
 
     fta.transitions = new_transitions
@@ -75,12 +75,12 @@ if __name__ == "__main__":
     symb_f = Ranked_Symbol(name="f", rank=2)
     symb_a = Ranked_Symbol(name="a", rank=0)
     symb_g = Ranked_Symbol(name="g", rank=1)
-    rule1 = ranked_Rule(symbol = symb_a, input_states=[], output_state=q)
-    rule2 = ranked_Rule(symbol = symb_g, input_states=[q], output_state=qg)
-    rule3 = ranked_Rule(symbol = symb_f, input_states=[q, q], output_state=q)
-    rule4 = ranked_Rule(symbol = symb_g, input_states=[q], output_state=q)
-    rule5 = ranked_Rule(symbol = symb_g, input_states=[qg], output_state=qf)
-    useless_rule = ranked_Rule(symbol = symb_a, input_states=[], output_state=q_useless)
+    rule1 = ranked_Rule(func = symb_a, input_states=[], output_state=q)
+    rule2 = ranked_Rule(func = symb_g, input_states=[q], output_state=qg)
+    rule3 = ranked_Rule(func = symb_f, input_states=[q, q], output_state=q)
+    rule4 = ranked_Rule(func = symb_g, input_states=[q], output_state=q)
+    rule5 = ranked_Rule(func = symb_g, input_states=[qg], output_state=qf)
+    useless_rule = ranked_Rule(func = symb_a, input_states=[], output_state=q_useless)
 
     fta = ranked_Fta(
     fta_states=[q, qg, qf],

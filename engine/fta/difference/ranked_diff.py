@@ -37,9 +37,9 @@ if __name__ == "__main__":
     t1 = State(name="q2", final=False)
     st1 = [s1, t1]
     symb1 = Ranked_Symbol(name="f", rank=2)
-    rule1 = ranked_Rule(symbol=symb1)
-    rule1.input = [s1, s1]
-    rule1.output = t1
+    rule1 = ranked_Rule(func=symb1)
+    rule1.input_states = [s1, s1]
+    rule1.output_state = t1
     rules1 = [rule1]
     alpha1 = [symb1]
     automaton1 = ranked_Fta(fta_name="fta1", alphabet=alpha1, fta_states=st1, transitions=rules1)
@@ -49,9 +49,9 @@ if __name__ == "__main__":
     t2 = State(name="p2", final=True)
     st2 = [s2, t2]
     symb2 = Ranked_Symbol(name="f", rank=2)
-    rule2 = ranked_Rule(symbol=symb2)
-    rule2.input= [s2, s2]
-    rule2.output = t2
+    rule2 = ranked_Rule(func=symb2)
+    rule2.input_states= [s2, s2]
+    rule2.output_state = t2
     rules2 = [rule2]
     alpha2 = [symb2]
     automaton2 = ranked_Fta(fta_name="fta2", alphabet=alpha2, fta_states=st2, transitions=rules2)

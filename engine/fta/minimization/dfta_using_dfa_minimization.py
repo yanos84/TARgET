@@ -24,19 +24,19 @@ class dfta_using_fta_minimizer(dfta_minimizer):
              Each transition is represented as a tuple (from_state, symbol, to_state).
             '''
         fa_transitions = []
-        for j in range(len(rule.input)):
+        for j in range(len(rule.input_states)):
             remining = []
             remining.append(rule.func.name)
-            for i in range(len(rule.input)):
+            for i in range(len(rule.input_states)):
                 if i!=j:
-                    remining.append(rule.input[i].name)
+                    remining.append(rule.input_states[i].name)
                 else:
                     remining.append("#")
             serialized = "|".join(obj for obj in remining) # Serialize the structure
             unique_key = hashlib.md5(serialized.encode()).hexdigest() # Generate a unique key
             unique_key = base64.urlsafe_b64encode(unique_key.encode())[:8].decode() # Shorten the key for practicality
             store[unique_key] = remining.copy()
-            fa_transitions.append( (state_index[rule.input[j].name], unique_key, state_index[rule.output.name]) ) # Add the transition. Alphabet is defined as string. It must be converted to integer when creating NFA
+            fa_transitions.append( (state_index[rule.input_states[j].name], unique_key, state_index[rule.output_state.name]) ) # Add the transition. Alphabet is defined as string. It must be converted to integer when creating NFA
 
         return fa_transitions
     
@@ -125,13 +125,13 @@ class dfta_using_fta_minimizer(dfta_minimizer):
         min_states = []
         new_rules = set()
         for rule in fta.transitions:
-            lhs = [State(name=str(rep[states_index[s.name]]), final=s.is_Final, init=False) for s in rule.input]
+            lhs = [State(name=str(rep[states_index[s.name]]), final=s.is_Final, init=False) for s in rule.input_states]
             min_states=list(set(min_states+lhs))
-            rhs = State(name=str(rep[states_index[rule.output.name]]), final=rule.output.is_Final)  # map output state
+            rhs = State(name=str(rep[states_index[rule.output_state.name]]), final=rule.output_state.is_Final)  # map output state
             if rhs not in min_states:
                 min_states.append(rhs)
             new_rule = ranked_Rule(
-                symbol=rule.func,
+                func=rule.func,
                 #_states = [State(name=str(q), final=False, init=False) for q in lhs],
                 input_states=lhs,
                 output_state=rhs

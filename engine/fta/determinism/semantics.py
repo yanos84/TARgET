@@ -25,8 +25,8 @@ class BottomUpRankedSemantics(AutomatonSemantics):
             raise ValueError("Invalid ranked rule")
 
         symbol_key = rule.func.name
-        input_key = tuple(state.name for state in rule.input)
-        output_value = rule.output.name
+        input_key = tuple(state.name for state in rule.input_states)
+        output_value = rule.output_state.name
 
         key = (symbol_key, input_key)
         return key, output_value
@@ -63,17 +63,17 @@ if __name__ == "__main__":
     a = Ranked_Symbol(name="a", rank=0)
 
     # Define transition rules
-    rule1 = ranked_Rule(symbol=f)
-    rule1.input = [s1, s2]
-    rule1.output = s3
+    rule1 = ranked_Rule(func=f)
+    rule1.input_states = [s1, s2]
+    rule1.output_state = s3
 
-    rule2 = ranked_Rule(symbol=f)
-    rule2.input = [s1, s2]
-    rule2.output = s3  # Same output as rule1 (deterministic)
+    rule2 = ranked_Rule(func=f)
+    rule2.input_states = [s1, s2]
+    rule2.output_state = s3  # Same output as rule1 (deterministic)
 
-    rule3 = ranked_Rule(symbol=f)
-    rule3.input = [s2, s1]
-    rule3.output = s3  # Different input order (still deterministic)
+    rule3 = ranked_Rule(func=f)
+    rule3.input_states = [s2, s1]
+    rule3.output_state = s3  # Different input order (still deterministic)
 
     # Create automaton
     automaton = ranked_Fta(

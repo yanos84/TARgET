@@ -46,11 +46,11 @@ def draw_ranked_fta(fta: ranked_Fta):
         )
 
         # input states → symbol
-        for q in rule.input:
+        for q in rule.input_states:
             dot.edge(q.name, rule_node)
 
         # symbol → output state
-        dot.edge(rule_node, rule.output.name)
+        dot.edge(rule_node, rule.output_state.name)
 
     return dot
 

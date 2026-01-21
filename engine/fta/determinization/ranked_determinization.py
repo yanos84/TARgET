@@ -52,10 +52,10 @@ def determinize(fta):
     # --------------------------------------------------
     for rule in fta.transitions:
         if rule.func.rank == 0:
-            s = get_or_create_state([rule.output], det_states_cache)
+            s = get_or_create_state([rule.output_state], det_states_cache)
 
             det_rule = ranked_Rule(
-                symbol=rule.func,
+                func=rule.func,
                 input_states=[],
                 output_state=s
             )
@@ -97,12 +97,12 @@ def determinize(fta):
                         ok = True
                         for i in range(k):
                             child_names = decode_state(children[i])
-                            if rule.input[i].name not in child_names:
+                            if rule.input_states[i].name not in child_names:
                                 ok = False
                                 break
 
                         if ok:
-                            output_subset.add(rule.output)
+                            output_subset.add(rule.output_state)
 
                     if not output_subset:
                         continue
@@ -112,7 +112,7 @@ def determinize(fta):
                     )
 
                     new_rule = ranked_Rule(
-                        symbol=symbol,
+                        func=symbol,
                         input_states=list(children),
                         output_state=out_state
                     )
@@ -146,11 +146,11 @@ if __name__ == "__main__":
     symb_f = Ranked_Symbol(name="f", rank=2)
     symb_a = Ranked_Symbol(name="a", rank=0)
     symb_g = Ranked_Symbol(name="g", rank=1)
-    rule1 = ranked_Rule(symbol = symb_a, input_states=[], output_state=q)
-    rule2 = ranked_Rule(symbol = symb_g, input_states=[q], output_state=qg)
-    rule3 = ranked_Rule(symbol = symb_f, input_states=[q, q], output_state=q)
-    rule4 = ranked_Rule(symbol = symb_g, input_states=[q], output_state=q)
-    rule5 = ranked_Rule(symbol = symb_g, input_states=[qg], output_state=qf)
+    rule1 = ranked_Rule(func= symb_a, input_states=[], output_state=q)
+    rule2 = ranked_Rule(func = symb_g, input_states=[q], output_state=qg)
+    rule3 = ranked_Rule(func = symb_f, input_states=[q, q], output_state=q)
+    rule4 = ranked_Rule(func = symb_g, input_states=[q], output_state=q)
+    rule5 = ranked_Rule(func = symb_g, input_states=[qg], output_state=qf)
 
     fta = ranked_Fta(
         fta_states=[q, qg, qf],

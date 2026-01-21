@@ -20,7 +20,7 @@ class ranked_Rule(Rule):
         input(List[State]): the list of the input 
         output(State): the output state of the transition
     """
-    def __init__(self, symbol:Ranked_Symbol =None, input_states : List[State] = None, output_state : State= None):
+    def __init__(self, func:Ranked_Symbol =None, input_states : List[State] = None, output_state : State= None):
 
         """
         Initialize a transition rule
@@ -31,7 +31,7 @@ class ranked_Rule(Rule):
         output(State): the output state of the transition    
         """
         super().__init__()
-        self._func= symbol
+        self._func= func
         self._input: List[State] =input_states
         self._output:State = output_state
 
@@ -50,16 +50,16 @@ class ranked_Rule(Rule):
         del _func
 
     @property
-    def input(self):
+    def input_states(self):
         return self._input
-    @input.setter
-    def input(self,value: List[State]):
+    @input_states.setter
+    def input_states(self,value: List[State]):
         self._input = value
     @property
-    def output(self):
+    def output_state(self):
         return self._output
-    @output.setter
-    def output(self,value):
+    @output_state.setter
+    def output_state(self,value):
         self._output = value
     
     
@@ -70,31 +70,28 @@ class ranked_Rule(Rule):
         Returns:
             bool: if the transition is valid or not
         """
-        if self.func.rank == len(self.input):
+        if self.func.rank == len(self.input_states):
             return True
         else:
             raise Exception ("The rank of the function is not equal to the states number in the rule")
 
     def get_rule_as_str(self):
-        return self.func.name+"("+' '.join([i.name+"," for i in self.input ])[:-1]+")---->"+self.output.name
+        return self.func.name+"("+' '.join([i.name+"," for i in self.input_states ])[:-1]+")---->"+self.output_state.name
 
-    def print_Rule(self):
-        """
-        Prints the transiton rule under its formal form
-        
-        """
-        _str = self.func.name
-        print(self.get_rule_as_str())
+
+    
+    def __str__(self):
+        return self.get_rule_as_str()
     
     def __eq__(self, other):
         if not isinstance(other, ranked_Rule):
             return NotImplemented
         return (self.func == other.func and
-                self.input == other.input and
-                self.output == other.output )
+                self.input_states == other.input_states and
+                self.output_state == other.output_state )
 
     def __hash__(self):
-        return hash((self.func, tuple(self.input), self.output))
+        return hash((self.func, tuple(self.input_states), self.output_state))
 
 
 
@@ -111,9 +108,9 @@ if __name__ == '__main__':
     st.append(s)
     st.append(t)
     print(st)
-    rule = ranked_Rule(symbol = symb)
-    rule.input = st
-    rule.output = u
-    rule.print_Rule()
+    rule = ranked_Rule(func = symb)
+    rule.input_states = st
+    rule.output_state = u
+    print(rule)
 
 

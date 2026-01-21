@@ -102,7 +102,7 @@ def load_fta_from_xml(filename: str) -> ranked_Fta:
 
         # Build rule
         rule = ranked_Rule(
-            symbol=_symbol,
+            func=_symbol,
             input_states=input_states,
             output_state=out_state
         )

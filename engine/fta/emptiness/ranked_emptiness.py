@@ -18,7 +18,7 @@ class RankedEmptiness(AbsEmptiness):
         # Step 1: rank-0 rules
         for rule in fta.transitions:
             if rule.func.rank == 0:
-                Good.add(rule.output.name)
+                Good.add(rule.output_state.name)
 
         changed = True
         while changed:
@@ -26,8 +26,8 @@ class RankedEmptiness(AbsEmptiness):
             for rule in fta.transitions:
                 if rule.func.rank > 0:
                     if all(s in Good for s in rule.input_states):
-                        if rule.output.name not in Good:
-                            Good.add(rule.output.name)
+                        if rule.output_state.name not in Good:
+                            Good.add(rule.output_state.name)
                             changed = True
 
         return Good.isdisjoint(fta.get_final_states())
@@ -43,9 +43,9 @@ if __name__ == "__main__":
     st.append(s)
     st.append(t)
     symb = Ranked_Symbol(name="f", rank=2)
-    rule = ranked_Rule(symbol = symb)
+    rule = ranked_Rule(func = symb)
     rule.input_states = st
-    rule.output = u
+    rule.output_state = u
     rules = []
     rules.append(rule)
     alpha = []

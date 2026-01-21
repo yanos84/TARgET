@@ -55,9 +55,9 @@ if __name__ == "__main__":
     st.append(s)
     st.append(t)
     symb = Ranked_Symbol(name="f", rank=2)
-    rule = ranked_Rule(symbol = symb)
-    rule.input = st
-    rule.output = u
+    rule = ranked_Rule(func = symb)
+    rule.input_states = st
+    rule.output_state = u
     rules = []
     rules.append(rule)
     rules.append(rule)

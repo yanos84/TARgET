@@ -53,14 +53,14 @@ class RankedFtaUnion(AbstractFtaUnion):
 
         # map fta1 transitions
         for r in self.fta1.transitions:
-            new_input_states = [state_map1[s] for s in r.input]
-            new_output_state = state_map1[r.output]
+            new_input_states = [state_map1[s] for s in r.input_states]
+            new_output_state = state_map1[r.output_state]
             transitions.add(ranked_Rule(r.func, new_input_states, new_output_state))
 
         # map fta2 transitions
         for r in self.fta2.transitions:
-            new_input_states = [state_map2[s] for s in r.input]
-            new_output_state = state_map2[r.output]
+            new_input_states = [state_map2[s] for s in r.input_states]
+            new_output_state = state_map2[r.output_state]
             transitions.add(ranked_Rule(r.func, new_input_states, new_output_state))
 
         return transitions

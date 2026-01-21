@@ -71,9 +71,9 @@ class dfta_minimizer(abs_minimize):
                 for state in p:
                     key = []
                     for t in fta.transitions:
-                        if state in t.input:
-                            child_partitions = tuple(self.get_partition_index(partitions, q) for q in t.input)
-                            output_partition = self.get_partition_index(partitions, t.output)
+                        if state in t.input_states:
+                            child_partitions = tuple(self.get_partition_index(partitions, q) for q in t.input_states)
+                            output_partition = self.get_partition_index(partitions, t.output_state)
                             key.append((t.func.name, child_partitions, output_partition))
                     key = tuple(sorted(key))
                     groups[key].add(state)
@@ -104,8 +104,8 @@ class dfta_minimizer(abs_minimize):
         #new_final_states = {state_map[s] for s in fta.final_states}
         new_transitions = []
         for t in fta.transitions:
-            new_inputs = [partition_states[q] for q in t.input]
-            new_output = partition_states[t.output]
+            new_inputs = [partition_states[q] for q in t.input_states]
+            new_output = partition_states[t.output_state]
             if not self.redendant_rules(t.__class__(t.func, new_inputs, new_output), new_transitions):
                 new_transitions.append(t.__class__(t.func, new_inputs, new_output))
         

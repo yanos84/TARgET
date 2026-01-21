@@ -68,9 +68,9 @@ class RandomRankedFtaGenerator(FtaGenerator):
             symbol = random.choice(alphabet)
             input_states = random.choices(states, k=symbol.rank)
             output_state = random.choice(states)
-            rule = ranked_Rule(symbol=symbol)
-            rule.input = input_states
-            rule.output = output_state
+            rule = ranked_Rule(func=symbol)
+            rule.input_states = input_states
+            rule.output_state = output_state
             transitions.append(rule)
 
         # Create and return the ranked FTA

@@ -20,9 +20,9 @@ class Complement():
             for state in self.fta.states_list:
                 state.is_Final = not state.is_Final
             for r in self.fta.transitions:
-                for input in r.input:
+                for input in r.input_states:
                     input.is_Final = not input.is_Final
-                r.output.is_Final = not r.output.is_Final
+                r.output_state.is_Final = not r.output_state.is_Final
             return self.fta
         else:
             raise TypeError("Alphabet must be a list of Symbol instances.")
