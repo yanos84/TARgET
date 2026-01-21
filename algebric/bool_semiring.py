@@ -1,4 +1,4 @@
-from semiring import Semiring
+from algebric.semiring import Semiring
 
 class BooleanSemiring(Semiring):
 

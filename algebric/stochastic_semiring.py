@@ -30,6 +30,11 @@ class ProbabilitySemiring(Semiring):
 
     def __repr__(self):
         return f"𝔓({self.value:.4f})"
+    
+    def __str__(self):
+        return f"𝔓({self.value:.4f})"
+    
+
 
 
 #Example usage 

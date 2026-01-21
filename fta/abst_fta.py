@@ -12,6 +12,7 @@ from abc import ABC, abstractmethod
 from .state import State
 from typing import List
 
+
 class Fta(ABC):
 	"""
 	An abstract class defining finite tree automata. All tree automata inherits directly or indirectly from Fta
@@ -78,7 +79,7 @@ class Fta(ABC):
 	#def name(self):
 	#	   del self._name
 
-	
+
 
 
 

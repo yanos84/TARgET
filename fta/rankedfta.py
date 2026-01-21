@@ -7,6 +7,7 @@ from .state import State
 from core.symbol import Ranked_Symbol
 from .rankedRule import ranked_Rule
 from typing import List
+from algebric.semiring import Semiring
 
 class ranked_Fta(Fta):
 
@@ -38,6 +39,26 @@ class ranked_Fta(Fta):
         _alphabet = "Alphabet: "+' '.join([i.name+ "(rank = "+ str(i.rank)+"), " for i in self.alphabet ])[:-1]+"\n"
         _rules = "Rules list:\n "+ ' '.join([i.get_rule_as_str()+"\n" for i in self.transitions])+"\n"
         return _name+_states+_alphabet+_rules   
+    
+    def chech_weighted(self)->bool:
+        if all(r.is_weighted for r in self.transitions):
+            return True
+        elif not any(r.is_weighted for r in self.transitions):
+            return False
+        else:
+            raise ValueError("Check fta transitions, Some are weighted and some are not (this is to avoid using semiring.one and consider all transitiosn as weighted)")
+
+    def get_semiring(self):
+        if self.chech_weighted():
+            _semirings = {type(t.weight) for t in self.transitions}
+            if len(_semirings)!=1:
+                raise ValueError("Check your transitions: multiple semiring types detected")
+            else:
+                return _semirings.pop()
+        else:
+            raise ValueError("You are triying to use an unweighted Fta as weighted one")
+
+
 
 """
 -------------Testing -------------------------------------------------------

@@ -19,7 +19,7 @@ class RankedBottomUpAcceptor(Acceptor):
 
     def accepts(self, automaton: ranked_Fta, tree: RankedTree) -> bool:
         root_states = self._compute_states(automaton, tree)
-        return any(state.final for state in root_states)
+        return any(state.is_Final for state in root_states)
 
     def _compute_states(
         self,
@@ -42,7 +42,7 @@ class RankedBottomUpAcceptor(Acceptor):
 
         for rule in automaton.transitions:
 
-            if rule.func.name != tree.ranked_symbol:
+            if rule.func != tree.ranked_symbol:
                 continue
 
             if len(rule.input_states) != len(children_states):
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     from fta.rankedRule import ranked_Rule
     from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
 
-    # Create a simple ranked tree: f(a, a)
+    # Create a simple ranked tree: f(a, b)
     f = Ranked_Symbol(name="f0", rank=2)
     a = Ranked_Symbol(name="f1", rank=0)
 

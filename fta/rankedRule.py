@@ -20,7 +20,7 @@ class ranked_Rule(Rule):
         input(List[State]): the list of the input 
         output(State): the output state of the transition
     """
-    def __init__(self, func:Ranked_Symbol =None, input_states : List[State] = None, output_state : State= None):
+    def __init__(self, func:Ranked_Symbol =None, input_states : List[State] = None, output_state : State= None,  is_weighted=False, weight=None):
 
         """
         Initialize a transition rule
@@ -30,10 +30,8 @@ class ranked_Rule(Rule):
         input(List[State]): the list of the input 
         output(State): the output state of the transition    
         """
-        super().__init__()
-        self._func= func
-        self._input: List[State] =input_states
-        self._output:State = output_state
+        super().__init__(func, input_states, output_state, is_weighted, weight)
+
 
     
     """
@@ -76,7 +74,10 @@ class ranked_Rule(Rule):
             raise Exception ("The rank of the function is not equal to the states number in the rule")
 
     def get_rule_as_str(self):
-        return self.func.name+"("+' '.join([i.name+"," for i in self.input_states ])[:-1]+")---->"+self.output_state.name
+        if not self.is_weighted:
+            return self.func.name+"("+' '.join([i.name+"," for i in self.input_states ])[:-1]+")---->"+self.output_state.name
+        else:
+           return self.func.name+"("+' '.join([i.name+"," for i in self.input_states ])[:-1]+")---"+str(self.weight)+"--->"+self.output_state.name 
 
 
     

@@ -9,5 +9,11 @@ from algebric.semiring import Semiring
 
 class Rule(ABC):
     @abstractmethod
-    def __init__(self, symbol:Symbol =None, input_states : List[State] = None, output_state : State= None, is_weighted : bool = False, weight:Semiring = None):
-        pass
+    def __init__(self, func:Symbol =None, input_states : List[State] = None, output_state : State= None, is_weighted : bool = False, weight:Semiring = None):
+        self.func = func
+        self.input_states = input_states
+        self.output_state = output_state
+        self.is_weighted = is_weighted
+        self.weight = weight
+        if not self.is_weighted and weight!=None:
+            raise ValueError("The rule is unweighted but you add a weight to it")
