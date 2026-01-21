@@ -64,6 +64,6 @@ if __name__ == "__main__":
     product_computer = Ranked_prod()
     product_automaton = product_computer.product(automaton1, automaton2)
     print(f"Product automaton name: {product_automaton.name}")
-    print(f"Number of states in product automaton: {len(product_automaton.states_list)}")
+    print(f"Number of states in product automaton: {len(product_automaton.fta_states)}")
     print(f"Number of transitions in product automaton: {len(product_automaton.transitions)}")  
     print(product_automaton)

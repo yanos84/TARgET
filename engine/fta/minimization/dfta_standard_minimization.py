@@ -27,7 +27,7 @@ class dfta_minimizer(abs_minimize):
         '''
         Return the set of final states of the given FTA.
         '''
-        return {s for s in fta.states_list if s.is_Final}
+        return {s for s in fta.fta_states if s.is_Final}
     
     def get_partition_index(self, partitions, state):
         '''
@@ -59,7 +59,7 @@ class dfta_minimizer(abs_minimize):
         
         # Step 1: Initial partition
         final = self.get_final_states(fta)
-        non_final = set(fta.states_list) - final
+        non_final = set(fta.fta_states) - final
         partitions = [final, non_final]
         changed = True
         while changed:

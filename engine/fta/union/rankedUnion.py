@@ -23,16 +23,16 @@ class RankedFtaUnion(AbstractFtaUnion):
         Returns:
             fta1_states, fta2_states, state_map1, state_map2
         """
-        names1 = {s.name for s in self.fta1.states_list}
-        names2 = {s.name for s in self.fta2.states_list}
+        names1 = {s.name for s in self.fta1.fta_states}
+        names2 = {s.name for s in self.fta2.fta_states}
 
         conflicts = names1.intersection(names2)
 
-        state_map1 = {s: s for s in self.fta1.states_list}
+        state_map1 = {s: s for s in self.fta1.fta_states}
         state_map2 = {}
 
         fta2_states = set()
-        for s in self.fta2.states_list:
+        for s in self.fta2.fta_states:
             if s.name in conflicts:
                 new_name = f"2_{s.name}"
                 new_state = State(new_name, is_Final=s.is_Final, is_Initial=s.is_Initial)
@@ -42,7 +42,7 @@ class RankedFtaUnion(AbstractFtaUnion):
                 state_map2[s] = s
                 fta2_states.add(s)
 
-        fta1_states = set(self.fta1.states_list)
+        fta1_states = set(self.fta1.fta_states)
         return fta1_states, fta2_states, state_map1, state_map2
 
     def _build_transitions(self, state_map1, state_map2):

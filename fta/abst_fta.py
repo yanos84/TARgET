@@ -46,11 +46,11 @@ class Fta(ABC):
     """
     
 	@property
-	def states_list(self):
+	def fta_states(self):
 		return self._states
     
-	@states_list.setter
-	def states_list(self, value):
+	@fta_states.setter
+	def fta_states(self, value):
 		self._states = value
 	#@states_list.deleter
 	#def states_list(self):

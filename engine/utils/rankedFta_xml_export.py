@@ -15,7 +15,7 @@ def export_ranked_fta_to_xml(automaton: ranked_Fta, file_name: str) -> None:
 
     # States
     states_elem = ET.SubElement(root, "States")
-    for state in automaton.states_list:
+    for state in automaton.fta_states:
         ET.SubElement(states_elem, "State", {
             "name": state.name,
             "final": str(state.is_Final).lower(),
@@ -40,13 +40,13 @@ def export_ranked_fta_to_xml(automaton: ranked_Fta, file_name: str) -> None:
         })
 
         input_elem = ET.SubElement(rule_elem, "input")
-        for st in rule.input:
+        for st in rule.input_states:
             ET.SubElement(input_elem, "state", {
                 "name": st.name
             })
 
         ET.SubElement(rule_elem, "output", {
-            "state": rule.output.name
+            "state": rule.output_state.name
         })
 
     # Pretty print the XML

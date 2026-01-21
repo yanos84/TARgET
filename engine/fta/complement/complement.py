@@ -17,7 +17,7 @@ class Complement():
             for sym in alphabet:
                 if not isinstance(sym, Symbol):
                     raise TypeError("Alphabet must contain only Symbol instances.")
-            for state in self.fta.states_list:
+            for state in self.fta.fta_states:
                 state.is_Final = not state.is_Final
             for r in self.fta.transitions:
                 for input in r.input_states:

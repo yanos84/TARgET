@@ -19,7 +19,7 @@ def draw_ranked_fta(fta: ranked_Fta):
     dot.attr(rankdir="TB")
 
     # --- States ---
-    for q in fta.states_list:
+    for q in fta.fta_states:
         if q.is_Final:
             dot.node(q.name, shape="doublecircle")
         else:

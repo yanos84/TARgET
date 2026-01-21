@@ -1,6 +1,6 @@
 def productive_states(fta):
     productive = set()
-    for s in fta.states_list:
+    for s in fta.fta_states:
         if s.is_Final:
             productive.add(s)
     #productive = set(fta.final_states)

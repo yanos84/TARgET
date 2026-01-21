@@ -14,7 +14,7 @@ class dfta_using_fta_minimizer(dfta_minimizer):
     def create_states_index(self, fta:ranked_Fta)->dict[str, int]:
         ''' Create a mapping from state names to their indices in the FTA's state list. '''
         state_index = {}
-        for idx, state in enumerate(fta.states_list):
+        for idx, state in enumerate(fta.fta_states):
             state_index[state.name] = idx+1  # +1 to reserve 0 for new initial state  
         return state_index
 
@@ -52,13 +52,13 @@ class dfta_using_fta_minimizer(dfta_minimizer):
             horizontal_lang = self.create_horizontal_language(rule, store, states_index)
             raw_transitions.extend(horizontal_lang)
         alphabet_to_id = {label: idx for idx, label in enumerate(store.keys())}  # Map each unique label to a unique integer ID
-        aut = mata_nfa.Nfa(len(fta.states_list)+1)  # +1 for new initial state
+        aut = mata_nfa.Nfa(len(fta.fta_states)+1)  # +1 for new initial state
         aut.make_initial_state(0) # New initial state is 0
-        for state in fta.states_list:
+        for state in fta.fta_states:
             aut.add_transition(0, states_index[state.name], states_index[state.name]) # New transitions from new initial state to old initial states just to respect NFA format
   
 
-        final_states={states_index[state.name] for state in fta.states_list if state.is_Final}
+        final_states={states_index[state.name] for state in fta.fta_states if state.is_Final}
         for state in final_states:
             aut.make_final_state(state)
 
