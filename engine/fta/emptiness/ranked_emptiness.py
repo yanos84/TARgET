@@ -36,9 +36,9 @@ class RankedEmptiness(AbsEmptiness):
 if __name__ == "__main__":
     from fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
 
-    s= State(name="q1", final=False)
-    t=State(name="q2", final=False)
-    u=State(name="q3", final=True)
+    s= State(name="q1", is_Final=False)
+    t=State(name="q2", is_Final=False)
+    u=State(name="q3", is_Final=True)
     st = []
     st.append(s)
     st.append(t)

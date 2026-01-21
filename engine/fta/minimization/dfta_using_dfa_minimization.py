@@ -125,9 +125,9 @@ class dfta_using_fta_minimizer(dfta_minimizer):
         min_states = []
         new_rules = set()
         for rule in fta.transitions:
-            lhs = [State(name=str(rep[states_index[s.name]]), final=s.is_Final, init=False) for s in rule.input_states]
+            lhs = [State(name=str(rep[states_index[s.name]]), is_Final=s.is_Final) for s in rule.input_states]
             min_states=list(set(min_states+lhs))
-            rhs = State(name=str(rep[states_index[rule.output_state.name]]), final=rule.output_state.is_Final)  # map output state
+            rhs = State(name=str(rep[states_index[rule.output_state.name]]), is_Final=rule.output_state.is_Final)  # map output state
             if rhs not in min_states:
                 min_states.append(rhs)
             new_rule = ranked_Rule(

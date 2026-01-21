@@ -54,9 +54,9 @@ if __name__ == "__main__":
     from core.symbol import Ranked_Symbol
 
     # Define states
-    s1 = State(name="q1", final=False, init=False)
-    s2 = State(name="q2", final=False, init=False)
-    s3 = State(name="q3", final=False, init=False)
+    s1 = State(name="q1", is_Final=False)
+    s2 = State(name="q2", is_Final=False)
+    s3 = State(name="q3", is_Final=False)
 
     # Define ranked symbols
     f = Ranked_Symbol(name="f", rank=2)

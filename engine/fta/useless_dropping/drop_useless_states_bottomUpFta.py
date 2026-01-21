@@ -68,10 +68,10 @@ if __name__ == "__main__":
     from fta.rankedfta import ranked_Fta
     from fta.rankedRule import ranked_Rule
 
-    q= State(name="q", final=False, init=False)
-    qg=State(name="qg", final=False, init=False)
-    qf=State(name="qf", final=True, init=False)
-    q_useless=State(name="quseless", final=False, init=False)
+    q= State(name="q", is_Final=False)
+    qg=State(name="qg", is_Final=False)
+    qf=State(name="qf", is_Final=True)
+    q_useless=State(name="quseless", is_Final=False)
     symb_f = Ranked_Symbol(name="f", rank=2)
     symb_a = Ranked_Symbol(name="a", rank=0)
     symb_g = Ranked_Symbol(name="g", rank=1)

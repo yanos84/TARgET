@@ -22,7 +22,7 @@ def get_or_create_state(states, cache):
     if name not in cache:
         cache[name] = State(
             name=name,
-            final=any(s.is_Final for s in states)
+            is_Final=any(s.is_Final for s in states)
         )
     return cache[name]
 
@@ -140,9 +140,9 @@ def determinize(fta):
 # Example usage:*
 if __name__ == "__main__":
     from core.symbol import Ranked_Symbol
-    q= State(name="q", final=False, init=False)
-    qg=State(name="qg", final=False, init=False)
-    qf=State(name="qf", final=True, init=False)
+    q= State(name="q", is_Final=False)
+    qg=State(name="qg", is_Final=False)
+    qf=State(name="qf", is_Final=True)
     symb_f = Ranked_Symbol(name="f", rank=2)
     symb_a = Ranked_Symbol(name="a", rank=0)
     symb_g = Ranked_Symbol(name="g", rank=1)

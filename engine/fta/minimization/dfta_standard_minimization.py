@@ -94,7 +94,7 @@ class dfta_minimizer(abs_minimize):
             # Determine if initial if any state in the partition is initial
             is_initial = any(s.is_Initial for s in p)
             # Create new State object
-            new_state = State(name, final=is_final, init=is_initial)
+            new_state = State(name, is_Final=is_final, is_Initial=is_initial)
             # Map each old state in the partition to the new state
             for s in p:
                 partition_states[s] = new_state

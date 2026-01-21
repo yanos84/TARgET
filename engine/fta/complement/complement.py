@@ -31,8 +31,8 @@ class Complement():
 ## Example usage
 if __name__ == "__main__":
     from fta.rankedfta import ranked_Fta
-    s1 = State(name="q0", final=True)
-    s2 = State(name="q1", final=False)
+    s1 = State(name="q0", is_Final=True)
+    s2 = State(name="q1", is_Final=False)
     states = [s1, s2]
     fta = ranked_Fta(fta_name="example_fta", fta_states=states, alphabet=[Ranked_Symbol(name="a", rank=0)], transitions=[])
 

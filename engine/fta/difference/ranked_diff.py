@@ -33,8 +33,8 @@ if __name__ == "__main__":
     from fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
 
     # Define fta1
-    s1 = State(name="q1", final=True)
-    t1 = State(name="q2", final=False)
+    s1 = State(name="q1", is_Final=True)
+    t1 = State(name="q2", is_Final=False)
     st1 = [s1, t1]
     symb1 = Ranked_Symbol(name="f", rank=2)
     rule1 = ranked_Rule(func=symb1)
@@ -45,8 +45,8 @@ if __name__ == "__main__":
     automaton1 = ranked_Fta(fta_name="fta1", alphabet=alpha1, fta_states=st1, transitions=rules1)
 
     # Define fta2
-    s2 = State(name="p1", final=False)
-    t2 = State(name="p2", final=True)
+    s2 = State(name="p1", is_Final=False)
+    t2 = State(name="p2", is_Final=True)
     st2 = [s2, t2]
     symb2 = Ranked_Symbol(name="f", rank=2)
     rule2 = ranked_Rule(func=symb2)

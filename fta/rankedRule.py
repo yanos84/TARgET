@@ -101,9 +101,9 @@ if __name__ == '__main__':
 
     symb = Ranked_Symbol(name="f", rank=2)
     print(symb.name, symb.rank)
-    s= State(name="q1", final=False, init=False)
-    t=State(name="q2", final=False, init=False)
-    u=State(name="q3", final=False, init=False)
+    s= State(name="q1", is_Final=False, is_Initial=False)
+    t=State(name="q2", is_Final=False, is_Initial=False)
+    u=State(name="q3", is_Final=False, is_Initial=False)
     st = []
     st.append(s)
     st.append(t)

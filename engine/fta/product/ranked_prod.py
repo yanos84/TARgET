@@ -27,8 +27,8 @@ class Ranked_prod(Abs_prod):
                 if rule_A.func == rule_B.func:
                     input_states = []
                     for s1, s2 in zip(rule_A.input_states, rule_B.input_states):
-                        input_states.append(State(name=f"{red}{"("}{s1.name},{s2.name}{")"}{endc}", final=s1.is_Final and s2.is_Final))
-                    output_state = State(name=f"{red}{"("}{rule_A.output_state.name},{rule_B.output_state.name}{")"}{endc}", final=rule_A.output_state.is_Final and rule_B.output_state.is_Final)
+                        input_states.append(State(name=f"{red}{"("}{s1.name},{s2.name}{")"}{endc}", is_Final=s1.is_Final and s2.is_Final))
+                    output_state = State(name=f"{red}{"("}{rule_A.output_state.name},{rule_B.output_state.name}{")"}{endc}", is_Final=rule_A.output_state.is_Final and rule_B.output_state.is_Final)
                     prod_rule = ranked_Rule(func=rule_A.func, input_states=input_states, output_state=output_state)
                     prod_states=list(set(prod_states + input_states + [output_state]))
                     prod_transitions.append(prod_rule)
@@ -39,8 +39,8 @@ class Ranked_prod(Abs_prod):
 if __name__ == "__main__": 
     from fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
 
-    s1 = State(name="q1", final=False)
-    t1 = State(name="q2", final=True)
+    s1 = State(name="q1", is_Final=False)
+    t1 = State(name="q2", is_Final=True)
     st1 = [s1, t1]
     symb1 = Ranked_Symbol(name="f", rank=2)
     rule1 = ranked_Rule(func=symb1)
@@ -50,8 +50,8 @@ if __name__ == "__main__":
     alpha1 = [symb1]
     automaton1 = ranked_Fta(fta_name="fta1", alphabet=alpha1, fta_states=st1, transitions=rules1)
 
-    s2 = State(name="p1", final=False)
-    t2 = State(name="p2", final=True)
+    s2 = State(name="p1", is_Final=False)
+    t2 = State(name="p2", is_Final=True)
     st2 = [s2, t2]
     symb2 = Ranked_Symbol(name="f", rank=2)
     rule2 = ranked_Rule(func=symb2)

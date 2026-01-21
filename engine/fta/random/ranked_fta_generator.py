@@ -52,7 +52,7 @@ class RandomRankedFtaGenerator(FtaGenerator):
         states: List[State] = []
         for i in range(self.n_states):
             is_final = random.random() < self.final_ratio
-            state = State(name=f"q{i}", final=is_final)
+            state = State(name=f"q{i}", is_Final=is_final)
             states.append(state)
 
         # Generate ranked symbols

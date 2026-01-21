@@ -80,10 +80,10 @@ if __name__ == "__main__":
     from fta.rankedRule import ranked_Rule
 
     # Define states
-    q0 = State("q0", final=False)
-    q1 = State("q1", final=False)
-    q2 = State("q2", final=True)
-    q3 = State("q3", final=True)
+    q0 = State("q0", is_Final=False)
+    q1 = State("q1", is_Final=False)
+    q2 = State("q2", is_Final=True)
+    q3 = State("q3", is_Final=True)
     #q4 = State("q4", final=True)
 
     # Define symbols
@@ -111,9 +111,9 @@ if __name__ == "__main__":
     )
     #export_ranked_fta_to_xml(fta, "dfta_for_minim.xml")
     #third fta for minimization
-    qa = State("qa", final=False)
-    qb = State("qb", final=True)
-    qc = State("qc", final=True)
+    qa = State("qa", is_Final=False)
+    qb = State("qb", is_Final=True)
+    qc = State("qc", is_Final=True)
 
     r11 = ranked_Rule(a, [], qa)
     r12 = ranked_Rule(b, [], qb)

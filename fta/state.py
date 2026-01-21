@@ -1,10 +1,10 @@
 # This class defines states as a structure containing a string name and its nature (final, intitial or normal)
 class State:
     #@abstractclassmethod
-    def __init__(self,name=None,final=False, init=False):
+    def __init__(self,name=None,is_Final=False, is_Initial=False):
         self._name = name
-        self._is_Final = final
-        self._is_Initial =  init
+        self._is_Final = is_Final
+        self._is_Initial =  is_Initial
     
     @property
     def name(self):

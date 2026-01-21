@@ -35,7 +35,7 @@ class RankedFtaUnion(AbstractFtaUnion):
         for s in self.fta2.states_list:
             if s.name in conflicts:
                 new_name = f"2_{s.name}"
-                new_state = State(new_name, final=s.is_Final, init=s.is_Initial)
+                new_state = State(new_name, is_Final=s.is_Final, is_Initial=s.is_Initial)
                 state_map2[s] = new_state
                 fta2_states.add(new_state)
             else:

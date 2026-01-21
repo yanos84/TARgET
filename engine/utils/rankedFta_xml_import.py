@@ -31,7 +31,7 @@ def load_fta_from_xml(filename: str) -> ranked_Fta:
         final = st_elem.attrib.get("final", "false") == "true"
         initial = st_elem.attrib.get("initial", "false") == "true"
 
-        state = State(name=name, final=final, init=initial)
+        state = State(name=name, is_Final=final, is_Initial=initial)
         states.append(state)
 
     # ------------------------------------------------------------------
