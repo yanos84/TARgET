@@ -31,3 +31,11 @@ class AbstractTree(ABC):
         if not self.children:
             return self.symbol
         return f"{self.symbol}({','.join(str(c) for c in self.children)})"
+    
+    def structure(self):
+        return (
+            self.symbol,
+            tuple(child.structure() for child in self.children)
+    )
+
+    
