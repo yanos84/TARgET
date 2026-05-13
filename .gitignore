@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Python
 __pycache__/
 *.py[cod]
@@ -21,3 +22,7 @@ env/
 
 # Ignore all dowloaded LLMs
 *.gguf
+=======
+# Ignore compiled Python files
+__pycache__/
+>>>>>>> main

@@ -24,4 +24,4 @@ def choose_model(models):
             if 0 <= idx < len(models):
                 return models[idx]
 
-        print("Invalid selection, try again.")
+        print("Invalid selection!! try again.")

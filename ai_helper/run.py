@@ -17,7 +17,7 @@ else:
     model_path = choose_model(models)
     save_model(str(model_path))
 
-print(f"\n✅ Loading model: {model_path.name}\n")
+print(f"\n Loading model: {model_path.name}\n")
 
 llm = Llama(
     model_path=str(model_path),
