@@ -1,5 +1,9 @@
 from pathlib import Path
 
+'''
+This module provides functions for listing and selecting local LLM models stored in a specified directory. It includes functionality to list all available models with their sizes and allows the user to choose a model by entering its corresponding number. The selected model's path can then be used for further processing, such as loading the model for inference or training.   
+'''
+
 def list_models(models_dir: str):
     models_path = Path(models_dir)
     if not models_path.exists():

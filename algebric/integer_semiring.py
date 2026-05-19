@@ -3,7 +3,6 @@ from semiring import Semiring
 class IntegerSemiring(Semiring):
 
     '''
-    Docstring for IntegerSemiring
     Represents the semiring of integers (ℤ, +, *, 0, 1)
     1. Addition (+) is standard integer addition
     2. Multiplication (*) is standard integer multiplication

@@ -3,6 +3,10 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 
 class SemanticRetriever:
+    '''
+    The SemanticRetriever class is responsible for indexing and retrieving semantic units (classes and functions) from a codebase based on their embeddings. It uses the SentenceTransformer model to generate embeddings for the semantic units and FAISS for efficient similarity search. The retrieve method allows querying the indexed semantic units using a natural language query, returning the most relevant units based on their embeddings. This class is essential for enabling the AI assistant to understand and utilize the existing codebase effectively when responding to user queries.  
+    '''
+    
     def __init__(self, units):
         self.units = units
         self.model = SentenceTransformer("all-MiniLM-L6-v2")

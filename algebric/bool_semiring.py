@@ -1,6 +1,11 @@
 from algebric.semiring import Semiring
 
 class BooleanSemiring(Semiring):
+    """A semiring where the elements are boolean values (True and False) and the operations are defined as follows:
+    - Addition (⊕): Logical OR (∨)
+    - Multiplication (⊗): Logical AND (∧)
+    The zero element is False and the one element is True.
+    """
 
     def __init__(self, value: bool):
         self.value = bool(value)

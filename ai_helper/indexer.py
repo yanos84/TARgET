@@ -3,8 +3,15 @@ from typing import List
 import ast
 from pathlib import Path
 
+'''
+This module provides functionality for indexing a codebase by extracting semantic units such as classes and functions. It defines a SemanticUnit dataclass to represent these units, including their kind (class or function), name, file location, signature, docstring, code, and base classes (for classes). The module includes functions to extract semantic units from individual Python files and to index an entire toolkit by recursively processing all Python files in a specified directory. This indexed information can be used for various purposes, such as code search, documentation generation, or feeding into an LLM for code understanding tasks. 
+'''
+
 @dataclass
 class SemanticUnit:
+    '''
+    Represents a class or function in the codebase, capturing its essential information for indexing and retrieval.
+    '''
     kind: str               # "class" | "function"
     name: str
     file: str

@@ -6,6 +6,17 @@ from ai_helper.models.model_finder import list_models, choose_model
 from ai_helper.models.model_config import load_model, save_model
 from pathlib import Path
 
+'''
+This module serves as the main entry point for the AI assistant. It handles loading the LLM model, 
+indexing the codebase, and processing user queries. The module first checks for a saved model path
+ and loads it if available; otherwise, it lists available models and prompts the user to select one. 
+ After loading the model, it indexes the toolkit using the index_toolkit function and initializes a 
+ SemanticRetriever with the indexed units. The ask function takes a user query, retrieves relevant semantic units, 
+ builds a prompt using the build_prompt function, and generates a response from the LLM. Finally, 
+ it prints the response to the user. This structured approach allows for efficient interaction with 
+ the AI assistant while leveraging the existing codebase effectively. 
+'''
+
 
 MODELS_DIR = "/run/media/yanos/48D8EB77D8EB6224/Python_projects/TARgET/ai_helper/models"
 
