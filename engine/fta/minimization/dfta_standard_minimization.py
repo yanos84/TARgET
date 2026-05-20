@@ -7,10 +7,22 @@ from fta.rankedfta import ranked_Fta
 from fta.state import State
 
 class dfta_minimizer(abs_minimize):
-    '''
+    """
     Minimizer for Deterministic Finite Tree Automata (DFTA) using
     a standard partition refinement algorithm. 
-    '''
+    The algorithm starts with an initial partition of states into final and non-final sets. It then iteratively refines the partitions by checking if states in the same partition can be distinguished based on their transitions and the partitions of their child states. This process continues until no further refinement is possible, resulting in a minimized DFTA where each partition corresponds to a single state. The resulting minimized DFTA is equivalent to the original DFTA but has fewer states, making it more efficient for processing trees.
+    The minimization process relies on the semantics of the DFTA, which is defined by the BottomUpRankedSemantics class. This semantics allows the algorithm to compute the states that can be reached from the initial states and lead to a final state through the transitions defined in the automaton.
+    Attributes:
+    - None
+    Methods:
+    - __init__: Initializes the dfta_minimizer class.
+    - check_determinism: Checks if the given FTA is deterministic using BottomUpRankedSemantics class.
+    - get_final_states: Returns the set of final states of the given FTA.
+    - get_partition_index: Returns the index of the partition (of sets of states) containing the given state.
+    - redendant_rules: Checks if a given rule is redundant in a set of transitions.
+    - minimize: Minimizes the given deterministic FTA using partition refinement and returns a new minimized DFTA.
+    The minimize method first checks if the input FTA is deterministic. It then initializes the partition of states into final and non-final sets. The algorithm iteratively refines the partitions by grouping states based on their transitions and the partitions of their child states. Once the partitions are stable, it constructs
+    """
 
     def __init__(self):
         super().__init__()

@@ -5,6 +5,12 @@ from core.symbol import Symbol, Ranked_Symbol
 import copy
 
 class Complement():
+    """Class to compute the complement of a finite tree automaton (FTA).
+    The complement of an FTA is a new FTA that accepts exactly the trees that the original FTA does not accept. This is achieved by negating the acceptance conditions of the states and transitions in the original FTA. The resulting complement FTA can be used to check for non-acceptance of trees or to perform operations like intersection and union with other FTAs.
+    Attributes:
+    - fta: The original finite tree automaton for which the complement is to be computed.
+    Methods:
+    - __init__: Initializes the Complement class with a given FTA. """
 
     def __init__(self, fta: Fta) -> None:
         self.fta = copy.deepcopy(fta)

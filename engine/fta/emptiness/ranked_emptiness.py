@@ -2,6 +2,14 @@ from .abs_emptiness import AbsEmptiness
 from fta.rankedfta import ranked_Fta
 
 class RankedEmptiness(AbsEmptiness):
+    """Class to check the emptiness of a ranked finite tree automaton (RFTA).
+    The emptiness of an RFTA is determined by checking if there are any states that can be reached from the initial states and lead to a final state through the transitions defined in the automaton. This is done by iteratively marking states as "good" if they can be reached from the initial states and can lead to a final state. If no final state can be marked as "good", then the automaton is considered empty.
+    Attributes:
+    - None
+    Methods:
+    - __init__: Initializes the RankedEmptiness class.
+    - is_empty: Checks if the given ranked finite tree automaton is empty and returns a boolean value indicating the result.
+    """
     def __init__(self):
         super().__init__()
 

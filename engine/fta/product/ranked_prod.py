@@ -5,6 +5,15 @@ from fta.rankedRule import ranked_Rule
 
 
 class Ranked_prod(Abs_prod):
+    """Class to compute the product of two ranked finite tree automata (RFTAs).
+    The product of two RFTAs, RFTA1 and RFTA2, is a new RFTA that accepts exactly the trees that are accepted by both RFTA1 and RFTA2. This is achieved by constructing a new RFTA that combines the states and transitions of both RFT
+    As while ensuring that the acceptance conditions reflect the intersection of the languages accepted by the original RFTAs. The resulting product RFTA can be used to check for common accepted trees between RFTA1 and RFTA2, or to perform operations like intersection and union with other RFTAs.
+    Attributes:
+    - None
+    Methods:
+    - __init__: Initializes the Ranked_prod class.
+    - product: Computes the product of two ranked finite tree automata (RFTAs) and returns a new RFTA representing the product.
+    """
     def __init__(self):
         super().__init__()
 

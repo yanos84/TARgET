@@ -7,6 +7,22 @@ from fta.rankedRule import ranked_Rule
 
 
 class RankedFtaUnion(AbstractFtaUnion):
+    """Class to compute the union of two ranked finite tree automata (RFTAs).
+    The union of two RFTAs, RFTA1 and RFTA2, is a new RFTA that accepts exactly the trees that are accepted by either RFTA1 or RFTA2. This is achieved by constructing a new RFTA that combines the states and transitions of both RFT
+    As while ensuring that the acceptance conditions reflect the union of the languages accepted by the original RFTAs. The resulting union RFTA can be used to check for acceptance of trees in either RFTA1 or RFTA2, or to perform operations like intersection and difference with other RFTAs.
+    Attributes:
+    - fta1: The first ranked finite tree automaton for the union operation.
+    - fta2: The second ranked finite tree automaton for the union operation.
+    Methods:
+    - __init__: Initializes the RankedFtaUnion class with two RFTAs.
+    - compute: Computes the union of the two RFTAs and returns a new RFTA representing the union.
+    - _build_alphabet: Builds the alphabet for the union RFTA by taking the union of the alphabets of the two input RFTAs.
+    - _rename_conflicting_states: Renames states to avoid collisions between the two input RFTAs and returns the updated states and state mappings.
+    - _build_transitions: Builds the transitions for the union RFTA by mapping the transitions of the two input RFTAs according to the state mappings.
+    - _build_final_states: Builds the set of final states for the union RFTA by combining the final states of the two input RFTAs.
+    - _build_initial_states: Builds the set of initial states for the union RFTA by combining the initial states of the two input RFTAs.
+    - _build_fta: Constructs the final union RFTA using the computed states, alphabet, transitions, final states, and initial states.
+    """
 
     def _build_alphabet(self):
         # Union of both alphabets

@@ -8,6 +8,19 @@ import base64, hashlib
 
 
 class dfta_using_fta_minimizer(dfta_minimizer):
+    """Minimizer for Deterministic Finite Tree Automata (DFTA) using a standard partition refinement algorithm applied to an NFA representation of the DFTA.
+    This minimizer works by first converting the given DFTA into an equivalent NFA representation. The conversion involves creating a new initial state and adding transitions that represent the horizontal language of the DFTA rules. Once the NFA is constructed, it is minimized using standard NFA minimization techniques. After minimization, the resulting partition of states is extracted and used to construct a new minimized DFTA
+    that is equivalent to the original DFTA but has fewer states. The minimization process relies on the semantics of the DFTA and ensures that the resulting minimized DFTA accepts the same language as the original DFTA.
+    Attributes:
+    - None
+    Methods:
+    - __init__: Initializes the dfta_using_fta_minimizer class.
+    - create_states_index: Creates a mapping from state names to their indices in the FTA's state list.
+    - create_horizontal_language: Creates horizontal language transitions for a given FTA rule, representing them as tuples of (from_state, symbol, to_state).
+    - create_nfa_from_fta: Creates an NFA from the given deterministic FTA by constructing transitions based on the horizontal language of the FTA rules and mapping states to indices.
+    - minimize: Minimizes the given deterministic FTA by first converting it to an NFA, minimizing the NFA, extracting the resulting partition, and constructing a new minimized FTA based on the partition.
+    - extract_right_partition: Extracts the partition induced by NFA minimization, mapping minimized states to sets of original states.
+    - minimize_fta_from_partition: Constructs a new minimized FTA from the original FTA and the partition obtained from NFA minimization, ensuring that the resulting FTA is equivalent to the"""
     def __init__(self):
         super().__init__()
     

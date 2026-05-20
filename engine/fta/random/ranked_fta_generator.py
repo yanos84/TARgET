@@ -9,6 +9,21 @@ from .randomGenerator import FtaGenerator
 
 
 class RandomRankedFtaGenerator(FtaGenerator):
+    """Class to generate random ranked finite tree automata (RFTAs).
+    This class provides functionality to create random RFTAs based on specified parameters such as the number of states, symbols, maximum rank, and transition rules. The generated RFTAs can be used
+    for testing, experimentation, or as examples for various operations on RFTAs. The generator allows for customization of the generated automata to suit different needs and scenarios.
+    Attributes:
+- fta_name: Name of the generated FTA.
+- n_states: Number of states in the generated FTA.
+- n_symbols: Number of ranked symbols in the alphabet of the generated FTA.
+- max_rank: Maximum rank for the ranked symbols in the generated FTA.
+- n_rules: Number of transition rules in the generated FTA.
+- final_ratio: Ratio of final states among all states in the generated FTA.
+- seed: Optional seed for random number generation to ensure reproducibility.
+    Methods:
+    - __init__: Initializes the RandomRankedFtaGenerator class with specified parameters.
+    - generate: Generates a random ranked finite tree automaton (RFTA) based on the initialized parameters and returns it as an instance of ranked_Fta.
+    """
 
     def __init__(
         self,

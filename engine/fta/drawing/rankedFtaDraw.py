@@ -5,15 +5,13 @@ from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
 
 def draw_ranked_fta(fta: ranked_Fta):
 
-    '''
-    Docstring for draw_ranked_fta
-    
-    :param fta: The ranked finite tree automaton to be drawn
-    :type fta: ranked_Fta
-    :return: A Graphviz Digraph representing the ranked FTA
-    :rtype: Digraph
-    Draws a ranked finite tree automaton using Graphviz.
-    '''
+    """Draws a ranked finite tree automaton (RFTA) using Graphviz.
+    The function takes a ranked finite tree automaton (RFTA) as input and generates a visual representation of the automaton using Graphviz. The states of the automaton are represented as nodes, with final states depicted as double circles. The transitions between states are represented as directed edges, with the transition rules labeled on the edges. The resulting graph can be rendered and saved as an image file   for visualization and analysis purposes.
+    Args:
+        fta: a ranked finite tree automaton (RFTA) to be drawn
+    Returns:
+        A Graphviz Digraph object representing the visual structure of the RFTA.
+    """
 
     dot = Digraph(name=fta.name, engine="dot")
     dot.attr(rankdir="TB")

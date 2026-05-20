@@ -1,3 +1,11 @@
+"""
+This module implements the functionality to drop useless states from a finite tree automaton (FTA) using a bottom-up approach. Useless states are those that do not contribute to the acceptance of any tree, either because they cannot be reached from the initial states or because they cannot lead to a final state. The module defines functions to identify productive and reachable states, and then filters out the transitions that involve useless states. The resulting FTA will only contain states and transitions that are relevant for accepting trees, thus optimizing the automaton for further operations.   
+The main functions in this module are:
+- productive_states(fta): Identifies and returns the set of productive states in the given FTA.
+- reachable_states(fta): Identifies and returns the set of reachable states in the given FTA.
+- drop_useless_states(fta): Modifies the given FTA by removing states that are not both productive and reachable, and returns the optimized FTA.
+"""
+
 def productive_states(fta):
     productive = set()
     for s in fta.fta_states:

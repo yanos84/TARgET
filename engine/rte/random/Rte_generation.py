@@ -7,7 +7,28 @@ from core.symbol import Symbol, Ranked_Symbol
 
 class RandomRteGenerator:
     """
-        
+    This class generates random rational tree expressions (RTEs) based on a specified set of symbols and parameters. The generator allows for the creation of RTEs with varying structures and complexities by controlling the depth of the generated expressions and the probabilities of different RTE constructs (such as Zero, One, function, Plus, CProduct, CStar, and Atom). The generated RTEs can be used for testing, analysis, or as examples in various applications related to formal languages and automata theory.
+    Attributes:
+    - symbols: A sequence of symbols that can be used in the generated RTEs.
+    - concat_symbols: A sequence of symbols that can be used as concatenation symbols in CProduct and CStar constructs.
+    - max_depth: The maximum depth of the generated RTEs, controlling the complexity of the expressions.
+    - p_zero: Probability of generating a Zero RTE.
+    - p_one: Probability of generating a One RTE.
+    - p_function: Probability of generating a function RTE.
+    - p_plus: Probability of generating a Plus RTE.
+    - p_cproduct: Probability of generating a CProduct RTE.
+    - p_cstar: Probability of generating a CStar RTE.
+    - p_atom: Probability of generating an Atom RTE.
+    - max_plus_arity: Maximum arity for Plus RTEs.
+    - max_unranked_arity: Maximum arity for function RTEs with unranked symbols.
+    Methods:
+    - __init__: Initializes the RandomRteGenerator with the specified parameters.
+    - generate: Generates a random RTE based on the initialized parameters and returns it.
+    - _generate_base: Generates a base RTE (Zero, One, or Atom) when the maximum depth is reached.
+    - _generate_function: Generates a function RTE based on a randomly chosen symbol and its arity.
+    - _generate_plus: Generates a Plus RTE with a random number of terms.
+    - _generate_cproduct: Generates a CProduct RTE with random left and right sub-expressions and a random concatenation symbol.
+    - _generate_cstar: Generates a CStar RTE with a random sub-expression and a random concatenation symbol.        
     """
     def __init__(
         self,

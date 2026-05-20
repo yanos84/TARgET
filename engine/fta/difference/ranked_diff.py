@@ -6,6 +6,16 @@ from engine.fta.product.ranked_prod import Ranked_prod
 from engine.fta.emptiness.ranked_emptiness import RankedEmptiness
 
 class Ranked_Diff(Abs_Diff):
+    """Class to compute the difference between two ranked finite tree automata (RFTAs).
+    The difference of two RFTAs, RFTA1 and RFTA2, is a new RFTA that accepts exactly the trees that are accepted by RFTA1 but not by RFTA2. This is achieved by constructing a new RFTA that combines the states and transitions of both RFTAs while ensuring that the acceptance conditions reflect the difference. The resulting difference RFTA can be used
+    to check for non-acceptance of trees in RFTA2 that are accepted by RFTA1, or to perform operations like intersection and union with other RFTAs.
+    Attributes:
+    - None
+    Methods:
+    - __init__: Initializes the Ranked_Diff class.
+    - diff: Computes the difference between two ranked finite tree automata (RFTAs) and returns a new RFTA representing the difference.
+    - is_equivalent: Checks if two RFTAs are equivalent by computing their difference and checking if the resulting difference RFTA is empty (i.e., accepts no trees).
+    """
     def __init__(self):
         super().__init__()
     

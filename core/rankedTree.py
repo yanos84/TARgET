@@ -2,7 +2,18 @@ from .symbol import Ranked_Symbol
 from .tree import AbstractTree
 
 class RankedTree(AbstractTree):
-    ''' A tree structure where each node is associated with a ranked symbol. '''
+    """ A tree structure where each node is associated with a ranked symbol.
+     The number of children of each node must match the rank of its symbol.
+      This class extends AbstractTree and adds constraints based on the rank of the symbols.
+         It provides methods to add children while ensuring the tree remains well-formed according to the ranked symbols.
+      Attributes:
+      - ranked_symbol: The Ranked_Symbol associated with the node, which determines the number of children it can have.
+      Methods:
+      - __init__: Initializes the RankedTree with a given Ranked_Symbol.
+      - add_child: Adds a child to the tree, ensuring it does not exceed the rank of the symbol.
+      - is_well_formed: Checks if the tree is well-formed according to the ranked symbol's rank, ensuring that each node has the correct number of children.    
+       
+     """
 
     def __init__(self, symbol: Ranked_Symbol):
         super().__init__(symbol.name)
