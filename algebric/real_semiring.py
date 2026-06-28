@@ -1,9 +1,8 @@
-from semiring import Semiring
+from TARgET.algebric.semiring import Semiring
 
 class RealSemiring(Semiring):
 
-    '''
-    Docstring for RealSemiring
+    """
     Represents the semiring of real numbers (ℝ, +, *, 0, 1)
     1. Addition (+) is standard real number addition
     2. Multiplication (*) is standard real number multiplication
@@ -13,7 +12,7 @@ class RealSemiring(Semiring):
     6. Closure, associativity, and distributivity properties hold
     7. Commutativity of addition holds
     8. No additive inverses (not a ring)
-    '''
+    """
 
     def __init__(self, value: float):
         self.value = float(value)

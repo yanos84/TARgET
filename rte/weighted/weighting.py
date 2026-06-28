@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from algebric.semiring import Semiring
-from rte.rte import Rte, Zero, One, Atom, function, Plus, CProduct, CStar
-from rte.weighted.weight import Weight
+from TARgET.algebric.semiring import Semiring
+from TARgET.rte.rte import Rte, Zero, One, Atom, function, Plus, CProduct, CStar
+from TARgET.rte.weighted.weight import Weight
 
 class RteWeighting(ABC):
     """
@@ -58,6 +58,9 @@ class SemiringRteWeighting(RteWeighting):
         raise TypeError(f"Unsupported RTE type: {type(rte)}")
 
 class SemiringRteWeighting(RteWeighting):
+    """
+    Generic weighting of RTEs over a given semiring.
+    """
     def __init__(self, semiring_cls):
         self.S = semiring_cls
 

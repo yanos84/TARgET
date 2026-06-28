@@ -1,7 +1,7 @@
 import random
 from typing import Sequence
-from rte.rte import Rte, Zero, One, Plus, CProduct, CStar, function, Atom
-from core.symbol import Symbol, Ranked_Symbol  
+from TARgET.rte.rte import Rte, Zero, One, Plus, CProduct, CStar, function, Atom
+from TARgET.core.symbol import Symbol, Ranked_Symbol  
 
 
 
@@ -69,6 +69,11 @@ class RandomRteGenerator:
     # --------------------------------------------------
 
     def generate(self, depth: int | None = None) -> Rte:
+        """
+        Generates a random rational tree expression (RTE) based on the initialized parameters.
+        :param depth: The current depth of the generated RTE. If None, the maximum depth specified during initialization is used.
+        :return: A randomly generated RTE.
+        """
         if depth is None:
             depth = self.max_depth
 

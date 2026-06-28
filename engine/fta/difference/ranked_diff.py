@@ -1,9 +1,9 @@
 from .abs_diff import Abs_Diff
-from fta.rankedfta import ranked_Fta
-from engine.fta.complement.complement import Complement
-import engine.fta.determinization.ranked_determinization as det
-from engine.fta.product.ranked_prod import Ranked_prod
-from engine.fta.emptiness.ranked_emptiness import RankedEmptiness
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.engine.fta.complement.complement import Complement
+import TARgET.engine.fta.determinization.ranked_determinization as det
+from TARgET.engine.fta.product.ranked_prod import Ranked_prod
+from TARgET.engine.fta.emptiness.ranked_emptiness import RankedEmptiness
 
 class Ranked_Diff(Abs_Diff):
     """Class to compute the difference between two ranked finite tree automata (RFTAs).
@@ -20,6 +20,14 @@ class Ranked_Diff(Abs_Diff):
         super().__init__()
     
     def diff(self, fta1: ranked_Fta, fta2: ranked_Fta) -> ranked_Fta:
+        """
+        Compute the difference between two ranked finite tree automata (RFTAs).
+        Args:
+            fta1: The first ranked finite tree automaton.
+            fta2: The second ranked finite tree automaton.
+        Returns:   
+            ranked_Fta: A new ranked finite tree automaton that accepts exactly the trees accepted by fta1 but not by fta2.
+        """
         # Step 1: Compute the complement of fta2
         complement_calculator = Complement(fta2)
         fta2_complement = complement_calculator.compute_complement()
@@ -33,6 +41,14 @@ class Ranked_Diff(Abs_Diff):
         return product_automaton
 
     def is_equivalent(self, fta1: ranked_Fta, fta2: ranked_Fta) -> bool:
+        """
+        Check whether two ranked finite tree automata (RFTAs) are equivalent by computing the difference and checking for emptiness.
+        Args:
+            fta1: The first ranked finite tree automaton.
+            fta2: The second ranked finite tree automaton.
+        Returns:   
+            bool: True if the RFTAs are equivalent, False otherwise.
+        """
         difference_fta = self.diff(fta1, fta2)
         emptiness_checker = RankedEmptiness()
         return emptiness_checker.is_empty(difference_fta)

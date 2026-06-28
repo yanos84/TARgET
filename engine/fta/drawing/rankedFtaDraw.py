@@ -1,7 +1,7 @@
 from graphviz import Digraph
-from fta.rankedfta import ranked_Fta
-from fta.rankedRule import ranked_Rule
-from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
 
 def draw_ranked_fta(fta: ranked_Fta):
 

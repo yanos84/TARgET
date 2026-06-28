@@ -1,12 +1,11 @@
 from abc import ABC, abstractmethod
 
 class AutomatonSemantics(ABC):
-    '''
-    Docstring for AutomatonSemantics
+    """
     This abstract class defines the semantics for different types of tree automata.
     Subclasses must implement the `transition_signature` method, which returns the key
     used for determinism checking for a given rule.
-    '''
+    """
     @abstractmethod
     def transition_signature(self, rule):
         """

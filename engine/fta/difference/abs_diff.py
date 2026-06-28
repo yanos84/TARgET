@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from fta.abst_fta import Fta
-from engine.fta.emptiness.abs_emptiness import AbsEmptiness
+from TARgET.fta.abst_fta import Fta
+from TARgET.engine.fta.emptiness.abs_emptiness import AbsEmptiness
 
 class Abs_Diff(ABC):
     """Class to compute the difference between two finite tree automata (FTAs).
@@ -15,6 +15,14 @@ class Abs_Diff(ABC):
         pass
 
     def is_equivalent(self, fta1:Fta, fta2:Fta) -> bool:
+        """
+        Check whether two FTAs are equivalent by computing the difference and checking for emptiness.
+        Args:
+            fta1: The first finite tree automaton.
+            fta2: The second finite tree automaton.
+        Returns:
+            bool: True if the FTAs are equivalent, False otherwise.
+        """
         difference_fta = self.diff(fta1, fta2)
         emptiness_checker = AbsEmptiness()
         return emptiness_checker.is_empty(difference_fta)

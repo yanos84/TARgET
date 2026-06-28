@@ -3,15 +3,15 @@ from typing import List
 import ast
 from pathlib import Path
 
-'''
+"""
 This module provides functionality for indexing a codebase by extracting semantic units such as classes and functions. It defines a SemanticUnit dataclass to represent these units, including their kind (class or function), name, file location, signature, docstring, code, and base classes (for classes). The module includes functions to extract semantic units from individual Python files and to index an entire toolkit by recursively processing all Python files in a specified directory. This indexed information can be used for various purposes, such as code search, documentation generation, or feeding into an LLM for code understanding tasks. 
-'''
+"""
 
 @dataclass
 class SemanticUnit:
-    '''
+    """
     Represents a class or function in the codebase, capturing its essential information for indexing and retrieval.
-    '''
+    """
     kind: str               # "class" | "function"
     name: str
     file: str
@@ -25,6 +25,9 @@ import ast
 from pathlib import Path
 
 def extract_units_from_file(path: Path) -> list[SemanticUnit]:
+    """
+    Extracts semantic units (classes and functions) from a given Python file.
+    """
     source = path.read_text()
     tree = ast.parse(source)
     units = []
@@ -64,6 +67,8 @@ def extract_units_from_file(path: Path) -> list[SemanticUnit]:
 
 
 def extract_units_from_file(path: Path) -> list[SemanticUnit]:
+    """
+    Extracts semantic units (classes and functions) from a given Python file."""
     source = path.read_text()
     tree = ast.parse(source)
     units = []
@@ -103,6 +108,9 @@ def extract_units_from_file(path: Path) -> list[SemanticUnit]:
 
 
 def index_toolkit(toolkit_path: str) -> list[SemanticUnit]:
+    """
+    Indexes all Python files in the given toolkit path, extracting semantic units from each file.
+    """
     all_units = []
     for py_file in Path(toolkit_path).rglob("*.py"):
         all_units.extend(extract_units_from_file(py_file))

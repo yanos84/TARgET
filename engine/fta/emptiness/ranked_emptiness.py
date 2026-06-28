@@ -1,5 +1,5 @@
 from .abs_emptiness import AbsEmptiness
-from fta.rankedfta import ranked_Fta
+from TARgET.fta.rankedfta import ranked_Fta
 
 class RankedEmptiness(AbsEmptiness):
     """Class to check the emptiness of a ranked finite tree automaton (RFTA).

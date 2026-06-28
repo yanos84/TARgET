@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from fta.abst_fta import Fta
+from TARgET.fta.abst_fta import Fta
 
 
 class FtaGenerator(ABC):

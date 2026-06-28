@@ -1,7 +1,7 @@
-from fta.abst_fta import Fta
-from fta.state import State
+from TARgET.fta.abst_fta import Fta
+from TARgET.fta.state import State
 from typing import List
-from core.symbol import Symbol, Ranked_Symbol
+from TARgET.core.symbol import Symbol, Ranked_Symbol
 import copy
 
 class Complement():
@@ -16,6 +16,9 @@ class Complement():
         self.fta = copy.deepcopy(fta)
     
     def compute_complement(self) -> Fta:
+        """Compute the complement of the FTA.
+        This method negates the acceptance conditions of the states and transitions in the original FTA to create a new FTA that accepts exactly the trees that the original FTA does not accept. The resulting complement FTA can be used for various operations, such as checking for non-acceptance of trees or performing intersection and union with other FTAs. 
+        """
         # Placeholder for complement computation logic
         # This should return a new Fta instance representing the complement of self.fta
         alphabet =getattr(self.fta, 'alphabet', None)

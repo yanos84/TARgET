@@ -1,13 +1,17 @@
 from typing import List
-from ai_helper.indexer import SemanticUnit
+from TARgET.ai_helper.indexer import SemanticUnit
 
-'''
+"""
 This module provides functionality for building prompts for the AI assistant based on indexed semantic units and user queries. The build_prompt function takes a list of SemanticUnit objects and a user query, and constructs a structured prompt that includes a system message, the context derived from the semantic units, and the user's request. The prompt is designed to guide the AI assistant in providing accurate and relevant responses based on the existing codebase and its abstractions. The prompt emphasizes the importance of adhering to existing APIs and class hierarchies, discouraging the AI
 from inventing new APIs that are not present in the context. This structured approach helps ensure that the AI assistant's responses are grounded in the actual code and documentation of the toolkit.  
-'''
+"""
 
 
 def build_prompt(units: List[SemanticUnit], user_query: str) -> str:
+    """
+    Constructs a prompt for the AI assistant based on the provided semantic units and user query.
+    The prompt includes a system message, context derived from the semantic units, and the user's request. It emphasizes adherence to existing APIs and class hierarchies, discouraging the AI from inventing
+    new APIs that are not present in the context. """
     blocks = []
 
     for u in units:

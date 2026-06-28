@@ -20,7 +20,7 @@ class RankedTree(AbstractTree):
         self.ranked_symbol = symbol
 
     def add_child(self, child: "RankedTree"):
-        ''' Add a child to the tree, ensuring it does not exceed the rank of the symbol. '''
+        """ Add a child to the tree, ensuring it does not exceed the rank of the symbol. """
         if len(self.children) >= self.ranked_symbol.rank:
             raise ValueError(
                 f"Symbol {self.symbol} has rank {self.ranked_symbol.rank}"
@@ -28,7 +28,7 @@ class RankedTree(AbstractTree):
         super().add_child(child)
 
     def is_well_formed(self) -> bool:
-        ''' Check if the tree is well-formed according to the ranked symbol's rank. '''
+        """Check if the tree is well-formed according to the ranked symbol's rank. """
         if len(self.children) != self.ranked_symbol.rank:
             return False
         return all(child.is_well_formed() for child in self.children)

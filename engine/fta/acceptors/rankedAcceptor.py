@@ -1,7 +1,7 @@
 from .acceptor import Acceptor
-from fta.rankedfta import ranked_Fta
-from core.rankedTree import RankedTree
-from fta.state import State
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.core.rankedTree import RankedTree
+from TARgET.fta.state import State
 from typing import Set
 
 class RankedBottomUpAcceptor(Acceptor):
@@ -18,6 +18,9 @@ class RankedBottomUpAcceptor(Acceptor):
     """
 
     def accepts(self, automaton: ranked_Fta, tree: RankedTree) -> bool:
+        """
+        Check whether the automaton accepts the given tree.
+        """
         root_states = self._compute_states(automaton, tree)
         return any(state.is_Final for state in root_states)
 

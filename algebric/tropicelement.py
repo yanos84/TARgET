@@ -1,9 +1,21 @@
 # This class defines elements for the tropical semi ring (R\cup{\infinity}, \oplus, \otimes)
 
-from element import Element
+from TARgET.algebric.element import Element
 import math
 
 class tropical_Element(Element):
+    """
+    Represents an element in the tropical semiring.
+    This class provides methods for setting and getting the value of the tropical element, as well as overriding the addition and multiplication operators to allow for operations on tropical elements. The tropical semiring is defined with the following operations:
+    1. Addition (⊕) is defined as minimum: a ⊕ b = min(a, b)
+    2. Multiplication (⊗) is defined as standard addition: a ⊗ b = a + b
+    3. Additive identity (∞) is positive infinity
+    4. Multiplicative identity (0) is the real number 0.0
+    5. Zero (∞) is absorbing for multiplication
+    6. Closure, associativity, and distributivity properties hold
+    7. Commutativity of addition holds
+    8. No additive inverses (not a ring)
+    """
     def __init__(self,a):
         super().__init__()
         self.__tr = a           #Tropical element

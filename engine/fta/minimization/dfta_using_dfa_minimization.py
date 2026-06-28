@@ -1,8 +1,8 @@
 import libmata.nfa.nfa as mata_nfa
-from engine.fta.minimization.dfta_standard_minimization import dfta_minimizer
-from fta.rankedRule import ranked_Rule
-from fta.rankedfta import ranked_Fta
-from fta.state import State
+from TARgET.engine.fta.minimization.dfta_standard_minimization import dfta_minimizer
+from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.fta.state import State
 import base64, hashlib
 
 
@@ -25,17 +25,17 @@ class dfta_using_fta_minimizer(dfta_minimizer):
         super().__init__()
     
     def create_states_index(self, fta:ranked_Fta)->dict[str, int]:
-        ''' Create a mapping from state names to their indices in the FTA's state list. '''
+        """ Create a mapping from state names to their indices in the FTA's state list. """
         state_index = {}
         for idx, state in enumerate(fta.fta_states):
             state_index[state.name] = idx+1  # +1 to reserve 0 for new initial state  
         return state_index
 
     def create_horizontal_language(self, rule:ranked_Rule, store, state_index:dict)->list:
-        ''' 
+        """ 
             Create horizontal language transitions for a given FTA rule.
              Each transition is represented as a tuple (from_state, symbol, to_state).
-            '''
+            """
         fa_transitions = []
         for j in range(len(rule.input_states)):
             remining = []
@@ -54,10 +54,10 @@ class dfta_using_fta_minimizer(dfta_minimizer):
         return fa_transitions
     
     def create_nfa_from_fta(self, fta:ranked_Fta)->mata_nfa.Nfa:
-        '''
+        """
             Create an NFA from the given deterministic FTA.
 
-        '''
+        """
         raw_transitions=[]
         store = {}
         states_index = self.create_states_index(fta) # Map state names to indices in NFA and reserve 0 for new initial state
@@ -83,10 +83,10 @@ class dfta_using_fta_minimizer(dfta_minimizer):
 
 
     def minimize(self, fta:ranked_Fta):
-        '''
+        """
             Minimize the given deterministic FTA using NFA minimization techniques.
             Returns a new minimized DFTA.
-        '''
+        """
         if not self.check_determinism(fta):
             raise ValueError("FTA must be deterministic for minimization.")
         nfa = self.create_nfa_from_fta(fta)
@@ -168,7 +168,7 @@ class dfta_using_fta_minimizer(dfta_minimizer):
 
 if __name__ == "__main__":
     from engine.utils.rankedFta_xml_import import load_fta_from_xml
-    fta = load_fta_from_xml("dfta_for_minim.xml")
+    fta = load_fta_from_xml("TARgET/dfta_for_minim.xml")
     print("Original FTA:")
     fta.print_Fta()
     minimizer = dfta_using_fta_minimizer()

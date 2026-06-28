@@ -1,7 +1,7 @@
 import icontract
 from icontract import ViolationError
-from core.rankedTree import RankedTree
-from engine.fta.acceptors.rankedAcceptor import RankedBottomUpAcceptor
+from TARgET.core.rankedTree import RankedTree
+from TARgET.engine.fta.acceptors.rankedAcceptor import RankedBottomUpAcceptor
 
 
 # ======================================================

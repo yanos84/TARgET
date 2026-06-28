@@ -1,9 +1,8 @@
 import math
-from .semiring import Semiring
+from TARgET.algebric.semiring import Semiring
 
 class TropicalSemiring(Semiring):
-    '''
-    Docstring for TropicalSemiring
+    """
     Represents the tropical semiring (𝕋, ⊕, ⊗, ∞, 0)
     1. Addition (⊕) is defined as minimum: a ⊕ b    = min(a, b)
     2. Multiplication (⊗) is defined as standard addition: a ⊗ b = a + b
@@ -13,7 +12,7 @@ class TropicalSemiring(Semiring):
     6. Closure, associativity, and distributivity properties hold
     7. Commutativity of addition holds
     8. No additive inverses (not a ring)
-    '''
+    """
 
     def __init__(self, value: float):
         self.value = float(value)

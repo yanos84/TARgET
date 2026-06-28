@@ -5,25 +5,29 @@ Only the oparators +,*c, .c for trees or +, *, . for strings are taken into acco
 """
 
 from abc import ABC, abstractmethod
-from core.symbol import Symbol, Ranked_Symbol
+from TARgET.core.symbol import Symbol, Ranked_Symbol
 
 class Rte(ABC):
-    '''
+    """
 		Abstract base class for Rational Tree Expressions (RTE).
 		Defines the interface for all RTE variants.
-	'''
+	"""
 
     def _key(self):
-        '''
+        """
             Provides a unique key for the RTE instance.
             Used for hashing and equality checks.
-        '''
+        """
         pass
 
     def __eq__(self, value):
+        """
+        Checks equality between two RTE instances based on their keys."""
         return isinstance(value, Rte) and self._key() == value._key()
     
     def __hash__(self):
+        """
+        Returns a hash value for the RTE instance based on its key."""
         return hash(self._key())
 
     @abstractmethod
@@ -35,9 +39,9 @@ class Rte(ABC):
 		
 
 class Zero(Rte):
-    '''
+    """
 		Represents the zero element in Rational Tree Expressions (RTE).	
-	'''	
+	"""	
     def __str__(self):
         return "0"
     
@@ -45,9 +49,9 @@ class Zero(Rte):
         return ("Zero",)
 
 class One(Rte):
-    '''
+    """
 		Represents the one element in Rational Tree Expressions (RTE).
-	'''
+	"""
     def __str__(self):
         return "1"
 
@@ -55,9 +59,9 @@ class One(Rte):
         return ("One",)
     
 class Atom(Rte):
-    '''
+    """
         Represents an atomic RTE, which is simply a symbol.
-    '''
+    """
     def __init__(self, symbol: Symbol):
         if isinstance(symbol, Ranked_Symbol) and symbol.rank != 0:
             raise ValueError("Atom symbol must be a leaf ranked Symbol (rank 0)")
@@ -71,15 +75,15 @@ class Atom(Rte):
 
 
 class function(Rte):
-    '''
+    """
 		Represents an application of a symbol f to RTEs (E1,...En) -> f(E1,...,En).    
-	'''
+	"""
     def __init__(self, symbol: Symbol, args: list[Rte] | None = None):
-        '''
+        """
         Initializes a Tree_node with a symbol and its arguments.
         :param symbol: The symbol representing the function or constructor.
         :param args: A list of RTEs representing the arguments to the symbol.
-        '''
+        """
         self.symbol = symbol
         self.args = args
 
@@ -107,9 +111,9 @@ class function(Rte):
         )
 
 class Plus(Rte):
-    '''
+    """
         Represents the sum of multiple RTEs (E1 + E2 + ... + En).
-    '''
+    """
     def __init__(self, *terms):
         flat = []
         for t in terms:
@@ -132,11 +136,12 @@ class Plus(Rte):
     
 class CProduct(Rte):
     def __init__(self, left: Rte, right: Rte, concat: Symbol):
-        '''Initializes a CProduct with left and right operands and a concatenation operator.
-                :param left: The left RTE operand.
-                :param right: The right RTE operand.
-                :param concat: The concatenation operator (must be a Symbol).
-        '''
+        """
+        Initializes a CProduct with left and right operands and a concatenation operator.
+        :param left: The left RTE operand.
+        :param right: The right RTE operand.
+        :param concat: The concatenation operator (must be a Symbol).
+        """
 
 
         if not isinstance(concat, Symbol):
@@ -160,6 +165,9 @@ class CProduct(Rte):
         )
 
 class CStar(Rte):
+    """
+        Represents the Kleene star operation on an RTE (E*), with a concatenation operator.
+    """
     def __init__(self, expr: Rte, concat : Symbol):
         if not isinstance(concat, Symbol):
             raise ValueError("Concatenation operator must be a Symbol")

@@ -1,18 +1,18 @@
-from semiring import Semiring
+from TARgET.algebric.semiring import Semiring
 
 class IntegerSemiring(Semiring):
 
-    '''
-    Represents the semiring of integers (ℤ, +, *, 0, 1)
-    1. Addition (+) is standard integer addition
-    2. Multiplication (*) is standard integer multiplication
-    3. Additive identity (0) is the integer 0
-    4. Multiplicative identity (1) is the integer 1
-    5. Zero is absorbing for multiplication 
-    6. Closure, associativity, and distributivity properties hold
-    7. Commutativity of addition holds
-    8. No additive inverses (not a ring)    
-    '''
+    """
+        Represents the semiring of integers (ℤ, +, *, 0, 1)
+        1. Addition (+) is standard integer addition
+        2. Multiplication (*) is standard integer multiplication
+        3. Additive identity (0) is the integer 0
+        4. Multiplicative identity (1) is the integer 1
+        5. Zero is absorbing for multiplication 
+        6. Closure, associativity, and distributivity properties hold
+        7. Commutativity of addition holds
+        8. No additive inverses (not a ring)    
+    """
 
     def __init__(self, value: int):
         self.value = int(value)
@@ -46,11 +46,14 @@ class IntegerSemiring(Semiring):
         return f"ℤ({self.value})"
     
 
-a = IntegerSemiring(3)
-b = IntegerSemiring(5)
+if __name__ == "__main__":
+    # Example usage     
 
-print(a + b)          # ℤ(8)
-print(a * b)          # ℤ(15)
-print(IntegerSemiring(4))
-print(IntegerSemiring.zero())  # ℤ(0)
-print(IntegerSemiring.one())   # ℤ(1)
+    a = IntegerSemiring(3)
+    b = IntegerSemiring(5)
+
+    print(a + b)          # ℤ(8)
+    print(a * b)          # ℤ(15)
+    print(IntegerSemiring(4))
+    print(IntegerSemiring.zero())  # ℤ(0)
+    print(IntegerSemiring.one())   # ℤ(1)

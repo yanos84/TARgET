@@ -1,6 +1,6 @@
-from rte.rte import Zero, One, function, Atom, CProduct, CStar, Rte, Plus
-from engine.rte.properties.nullable import nullable
-from core.symbol import Symbol, Ranked_Symbol
+from TARgET.rte.rte import Zero, One, function, Atom, CProduct, CStar, Rte, Plus
+from TARgET.engine.rte.properties.nullable import nullable
+from TARgET.core.symbol import Symbol, Ranked_Symbol
 
 """
 This module implements the accept predicate for rational tree expressions (RTEs). The accept predicate is a function that determines whether a given RTE can accept a specific symbol. The function `accept_predicate` takes an RTE and a symbol as input and returns a boolean value indicating whether the RTE accepts the symbol. The implementation handles different types of RTEs, including Zero, One, Atom, function, Plus, CProduct, and CStar, by applying the appropriate logic to determine if the symbol can be accepted based on the structure and components of the RTE. This functionality is crucial for analyzing and manipulating RTEs in various applications, such as parsing and language recognition.    
@@ -8,6 +8,8 @@ This module implements the accept predicate for rational tree expressions (RTEs)
 
 
 def accept_predicate(r: Rte, symb: Symbol)->bool:
+    """
+    Determines whether a given rational tree expression (RTE) accepts a specific symbol."""
     if isinstance(symb, Ranked_Symbol) and symb.rank!=0:
         raise ValueError("This function only tests leaf symbols (of rank 0)")
     if isinstance(r, (Zero, One)):

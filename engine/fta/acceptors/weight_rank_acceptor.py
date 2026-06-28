@@ -1,9 +1,9 @@
 from typing import Dict
 from .acceptor import Acceptor
-from fta.rankedfta import ranked_Fta
-from core.rankedTree import RankedTree
-from fta.state import State
-from algebric.semiring import Semiring
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.core.rankedTree import RankedTree
+from TARgET.fta.state import State
+from TARgET.algebric.semiring import Semiring
 
 
 class WeightedRankedBottomUpAcceptor(Acceptor):
@@ -19,6 +19,10 @@ class WeightedRankedBottomUpAcceptor(Acceptor):
         automaton: ranked_Fta,
         tree: RankedTree
     ) -> Dict[State, Semiring]:
+        """
+        Compute the weights for each possible root state of the given tree.
+        Returns a dictionary mapping each state to its corresponding weight.
+        """
 
         # 1️⃣ Base: compute weights for children
         children_weights = [

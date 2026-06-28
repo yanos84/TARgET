@@ -1,7 +1,7 @@
 from .abs_prod import Abs_prod
-from fta.rankedfta import ranked_Fta
-from fta.state import State
-from fta.rankedRule import ranked_Rule
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.fta.state import State
+from TARgET.fta.rankedRule import ranked_Rule
 
 
 class Ranked_prod(Abs_prod):

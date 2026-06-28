@@ -1,6 +1,6 @@
-from rte.rte import Rte, Zero, One, Atom, function, CProduct, CStar, Plus
-from engine.rte.properties.semantics import accept_predicate
-from core.symbol import Symbol, Ranked_Symbol
+from TARgET.rte.rte import Rte, Zero, One, Atom, function, CProduct, CStar, Plus
+from TARgET.engine.rte.properties.semantics import accept_predicate
+from TARgET.core.symbol import Symbol, Ranked_Symbol
 from copy import deepcopy
 
 
@@ -21,6 +21,12 @@ class derivatives():
         pass
 
     def derive(self, r: Rte, sym: Symbol)->set[Rte]:
+        """
+        Computes the derivative of a given rational tree expression (RTE) with respect to a specified symbol.
+        :param r: The RTE for which the derivative is to be computed.
+        :param sym: The symbol with respect to which the derivative is computed.
+        :return: A set of resulting RTEs that represent the derivative of the original RTE with respect to the specified symbol.
+        """
         response = set()
         if isinstance(r, (Zero, One, Atom)):
             return set()

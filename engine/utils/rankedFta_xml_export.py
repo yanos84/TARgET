@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-from fta.rankedfta import ranked_Fta
+from TARgET.fta.rankedfta import ranked_Fta
 
 def export_ranked_fta_to_xml(automaton: ranked_Fta, file_name: str) -> None:
     """

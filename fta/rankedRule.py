@@ -1,14 +1,14 @@
 """
 ********* This file contains the definition of the ranked rule (transition or transition function)***********
 
-through this implementation, a transition (f,q_1,\ldots,q_n, q) (or f(q_1,_ldots, q_n)----> q)) is defined.
+through this implementation, a transition (f,q_1,...,q_n, q) (or f(q_1,..., q_n)----> q)) is defined.
 All the transition verifications are implemented here.  
 
 """
 
 from .rule import Rule
 from .state import State
-from core.symbol import Ranked_Symbol
+from TARgET.core.symbol import Ranked_Symbol
 from typing import List
 
 class ranked_Rule(Rule):
@@ -39,9 +39,17 @@ class ranked_Rule(Rule):
     """
     @property
     def func(self):
+        """
+        Get the ranked symbol (function) associated with the transition rule.
+        :return: The ranked symbol (function) of the transition rule.
+        """
         return self._func
     @func.setter
     def func(self,value):
+        """
+        Set the ranked symbol (function) associated with the transition rule.
+        :param value: The ranked symbol (function) to be set for the transition rule.
+        """
         self._func = value
     @func.deleter
     def func(self):

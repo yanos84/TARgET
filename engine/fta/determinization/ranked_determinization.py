@@ -1,7 +1,7 @@
 from itertools import product
-from fta.rankedfta import ranked_Fta
-from fta.state import State
-from fta.rankedRule import ranked_Rule
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.fta.state import State
+from TARgET.fta.rankedRule import ranked_Rule
 from typing import List
 
 

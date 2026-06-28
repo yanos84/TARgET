@@ -1,4 +1,4 @@
-from algebric.semiring import Semiring
+from TARgET.algebric.semiring import Semiring
 
 class BooleanSemiring(Semiring):
     """A semiring where the elements are boolean values (True and False) and the operations are defined as follows:
@@ -30,11 +30,15 @@ class BooleanSemiring(Semiring):
 
     def __repr__(self):
         return f"𝔹({self.value})"
+    
 
-# Example usage
-a = BooleanSemiring(True)
-b = BooleanSemiring(False)
-print(a + b)          # 𝔹(True  )   
-print(a * b)          # 𝔹(False)
-print(BooleanSemiring.zero())  # 𝔹(False)
-print(BooleanSemiring.one())   # 𝔹(True)
+if __name__ == "__main__":
+    # Example usage
+    a = BooleanSemiring(True)
+    b = BooleanSemiring(False)
+    print(a + b)          # 𝔹(True  )   
+    print(a * b)          # 𝔹(False)
+    print(BooleanSemiring.zero())  # 𝔹(False)
+    print(BooleanSemiring.one())   # 𝔹(True)
+
+

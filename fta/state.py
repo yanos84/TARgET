@@ -1,5 +1,19 @@
 # This class defines states as a structure containing a string name and its nature (final, intitial or normal)
 class State:
+
+
+    """
+    Represents a state in a finite tree automaton (FTA) with a name and properties indicating whether it is a final or initial state.
+    Attributes:
+        name (str): The name of the state.
+        is_Final (bool): Indicates whether the state is a final state (default is False).
+        is_Initial (bool): Indicates whether the state is an initial state (default is False).
+    Methods:
+        __init__: Initializes a State object with a name and optional final and initial properties.
+        name: Property to get or set the name of the state.
+        is_Final: Property to get or set whether the state is a final state.
+        is_Initial: Property to get or set whether the state is an initial state.
+    """
     #@abstractclassmethod
     def __init__(self,name=None,is_Final=False, is_Initial=False):
         self._name = name

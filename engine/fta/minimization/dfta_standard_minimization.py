@@ -1,10 +1,10 @@
 from collections import defaultdict
-from engine.fta.determinism.semantics import BottomUpRankedSemantics
-from engine.fta.determinism.determinism import Determinism
-from engine.fta.minimization.abs_minimize import abs_minimize
-from fta.rankedRule import ranked_Rule
-from fta.rankedfta import ranked_Fta
-from fta.state import State
+from TARgET.engine.fta.determinism.semantics import BottomUpRankedSemantics
+from TARgET.engine.fta.determinism.determinism import Determinism
+from TARgET.engine.fta.minimization.abs_minimize import abs_minimize
+from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.fta.state import State
 
 class dfta_minimizer(abs_minimize):
     """
@@ -29,31 +29,31 @@ class dfta_minimizer(abs_minimize):
 
 
     def check_determinism(self, fta)->ranked_Fta:
-        '''
+        """
         Check if the given FTA is deterministic using BottomUpRankedSemantics class. 
-        '''
+        """
         semantics = BottomUpRankedSemantics()
         return Determinism.check(fta.transitions, semantics)
 
     def get_final_states(self, fta):
-        '''
+        """
         Return the set of final states of the given FTA.
-        '''
+        """
         return {s for s in fta.fta_states if s.is_Final}
     
     def get_partition_index(self, partitions, state):
-        '''
+        """
         Return the index of the partition (of sets of states) containing the given state.
-        '''
+        """
         for i, p in enumerate(partitions):
             if state in p:
                 return i
         return None
     
     def redendant_rules(self, rule:ranked_Rule, transitions: set)->bool:
-        '''
+        """
         Check if a given rule is redundant in a set of transitions.
-        '''
+        """
         for r in transitions:
             if rule == r:
                 return True
@@ -61,10 +61,10 @@ class dfta_minimizer(abs_minimize):
 
 
     def minimize(self, fta):
-        '''
+        """
         Minimize the given deterministic FTA using partition refinement.
         Returns a new minimized DFTA.
-        '''
+        """
         #is_deterministic = Determinism.check(fta.transitions, semantics)
         if not self.check_determinism(fta):
             raise ValueError("FTA must be deterministic for minimization.")

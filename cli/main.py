@@ -1,8 +1,8 @@
 import argparse
-from engine.fta.drawing.rankedFtaDraw import draw_ranked_fta
+from TARgET.engine.fta.drawing.rankedFtaDraw import draw_ranked_fta
 #from engine.fta.acceptors.rankedAcceptor import RankedAcceptor
 #from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
-from engine.utils.rankedFta_xml_import import load_fta_from_xml
+from TARgET.engine.utils.rankedFta_xml_import import load_fta_from_xml
 
 
 """
@@ -15,6 +15,9 @@ and subcommands. The tool currently supports a "draw" command that generates and
 """
 
 def main():
+    """
+    Main function for the CLI tool. It sets up argument parsing, handles subcommands, and executes the appropriate functionality based on user input. Currently, it supports the "draw" command to generate and draw a random ranked finite tree automaton (RFTA) from an input XML file. The user can specify the output image file name using the -o or --output option. The function utilizes the draw_ranked_fta function to perform the drawing operation and saves the resulting image to the specified output file.
+    """
     parser = argparse.ArgumentParser(
         prog="rfta_tool",
         description="Generate a random ranked finite tree automaton (RFTA), "

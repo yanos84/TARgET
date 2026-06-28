@@ -3,11 +3,14 @@
 
 from abc import ABC, abstractmethod
 from .state import State
-from core.symbol import Symbol
+from TARgET.core.symbol import Symbol
 from typing import List
-from algebric.semiring import Semiring
+from TARgET.algebric.semiring import Semiring
 
 class Rule(ABC):
+    """
+    An abstract class defining transition rules for finite tree automata. All transition rules inherit directly or indirectly from Rule.   
+    """
     @abstractmethod
     def __init__(self, func:Symbol =None, input_states : List[State] = None, output_state : State= None, is_weighted : bool = False, weight:Semiring = None):
         self.func = func

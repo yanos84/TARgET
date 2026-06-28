@@ -1,9 +1,9 @@
 # engine/union/ranked_union.py
 
 from .abstract_union import AbstractFtaUnion
-from fta.rankedfta import ranked_Fta
-from fta.state import State
-from fta.rankedRule import ranked_Rule
+from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.fta.state import State
+from TARgET.fta.rankedRule import ranked_Rule
 
 
 class RankedFtaUnion(AbstractFtaUnion):
