@@ -122,7 +122,7 @@ The following examples illustrate some of the core capabilities of TARgET. Addit
 
 We can create a bottom up finite ranked tree automaton mannually using
 
-```
+```python
 from TARgET.fta.state import State
 from TARgET.core.symbol import Ranked_Symbol
 from TARgET.fta.rankedRule import ranked_Rule
@@ -151,8 +151,7 @@ automaton.print_Fta()
 
 or by using random generator:
 
-```
-
+```python
 from TARgET.fta.rankedfta import ranked_Fta
 from TARgET.engine.random.ranked_fta_generator import RandomRankedFtaGenerator
 
