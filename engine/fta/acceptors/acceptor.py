@@ -10,11 +10,10 @@ class Acceptor(ABC):
         """
         Check whether the automaton accepts the given tree.
 
-        Args:
-            automaton: a tree automaton
-            tree: a tree structure
+        :param automaton: The tree automaton.
+        :param tree: The input tree structure.
 
-        Returns:
-            bool
+        :returns: ``True`` if the automaton accepts the tree; otherwise, ``False``.
+        :rtype: bool
         """
         pass

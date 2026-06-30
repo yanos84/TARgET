@@ -6,9 +6,8 @@ def export_ranked_fta_to_xml(automaton: ranked_Fta, file_name: str) -> None:
     """
     Export a ranked finite tree automaton (RFTA) to an XML file.
 
-    Args:
-        automaton: The ranked finite tree automaton to export.
-        file_path: The path to the output XML file.
+    :param automaton: The ranked finite tree automaton to export.
+    :param file_path: The path to the output XML file.
     """
 
     root = ET.Element("RankedFta", {"name": automaton.name, "type": "Ranked"})

@@ -2,17 +2,17 @@ from TARgET.rte.rte import Rte, Plus, CProduct, CStar, Zero, One, function, Atom
 from TARgET.core.symbol import Symbol, Ranked_Symbol
 class Normalizer():
     """
-        Abstract base class for RTE normalizers.
-        Defines the interface for all basic normalizer variants.
+    Abstract base class for RTE normalizers.
+    Defines the interface for all basic normalizer variants.
     """
     def __init__(self):
         pass
 
     def normalize(self, expr: Rte) -> Rte:
         """
-            Normalizes the given Rational Tree Expression (RTE).
-            :param rte: The RTE to be normalized.
-            :return: The normalized RTE.
+        Normalizes the given Rational Tree Expression (RTE).
+        :param rte: The RTE to be normalized.
+        :return: The normalized RTE.
         """
         if isinstance(expr, (Zero, One)):
             return expr
@@ -36,9 +36,9 @@ class Normalizer():
 
     def normalize_plus(self, terms: list[Rte]) -> Rte:
         """
-            Normalizes a Plus RTE with the given terms.
-            :param terms: The list of RTE terms in the Plus expression.
-            :return: The normalized Plus RTE.
+        Normalizes a Plus RTE with the given terms.
+        :param terms: The list of RTE terms in the Plus expression.
+        :return: The normalized Plus RTE.
         """
         flat = []
 
@@ -65,7 +65,8 @@ class Normalizer():
         """
         Normalizes a CProduct RTE with the given left and right expressions.
         :param expr: The CProduct RTE to be normalized.
-        :return: The normalized CProduct RTE."""
+        :return: The normalized CProduct RTE.
+        """
         left = self.normalize(expr.left)
         right = self.normalize(expr.right)
 
@@ -85,7 +86,8 @@ class Normalizer():
         Normalizes a CStar RTE with the given expression and concatenation symbol.
         :param expr: The RTE to be normalized.
         :param concat: The concatenation symbol for the CStar expression.
-        :return: The normalized CStar RTE."""
+        :return: The normalized CStar RTE.
+        """
         expr = self.normalize(expr)
 
         if isinstance(expr, Zero):

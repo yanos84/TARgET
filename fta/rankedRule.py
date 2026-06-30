@@ -13,22 +13,30 @@ from typing import List
 
 class ranked_Rule(Rule):
     """
-    A class representing a ranked transition (rule).
+    Represent a ranked transition (rule).
 
-    Attributes:
-        func (ranked_Alpha): a ranked symbol instanciated from the ranked_Alpha class
-        input(List[State]): the list of the input 
-        output(State): the output state of the transition
+    :ivar func: The ranked symbol associated with the transition.
+    :vartype func: ranked_Alpha
+
+    :ivar input: The list of input states.
+    :vartype input: List[State]
+
+    :ivar output: The output state of the transition.
+    :vartype output: State
     """
     def __init__(self, func:Ranked_Symbol =None, input_states : List[State] = None, output_state : State= None,  is_weighted=False, weight=None):
 
         """
-        Initialize a transition rule
+        Represent a ranked transition (rule).
 
-        Args:
-        func (Ranked_Symbol): a ranked symbol instanciated from the Ranked_Symbol class
-        input(List[State]): the list of the input 
-        output(State): the output state of the transition    
+        :ivar func: The ranked symbol labeling the transition.
+        :vartype func: ranked_Alpha
+
+        :ivar input: The list of input states.
+        :vartype input: List[State]
+
+        :ivar output: The output state of the transition.
+        :vartype output: State
         """
         super().__init__(func, input_states, output_state, is_weighted, weight)
 
@@ -71,10 +79,11 @@ class ranked_Rule(Rule):
     
     def is_valid(self)->bool:
         """
-        Verify if the transition is valid by checking the adequation between the func rank and the number of input states
-        
-        Returns:
-            bool: if the transition is valid or not
+        Verify that the transition is valid.
+
+        A transition is considered valid if the rank of its associated symbol matches the number of input states.
+
+        :returns: ``True`` if the transition is valid; otherwise, ``False``.
         """
         if self.func.rank == len(self.input_states):
             return True

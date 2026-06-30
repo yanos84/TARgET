@@ -4,12 +4,12 @@ class Symbol:
     """Represents a basic symbol with a name.
     This class serves as a base for more complex symbol types, such as ranked symbols.
     Attributes:
-    - name: The name of the symbol, which is used for identification and comparison.
+        - name: The name of the symbol, which is used for identification and comparison.
     Methods:
-    - __init__: Initializes the symbol with a given name.
-    - __str__: Returns the string representation of the symbol, which is its name.
-    - __eq__: Compares two symbols for equality based on their names.
-    - __hash__: Provides a hash value for the symbol, allowing it to be used in sets and as dictionary keys.
+        - __init__: Initializes the symbol with a given name.
+        - __str__: Returns the string representation of the symbol, which is its name.
+        - __eq__: Compares two symbols for equality based on their names.
+        - __hash__: Provides a hash value for the symbol, allowing it to be used in sets and as dictionary keys.
     """
     
     def __init__(self, name: str):

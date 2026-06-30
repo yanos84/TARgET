@@ -22,11 +22,14 @@ class Ranked_Diff(Abs_Diff):
     def diff(self, fta1: ranked_Fta, fta2: ranked_Fta) -> ranked_Fta:
         """
         Compute the difference between two ranked finite tree automata (RFTAs).
-        Args:
-            fta1: The first ranked finite tree automaton.
-            fta2: The second ranked finite tree automaton.
-        Returns:   
-            ranked_Fta: A new ranked finite tree automaton that accepts exactly the trees accepted by fta1 but not by fta2.
+
+        The resulting automaton accepts exactly the trees accepted by ``fta1`` but not
+        by ``fta2``.
+
+        :param fta1: The first ranked finite tree automaton.
+        :param fta2: The second ranked finite tree automaton.
+
+        :returns: A ranked finite tree automaton recognizing the difference of the languages accepted by ``fta1`` and ``fta2``.
         """
         # Step 1: Compute the complement of fta2
         complement_calculator = Complement(fta2)
@@ -42,12 +45,17 @@ class Ranked_Diff(Abs_Diff):
 
     def is_equivalent(self, fta1: ranked_Fta, fta2: ranked_Fta) -> bool:
         """
-        Check whether two ranked finite tree automata (RFTAs) are equivalent by computing the difference and checking for emptiness.
-        Args:
-            fta1: The first ranked finite tree automaton.
-            fta2: The second ranked finite tree automaton.
-        Returns:   
-            bool: True if the RFTAs are equivalent, False otherwise.
+        Check whether two ranked finite tree automata (RFTAs) are equivalent.
+
+        The equivalence test is performed by computing the difference between the
+        automata and checking whether the resulting automaton recognizes the empty
+        language.
+
+        :param fta1: The first ranked finite tree automaton.
+        :param fta2: The second ranked finite tree automaton.
+
+        :returns: ``True`` if the automata are equivalent; otherwise, ``False``.
+        :rtype: bool
         """
         difference_fta = self.diff(fta1, fta2)
         emptiness_checker = RankedEmptiness()

@@ -16,12 +16,15 @@ class Abs_Diff(ABC):
 
     def is_equivalent(self, fta1:Fta, fta2:Fta) -> bool:
         """
-        Check whether two FTAs are equivalent by computing the difference and checking for emptiness.
-        Args:
-            fta1: The first finite tree automaton.
-            fta2: The second finite tree automaton.
-        Returns:
-            bool: True if the FTAs are equivalent, False otherwise.
+        Check whether two finite tree automata are equivalent.
+
+        The equivalence test is performed by computing their difference and checking
+        whether the resulting automaton recognizes the empty language.
+
+        :param fta1: The first finite tree automaton.
+        :param fta2: The second finite tree automaton.
+
+        :returns: ``True`` if the automata are equivalent; otherwise, ``False``.
         """
         difference_fta = self.diff(fta1, fta2)
         emptiness_checker = AbsEmptiness()

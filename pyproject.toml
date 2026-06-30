@@ -5,6 +5,65 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "target"
 version = "0.1.0"
+description = "Transformation, Reachability, and Analysis Graph Toolkit (TARgET)"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+
+authors = [
+    { name = "Younes Guellouma" }
+]
+
+keywords = [
+    "term rewriting",
+    "formal verification",
+    "tree automata",
+    "reachability",
+    "graph transformation",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "networkx>=3.6",
+    "graphviz>=0.21",
+    "pydot>=4.0",
+    "icontract>=2.6",
+    "lark>=1.2",
+    "pyeda>=0.29",
+    "pydantic>=2.11",
+]
+
+[project.optional-dependencies]
+ai = [
+    "torch>=2.10",
+    "transformers>=4.56",
+    "sentence-transformers>=5.2",
+    "faiss-cpu>=1.13",
+    "llama-cpp-python>=0.3",
+]
+
+dev = [
+    "pytest>=9",
+    "hypothesis>=6",
+    "pdoc>=16",
+    "pydoctor>=25",
+    "lazydocs>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/yanos84/TARgET"
+Documentation = "https://github.com/yanos84/TARgET"
+Repository = "https://github.com/yanos84/TARgET/tree/main/apidocs"
 
 [tool.setuptools]
 include-package-data = true

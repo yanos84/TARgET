@@ -18,12 +18,13 @@ class Ranked_prod(Abs_prod):
         super().__init__()
 
     def product(self, fta1: ranked_Fta, fta2: ranked_Fta) -> ranked_Fta:
-        """Compute the product of two ranked finite tree automata.
-        Args:
-            fta1 (ranked_Fta): The first ranked finite tree automaton.
-            fta2 (ranked_Fta): The second ranked finite tree automaton.
-        Returns:
-            ranked_Fta: The product ranked finite tree automaton.
+        """
+        Compute the product of two ranked finite tree automata.
+
+        :param fta1: The first ranked finite tree automaton.
+        :param fta2: The second ranked finite tree automaton.
+
+        :returns: The product ranked finite tree automaton.
         """
         # Placeholder implementation
         # Actual product construction logic should be implemented here

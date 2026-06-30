@@ -8,7 +8,8 @@ This module implements the nullable property for rational tree expressions (RTEs
 
 def nullable(r: Rte)->bool:
     """
-    Determines whether a given rational tree expression (RTE) is nullable, meaning it can generate the empty tree."""
+    Determines whether a given rational tree expression (RTE) is nullable, meaning it can generate the empty tree.
+    """
     if isinstance(r, (Zero, Atom, function)):
         return False
     if isinstance(r, (One, CStar)):

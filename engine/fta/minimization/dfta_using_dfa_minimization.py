@@ -33,9 +33,9 @@ class dfta_using_fta_minimizer(dfta_minimizer):
 
     def create_horizontal_language(self, rule:ranked_Rule, store, state_index:dict)->list:
         """ 
-            Create horizontal language transitions for a given FTA rule.
-             Each transition is represented as a tuple (from_state, symbol, to_state).
-            """
+        Create horizontal language transitions for a given FTA rule.
+        Each transition is represented as a tuple (from_state, symbol, to_state).
+        """
         fa_transitions = []
         for j in range(len(rule.input_states)):
             remining = []
@@ -55,8 +55,7 @@ class dfta_using_fta_minimizer(dfta_minimizer):
     
     def create_nfa_from_fta(self, fta:ranked_Fta)->mata_nfa.Nfa:
         """
-            Create an NFA from the given deterministic FTA.
-
+        Create an NFA from the given deterministic FTA.
         """
         raw_transitions=[]
         store = {}
@@ -84,8 +83,8 @@ class dfta_using_fta_minimizer(dfta_minimizer):
 
     def minimize(self, fta:ranked_Fta):
         """
-            Minimize the given deterministic FTA using NFA minimization techniques.
-            Returns a new minimized DFTA.
+        Minimize the given deterministic FTA using NFA minimization techniques.
+        Returns a new minimized DFTA.
         """
         if not self.check_determinism(fta):
             raise ValueError("FTA must be deterministic for minimization.")
@@ -102,7 +101,7 @@ class dfta_using_fta_minimizer(dfta_minimizer):
         Extracts the partition induced by minimization.
 
         Encoding assumed:
-            root -[old_state]→ minimized_state
+        root -[old_state]→ minimized_state
         """
         partition = {}
 
@@ -118,13 +117,17 @@ class dfta_using_fta_minimizer(dfta_minimizer):
     
     def minimize_fta_from_partition(self, fta:ranked_Fta, partition):
         """
-        fta: object with attributes
-            - states_list: List[State]
-            - transitions: List[ranked_Rule]
-            - alphabet: whatever you need
-        partition: dict[min_state] -> set[original_states]
+        Minimize a ranked finite tree automaton.
 
-        Returns a new minimized FTA
+        :param fta: An object representing a ranked finite tree automaton. It must provide the following attributes:
+
+            - ``states_list`` (``List[State]``)
+            - ``transitions`` (``List[ranked_Rule]``)
+            - ``alphabet``
+
+        :param partition: A mapping from representative states to the corresponding sets of equivalent states.
+        :returns: A new minimized ranked finite tree automaton.
+        :rtype: ranked_Fta
         """
 
         states_index = self.create_states_index(fta)

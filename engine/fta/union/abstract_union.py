@@ -51,9 +51,12 @@ class AbstractFtaUnion(ABC):
     @abstractmethod
     def _rename_conflicting_states(self):
         """
-        Rename states if there are conflicts between fta1 and fta2.
-        Returns:
-            fta1_states, fta2_states, state_map1, state_map2
+        Rename states to avoid conflicts between two finite tree automata.
+
+        This function renames states when the input automata contain states with the same identifiers, ensuring that the resulting automata have disjoint sets of states.
+
+        :returns: A tuple containing the renamed state sets and the corresponding mappings for both automata: ``(fta1_states, fta2_states, state_map1, state_map2)``.
+        :rtype: tuple
         """
         pass
 

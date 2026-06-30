@@ -14,11 +14,12 @@ class RankedEmptiness(AbsEmptiness):
         super().__init__()
 
     def is_empty(self, fta: ranked_Fta) -> bool:
-        """Check if the ranked finite tree automaton is empty.
-        Args:
-            fta (ranked_Fta): The ranked finite tree automaton to check.
-        Returns:
-            bool: True if the automaton is empty, False otherwise.
+        """
+        Check whether a ranked finite tree automaton recognizes the empty language.
+
+        :param fta: The ranked finite tree automaton to check.
+
+        :returns: ``True`` if the automaton recognizes the empty language; otherwise, ``False``.
         """
 
         Good = set()

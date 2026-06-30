@@ -45,22 +45,18 @@ class RandomRankedFtaGenerator(FtaGenerator):
             random.seed(seed)
 
     def generate(self) -> ranked_Fta:
-
-
-
         """
-        Generates a random ranked finite tree automaton (FTA).
+        Generate a random ranked finite tree automaton (FTA).
 
-        Parameters:
-        - fta_name: Name of the FTA.
-        - n_states: Number of states in the FTA.
-        - n_symbols: Number of ranked symbols in the alphabet.
-        - max_rank: Maximum rank for the ranked symbols.
-        - n_rules: Number of transition rules in the FTA.
-        - final_ratio: Ratio of final states among all states.
+        :param fta_name: The name of the generated automaton.
+        :param n_states: The number of states in the automaton.
+        :param n_symbols: The number of ranked symbols in the alphabet.
+        :param max_rank: The maximum rank of the alphabet symbols.
+        :param n_rules: The number of transition rules to generate.
+        :param final_ratio: The ratio of final states among all states.
 
-        Returns:
-        - An instance of ranked_Fta representing the random FTA.
+        :returns: A randomly generated ranked finite tree automaton.
+        :rtype: ranked_Fta
         """
 
         # Generate states

@@ -9,7 +9,8 @@ This module implements the accept predicate for rational tree expressions (RTEs)
 
 def accept_predicate(r: Rte, symb: Symbol)->bool:
     """
-    Determines whether a given rational tree expression (RTE) accepts a specific symbol."""
+    Determines whether a given rational tree expression (RTE) accepts a specific symbol.
+    """
     if isinstance(symb, Ranked_Symbol) and symb.rank!=0:
         raise ValueError("This function only tests leaf symbols (of rank 0)")
     if isinstance(r, (Zero, One)):

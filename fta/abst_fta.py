@@ -41,9 +41,8 @@ class Fta(ABC):
 		self._states.remove(s_name)
 
 	"""
-    *** Define setters, getters and deletters for :
-            name,
-            states list
+	Contains the list of states and the name of the automaton. The rules are not declared in this class to allow more
+	elaborate automata types like transducers and weighed automata. The add_state method adds a state to the states list if it is not present already.	
     """
     
 	@property
