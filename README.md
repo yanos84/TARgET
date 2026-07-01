@@ -13,8 +13,6 @@ The project is implemented in Python and is accompanied by comprehensive API doc
 
 ## FEATURES
 
-## Features
-
 TARgET provides a comprehensive framework for working with tree automata and related formal models, including:
 
 - **Comprehensive Framework**
@@ -118,7 +116,7 @@ Detailed, executable examples are provided within each package of the toolkit an
 
 The following examples illustrate some of the core capabilities of TARgET. Additional examples are provided within each package of the toolkit.
 
-### Example 1: Constructing and Visualizing a bottom up Finite Ranked Tree Automaton
+### Example 1: Constructing, determinizing and Visualizing a bottom up Finite Ranked Tree Automaton
 
 We can create a bottom up finite ranked tree automaton mannually using
 
@@ -130,23 +128,23 @@ from TARgET.fta.rankedfta import ranked_Fta
 
 from typing import List
 
-s= State(name="q1", is_Final=False, is_Initial=False)
-t=State(name="q2", is_Final=False, is_Initial=False)
-u=State(name="q3", is_Final=False, is_Initial=False)
-st = []
-st.append(s)
-st.append(t)
-symb = Ranked_Symbol(name="f", rank=2)
-rule = ranked_Rule(func = symb)
-rule.input_states = st
-rule.output_state = u
-rules = []
-rules.append(rule)
-rules.append(rule)
-alpha = []
-alpha.append(symb)
-automaton = ranked_Fta(fta_name="fta1", alphabet=alpha, fta_states=st, transitions=rules)
-automaton.print_Fta()
+q= State(name="q", is_Final=False)
+qg=State(name="qg", is_Final=False)
+qf=State(name="qf", is_Final=True)
+symb_f = Ranked_Symbol(name="f", rank=2)
+symb_a = Ranked_Symbol(name="a", rank=0)
+symb_g = Ranked_Symbol(name="g", rank=1)
+rule1 = ranked_Rule(func= symb_a, input_states=[], output_state=q)
+rule2 = ranked_Rule(func = symb_g, input_states=[q], output_state=qg)
+rule3 = ranked_Rule(func = symb_f, input_states=[q, q], output_state=q)
+rule4 = ranked_Rule(func = symb_g, input_states=[q], output_state=q)
+rule5 = ranked_Rule(func = symb_g, input_states=[qg], output_state=qf)
+
+fta = ranked_Fta(
+    fta_states=[q, qg, qf],
+    alphabet=[symb_a, symb_g, symb_f],
+    transitions=[rule1, rule2, rule3, rule4, rule5]
+)
 ```
 
 or by using random generator:
@@ -165,6 +163,43 @@ seed=42
 random_fta = generator.generate()
 random_fta.print_Fta()
 ```
+We apply the determinization algorithm:
+
+```python
+from TARgET.engine.fta.determinization.ranked_determinization import determinize
+determ_fta = determinize(fta)
+determ_fta.print_Fta()
+```
+And we visualize the resulting DFTA:
+
+```python
+
+from TARgET.engine.fta.drawing.rankedFtaDraw import draw_ranked_fta
+
+dot = draw_ranked_fta(determ_fta)
+dot.render("fta1", format="png", cleanup=True) 
+```
+
+### Weighted Regular Tree Expressions
+
+The following example demonstrates how to construct a weighted regular tree expression. The resulting expression can subsequently be manipulated using the operations provided by the toolkit, such as simplification, derivatives, transformations, or conversion algorithms.
+
+```python
+from algebric.trop_semiring import TropicalSemiring as TS
+from core.symbol import Ranked_Symbol
+from rte.weighted.weight_rte_print import WeightedRtePrinter as WRP
+from TARgET.rte.weighted.weight import Weight
+
+f= Ranked_Symbol('f', rank = 2)
+a = Ranked_Symbol('a')
+b= Ranked_Symbol('b')
+E = Weight(TS(1.0), Weight(TS(2.0),Plus(function(f, [Atom(a), Atom(b)]), function(f, [Atom(b), Atom(a)]))))
+print("The weighted expression", E)   # The weighted expression 𝕋(1.0) ⊗ (𝕋(2.0) ⊗ (f(a,b) + f(b,a)))
+W = SemiringRteWeighting(TS)
+print("The total weight is" , W.weight(E))   # 𝕋(3.0)
+```
+
+
 
 
 ## DEVELOPING NEW FUNCTIONALITIES
