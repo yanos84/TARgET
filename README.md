@@ -187,7 +187,6 @@ The following example demonstrates how to construct a weighted regular tree expr
 ```python
 from algebric.trop_semiring import TropicalSemiring as TS
 from core.symbol import Ranked_Symbol
-from rte.weighted.weight_rte_print import WeightedRtePrinter as WRP
 from TARgET.rte.weighted.weight import Weight
 
 f= Ranked_Symbol('f', rank = 2)
@@ -199,25 +198,37 @@ W = SemiringRteWeighting(TS)
 print("The total weight is" , W.weight(E))   # 𝕋(3.0)
 ```
 
+## DOCUMENTATION
+
+TARgET is accompanied by comprehensive API documentation covering all packages, classes, methods, and modules included in the toolkit. The documentation is automatically generated from the source code and its docstrings, ensuring that it remains synchronized with the implementation.
+
+In addition to the API reference, each package provides illustrative examples demonstrating the use of its main components and algorithms.
+
+The documentation can be generated locally using:
+
+```bash
+pydoctor --make-html --html-output docs TARgET
+```
+
+The generated HTML documentation will be available in the `docs/` directory and can be opened in any modern web browser.
 
 
+## CITATION
 
-## DEVELOPING NEW FUNCTIONALITIES
+If you use TARgET in your research, please cite the accompanying article once it becomes available. Citation information, including the DOI and BibTeX entry, will be added to this repository upon publication.
 
-TO DO
+Until then, please cite the TARgET repository if you reference the toolkit in academic work.
 
-## API REFERENCE
+## CONTRIBUTING
 
-TO DO
+Contributions to TARgET are welcome. The toolkit has been designed as a modular and extensible framework, allowing researchers and developers to implement new formal models, algorithms, and analysis techniques while preserving consistency with the existing architecture.
 
-## TROUBLESHOOTING AND FAQs
+Contributors are encouraged to follow the project's coding conventions and documentation practices. The optional AI assistant can assist in the development of new modules by providing guidance aligned with TARgET's architecture, implementation patterns, and software specifications.
 
-TO DO
+Bug reports, feature requests, and pull requests are welcome through the project's GitHub repository.
 
-## CONTRIBUTION
 
-TO DO
+## LICENCE
 
-## ADITIONAL RESOURCES
+TARgET is released under the Apache License 2.0. See the `LICENSE` file for the complete license terms and conditions.
 
-TO DO

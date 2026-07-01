@@ -101,7 +101,7 @@ class SemiringRteWeighting(RteWeighting):
 if __name__ == "__main__":
     from algebric.trop_semiring import TropicalSemiring as TS
     from core.symbol import Ranked_Symbol
-    from rte.weighted.weight_rte_print import WeightedRtePrinter as WRP
+    #from rte.weighted.weight_rte_print import WeightedRtePrinter as WRP
     f= Ranked_Symbol('f', rank = 2)
     a = Ranked_Symbol('a')
     b= Ranked_Symbol('b')
