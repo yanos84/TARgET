@@ -181,7 +181,7 @@ dot.render("fta1", format="png", cleanup=True)
 ```
 
 We got this result for the randomly generated FTA:
-![random image](TARgET/random_fta.png)
+![random image](random_fta.png)
 
 ### Weighted Regular Tree Expressions
 
