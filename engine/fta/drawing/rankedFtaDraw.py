@@ -3,18 +3,19 @@ from TARgET.fta.rankedfta import ranked_Fta
 from TARgET.fta.rankedRule import ranked_Rule
 from TARgET.engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
 
-def draw_ranked_fta(fta: ranked_Fta):
+def draw_ranked_fta(fta: ranked_Fta,direction = "TB") -> Digraph:
 
     """
     Draw a ranked finite tree automaton (RFTA) using Graphviz.
 
     This function generates a visual representation of a ranked finite tree automaton (RFTA) using Graphviz. States are represented as nodes, with final states displayed as double circles. Transition rules are represented as directed edges labeled with the corresponding rule. The resulting graph can be rendered and saved as an image for visualization and analysis purposes.
     :param fta: The ranked finite tree automaton to draw.
+    :direction: The direction of the graph layout. "TB" for top-to-bottom, "LR" for left-to-right.
     :returns: A Graphviz ``Digraph`` object representing the visual structure of the automaton.
     :rtype: graphviz.Digraph
     """
     dot = Digraph(name=fta.name, engine="dot")
-    dot.attr(rankdir="TB")
+    dot.attr(rankdir=direction)
 
     # --- States ---
     for q in fta.fta_states:
@@ -65,5 +66,5 @@ if __name__ == "__main__":
     automaton = generator.generate()
     automaton.print_Fta()
 
-    dot = draw_ranked_fta(automaton)
+    dot = draw_ranked_fta(automaton, direction="LR")
     dot.render("fta1", format="png", cleanup=True) 

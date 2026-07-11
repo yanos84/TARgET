@@ -189,23 +189,15 @@ class CStar(Rte):
 # Example usage
 if __name__ == "__main__":
 # symbols
-    a = Ranked_Symbol("a")
-    b = Ranked_Symbol("b")
-    x = Ranked_Symbol("x")
-    f = Ranked_Symbol("f", 2)
-    g = Ranked_Symbol("g", 1)
-    Ea = Atom(a)
-    Eb = Atom(b)
-    Ex = Atom(x)
+    a, b, x, f, g = Ranked_Symbol("a"), Ranked_Symbol("b"), Ranked_Symbol("x"), Ranked_Symbol("f", 2), Ranked_Symbol("g", 1)
+    Ea, Eb, Ex = Atom(a), Atom(b), Atom(x)
     # trees
     fab = function(f, [Ea, Eb])
     gx  = function(g, [Ex])
-
     # rational tree expression
     rte = Plus(
         CStar(fab, b),
         CProduct(fab, gx, a)
     )
-
     print(rte)
 

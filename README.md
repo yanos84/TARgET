@@ -180,6 +180,9 @@ dot = draw_ranked_fta(determ_fta)
 dot.render("fta1", format="png", cleanup=True) 
 ```
 
+We got this result for the randomly generated FTA:
+![random image](TARgET/random_fta.png)
+
 ### Weighted Regular Tree Expressions
 
 The following example demonstrates how to construct a weighted regular tree expression. The resulting expression can subsequently be manipulated using the operations provided by the toolkit, such as simplification, derivatives, transformations, or conversion algorithms.

@@ -80,10 +80,10 @@ if __name__ == "__main__":
         CProduct(fab, gx, concat=a),
         CStar(fab, concat=a)
     )
-    #print(rte0)
+    print(rte0)
     der = derivatives()
-    #print(der.derive(rte0, f)) 
-    #print(der.derive(rte0, g))           
+    print(der.derive(rte0, f)) 
+    print(der.derive(rte0, g))           
 
 # second example
     h = Ranked_Symbol("h", rank=1)
@@ -96,6 +96,6 @@ if __name__ == "__main__":
     E2= Plus(E2,E3)
     #print(E2)
     rte1 = CProduct(E1, E2, b)
-    print(rte1)
-    print(der.derive(rte1, g))
+    #print(rte1)
+    #print(der.derive(rte1, g))
               
