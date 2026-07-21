@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from TARgET.fta.abst_fta import Fta
+from TARgET.core.fta.abst_fta import Fta
 from TARgET.engine.fta.emptiness.abs_emptiness import AbsEmptiness
 
 class Abs_Diff(ABC):

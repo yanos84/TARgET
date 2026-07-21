@@ -8,7 +8,7 @@ All the transition verifications are implemented here.
 
 from .rule import Rule
 from .state import State
-from TARgET.core.symbol import Ranked_Symbol
+from ..base.symbol import Ranked_Symbol
 from typing import List
 
 class ranked_Rule(Rule):

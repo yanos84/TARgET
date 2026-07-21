@@ -1,5 +1,5 @@
-from TARgET.rte.rte import Rte, Plus, CProduct, CStar, Zero, One, function, Atom
-from TARgET.core.symbol import Symbol, Ranked_Symbol
+from TARgET.core.rte.rte import Rte, Plus, CProduct, CStar, Zero, One, function, Atom
+from TARgET.core.base.symbol import Symbol, Ranked_Symbol
 class Normalizer():
     """
     Abstract base class for RTE normalizers.

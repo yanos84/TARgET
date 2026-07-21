@@ -1,5 +1,5 @@
 import math
-from TARgET.algebric.semiring import Semiring
+from .semiring import Semiring
 
 class TropicalSemiring(Semiring):
     """

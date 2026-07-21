@@ -1,4 +1,4 @@
-from TARgET.algebric.semiring import Semiring
+from .semiring import Semiring
 
 class BooleanSemiring(Semiring):
     """A semiring where the elements are boolean values (True and False) and the operations are defined as follows:

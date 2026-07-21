@@ -1,6 +1,6 @@
-from TARgET.rte.rte import Rte, Zero, One, Atom, function, CProduct, CStar, Plus
+from TARgET.core.rte.rte import Rte, Zero, One, Atom, function, CProduct, CStar, Plus
 from TARgET.engine.rte.properties.semantics import accept_predicate
-from TARgET.core.symbol import Symbol, Ranked_Symbol
+from TARgET.core.base.symbol import Symbol, Ranked_Symbol
 from copy import deepcopy
 
 

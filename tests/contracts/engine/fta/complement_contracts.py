@@ -1,8 +1,8 @@
 import copy
 import icontract
 
-from TARgET.fta.abst_fta import Fta
-from TARgET.core.symbol import Symbol
+from TARgET.core.fta.abst_fta import Fta
+from TARgET.core.base.symbol import Symbol
 
 
 class ContractedComplement:

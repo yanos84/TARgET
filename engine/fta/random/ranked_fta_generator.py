@@ -1,9 +1,9 @@
 import random
 from typing import List
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.state import State
-from TARgET.core.symbol import Ranked_Symbol
-from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.state import State
+from TARgET.core.base.symbol import Ranked_Symbol
+from TARgET.core.fta.rankedRule import ranked_Rule
 from .randomGenerator import FtaGenerator
 
 

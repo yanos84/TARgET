@@ -3,9 +3,9 @@
 
 from abc import ABC, abstractmethod
 from .state import State
-from TARgET.core.symbol import Symbol
+from ..base.symbol import Symbol
 from typing import List
-from TARgET.algebric.semiring import Semiring
+from ..algebraic.semiring import Semiring
 
 class Rule(ABC):
     """

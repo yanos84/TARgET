@@ -39,7 +39,6 @@ dependencies = [
     "pydot>=4.0",
     "icontract>=2.6",
     "lark>=1.2",
-    "pyeda>=0.29",
     "pydantic>=2.11",
 ]
 

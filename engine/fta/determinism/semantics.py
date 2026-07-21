@@ -46,11 +46,11 @@ class HedgeSemantics:
 
 #example usage
 if __name__ == "__main__":
-    from engine.fta.determinism.determinism import Determinism
-    from fta.rankedfta import ranked_Fta
-    from fta.rankedRule import ranked_Rule
-    from fta.state import State
-    from core.symbol import Ranked_Symbol
+    from .determinism import Determinism
+    from TARgET.core.fta.rankedfta import ranked_Fta
+    from TARgET.core.fta.rankedRule import ranked_Rule
+    from TARgET.core.fta.state import State
+    from TARgET.core.base.symbol import Ranked_Symbol
 
     # Define states
     s1 = State(name="q1", is_Final=False)

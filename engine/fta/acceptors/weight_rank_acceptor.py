@@ -1,9 +1,9 @@
 from typing import Dict
 from .acceptor import Acceptor
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.core.rankedTree import RankedTree
-from TARgET.fta.state import State
-from TARgET.algebric.semiring import Semiring
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.base.rankedTree import RankedTree
+from TARgET.core.fta.state import State
+from TARgET.core.algebraic.semiring import Semiring
 
 
 class WeightedRankedBottomUpAcceptor(Acceptor):
@@ -93,12 +93,12 @@ class WeightedRankedBottomUpAcceptor(Acceptor):
 #Example_usage
 
 if __name__ == "__main__":
-    from algebric.stochastic_semiring import ProbabilitySemiring
-    from algebric.bool_semiring import BooleanSemiring
-    from core.symbol import Ranked_Symbol
-    from fta.rankedRule import ranked_Rule
-    from core.rankedTree import RankedTree
-    from engine.fta.acceptors.rankedAcceptor import RankedBottomUpAcceptor
+    from TARgET.core.algebraic.stochastic_semiring import ProbabilitySemiring
+    from TARgET.core.algebraic.bool_semiring import BooleanSemiring
+    from TARgET.core.base.symbol import Ranked_Symbol
+    from TARgET.core.fta.rankedRule import ranked_Rule
+    from TARgET.core.base.rankedTree import RankedTree
+    from .rankedAcceptor import RankedBottomUpAcceptor
 
     s= State(name="q1", is_Final=False)
     t=State(name="q2", is_Final=False)

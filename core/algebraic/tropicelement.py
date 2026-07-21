@@ -1,6 +1,6 @@
 # This class defines elements for the tropical semi ring (R\cup{\infinity}, \oplus, \otimes)
 
-from TARgET.algebric.element import Element
+from .element import Element
 import math
 
 class tropical_Element(Element):

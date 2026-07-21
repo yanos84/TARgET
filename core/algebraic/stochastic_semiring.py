@@ -1,4 +1,4 @@
-from TARgET.algebric.semiring import Semiring
+from .semiring import Semiring
 
 class ProbabilitySemiring(Semiring):
     """

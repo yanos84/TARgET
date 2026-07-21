@@ -5,7 +5,7 @@ Only the oparators +,*c, .c for trees or +, *, . for strings are taken into acco
 """
 
 from abc import ABC, abstractmethod
-from TARgET.core.symbol import Symbol, Ranked_Symbol
+from ..base.symbol import Symbol, Ranked_Symbol
 
 class Rte(ABC):
     """

@@ -1,7 +1,7 @@
-from TARgET.fta.abst_fta import Fta
-from TARgET.fta.state import State
+from TARgET.core.fta.abst_fta import Fta
+from TARgET.core.fta.state import State
 from typing import List
-from TARgET.core.symbol import Symbol, Ranked_Symbol
+from TARgET.core.base.symbol import Symbol, Ranked_Symbol
 import copy
 
 class Complement():
@@ -39,7 +39,7 @@ class Complement():
 
 ## Example usage
 if __name__ == "__main__":
-    from fta.rankedfta import ranked_Fta
+    from TARgET.core.fta.rankedfta import ranked_Fta
     s1 = State(name="q0", is_Final=True)
     s2 = State(name="q1", is_Final=False)
     states = [s1, s2]

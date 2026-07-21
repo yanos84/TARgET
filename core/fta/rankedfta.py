@@ -4,10 +4,10 @@
 
 from .abst_fta import Fta
 from .state import State
-from TARgET.core.symbol import Ranked_Symbol
+from ..base.symbol import Ranked_Symbol
 from .rankedRule import ranked_Rule
 from typing import List
-from TARgET.algebric.semiring import Semiring
+from ..algebraic.semiring import Semiring
 
 class ranked_Fta(Fta):
 

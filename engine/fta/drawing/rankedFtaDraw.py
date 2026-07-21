@@ -1,6 +1,6 @@
 from graphviz import Digraph
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.rankedRule import ranked_Rule
 from TARgET.engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
 
 def draw_ranked_fta(fta: ranked_Fta,direction = "TB") -> Digraph:

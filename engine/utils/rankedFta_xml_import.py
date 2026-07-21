@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
-from TARgET.fta.state import State
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.rankedRule import ranked_Rule
-from TARgET.core.symbol import Ranked_Symbol
+from TARgET.core.fta.state import State
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.rankedRule import ranked_Rule
+from TARgET.core.base.symbol import Ranked_Symbol
 
 def load_fta_from_xml(filename: str) -> ranked_Fta:
     """

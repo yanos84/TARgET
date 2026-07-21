@@ -1,4 +1,4 @@
-from TARgET.algebric.intelement import Int_element
+from .intelement import Int_element
 
 class real_Element(Int_element):
     """

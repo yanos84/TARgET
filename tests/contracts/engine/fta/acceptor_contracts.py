@@ -1,7 +1,10 @@
 import icontract
 from icontract import ViolationError
-from TARgET.core.rankedTree import RankedTree
+from TARgET.core.base.rankedTree import RankedTree
 from TARgET.engine.fta.acceptors.rankedAcceptor import RankedBottomUpAcceptor
+
+
+
 
 
 # ======================================================
@@ -61,3 +64,4 @@ class ContractedRankedBottomUpAcceptor(RankedBottomUpAcceptor):
     )
     def accepts(self, automaton, tree):
         return super().accepts(automaton, tree)
+

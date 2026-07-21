@@ -1,7 +1,7 @@
 from .acceptor import Acceptor
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.core.rankedTree import RankedTree
-from TARgET.fta.state import State
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.base.rankedTree import RankedTree
+from TARgET.core.fta.state import State
 from typing import Set
 
 class RankedBottomUpAcceptor(Acceptor):
@@ -67,8 +67,8 @@ class RankedBottomUpAcceptor(Acceptor):
 # Example usage:
 
 if __name__ == "__main__":
-    from core.symbol import Ranked_Symbol
-    from fta.rankedRule import ranked_Rule
+    from TARgET.core.base.symbol import Ranked_Symbol
+    from TARgET.core.fta.rankedRule import ranked_Rule
     from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
 
     # Create a simple ranked tree: f(a, b)

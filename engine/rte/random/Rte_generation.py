@@ -1,7 +1,7 @@
 import random
 from typing import Sequence
-from TARgET.rte.rte import Rte, Zero, One, Plus, CProduct, CStar, function, Atom
-from TARgET.core.symbol import Symbol, Ranked_Symbol  
+from TARgET.core.rte.rte import Rte, Zero, One, Plus, CProduct, CStar, function, Atom
+from TARgET.core.base.symbol import Symbol, Ranked_Symbol  
 
 
 

@@ -1,5 +1,5 @@
-from TARgET.rte.rte import Rte
-from TARgET.algebric.semiring import Semiring
+from ..rte import Rte
+from ...algebraic.semiring import Semiring
 
 class Weight(Rte):
     """

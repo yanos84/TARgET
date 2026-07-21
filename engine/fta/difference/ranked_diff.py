@@ -1,5 +1,5 @@
 from .abs_diff import Abs_Diff
-from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.rankedfta import ranked_Fta
 from TARgET.engine.fta.complement.complement import Complement
 import TARgET.engine.fta.determinization.ranked_determinization as det
 from TARgET.engine.fta.product.ranked_prod import Ranked_prod
@@ -64,7 +64,7 @@ class Ranked_Diff(Abs_Diff):
 
 # Example usage
 if __name__ == "__main__":
-    from fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
+    from TARgET.core.fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
 
     # Define fta1
     s1 = State(name="q1", is_Final=True)

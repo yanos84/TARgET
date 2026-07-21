@@ -1,7 +1,7 @@
 from .abs_prod import Abs_prod
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.state import State
-from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.state import State
+from TARgET.core.fta.rankedRule import ranked_Rule
 
 
 class Ranked_prod(Abs_prod):
@@ -47,7 +47,7 @@ class Ranked_prod(Abs_prod):
 
 # Example usage
 if __name__ == "__main__": 
-    from fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
+    from TARgET.core.fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
 
     s1 = State(name="q1", is_Final=False)
     t1 = State(name="q2", is_Final=True)

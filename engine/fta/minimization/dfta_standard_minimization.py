@@ -2,9 +2,9 @@ from collections import defaultdict
 from TARgET.engine.fta.determinism.semantics import BottomUpRankedSemantics
 from TARgET.engine.fta.determinism.determinism import Determinism
 from TARgET.engine.fta.minimization.abs_minimize import abs_minimize
-from TARgET.fta.rankedRule import ranked_Rule
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.state import State
+from TARgET.core.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.state import State
 
 class dfta_minimizer(abs_minimize):
     """
@@ -122,7 +122,7 @@ class dfta_minimizer(abs_minimize):
                 new_transitions.append(t.__class__(t.func, new_inputs, new_output))
         
         # Create minimized FTA
-        from fta.rankedfta import ranked_Fta
+        from TARgET.core.fta.rankedfta import ranked_Fta
         minimized_fta = ranked_Fta(
             fta_name="fta1",
             alphabet=fta.alphabet,
@@ -135,7 +135,7 @@ class dfta_minimizer(abs_minimize):
 # Example usage
 if __name__ == "__main__":
     from engine.utils.rankedFta_xml_import import load_fta_from_xml
-    fta = load_fta_from_xml("dfta_for_minim.xml")
+    fta = load_fta_from_xml("TARgET/dfta_for_minim.xml")
 
     print("Original FTA:")
     fta.print_Fta()

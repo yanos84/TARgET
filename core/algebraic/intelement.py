@@ -1,6 +1,6 @@
 # implements an integer element used in semiring of integers N(+,*,1,0)
 
-from TARgET.algebric.element import Element
+from .element import Element
 
 class Int_element(Element):
     """

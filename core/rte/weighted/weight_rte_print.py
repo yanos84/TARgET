@@ -1,5 +1,5 @@
-from TARgET.rte.rte import Rte, Zero, One, Atom, function, CStar, CProduct, Plus
-from TARgET.algebric.semiring import Semiring
+from ..rte import Rte, Zero, One, Atom, function, CStar, CProduct, Plus
+from ...algebraic.semiring import Semiring
 
 class WeightedRtePrinter:
     """

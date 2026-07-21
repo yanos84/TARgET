@@ -1,7 +1,7 @@
 from itertools import product
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.state import State
-from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.state import State
+from TARgET.core.fta.rankedRule import ranked_Rule
 from typing import List
 
 
@@ -139,7 +139,7 @@ def determinize(fta):
 
 # Example usage:*
 if __name__ == "__main__":
-    from core.symbol import Ranked_Symbol
+    from TARgET.core.base.symbol import Ranked_Symbol
     q= State(name="q", is_Final=False)
     qg=State(name="qg", is_Final=False)
     qf=State(name="qf", is_Final=True)

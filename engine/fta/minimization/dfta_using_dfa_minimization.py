@@ -1,8 +1,8 @@
 import libmata.nfa.nfa as mata_nfa
 from TARgET.engine.fta.minimization.dfta_standard_minimization import dfta_minimizer
-from TARgET.fta.rankedRule import ranked_Rule
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.state import State
+from TARgET.core.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.state import State
 import base64, hashlib
 
 

@@ -1,9 +1,9 @@
 # engine/union/ranked_union.py
 
 from .abstract_union import AbstractFtaUnion
-from TARgET.fta.rankedfta import ranked_Fta
-from TARgET.fta.state import State
-from TARgET.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.state import State
+from TARgET.core.fta.rankedRule import ranked_Rule
 
 
 class RankedFtaUnion(AbstractFtaUnion):
@@ -103,7 +103,7 @@ class RankedFtaUnion(AbstractFtaUnion):
 
 # Example usage:*
 if __name__ == "__main__":
-    from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
+    from TARgET.engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
     generator = RandomRankedFtaGenerator(
     n_states=6,
     n_symbols=4,

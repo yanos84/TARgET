@@ -1,15 +1,15 @@
 import pytest
 import icontract
 
-from tests.contracts.engine.fta.acceptor_contracts import (
+from TARgET.tests.contracts.engine.fta.acceptor_contracts import (
     ContractedRankedBottomUpAcceptor as RA
 )
 
-from core.symbol import Ranked_Symbol
-from fta.rankedRule import ranked_Rule
-from fta.rankedfta import ranked_Fta
-from core.rankedTree import RankedTree
-from fta.state import State
+from TARgET.core.base.symbol import Ranked_Symbol
+from TARgET.core.fta.rankedRule import ranked_Rule
+from TARgET.core.fta.rankedfta import ranked_Fta
+from TARgET.core.base.rankedTree import RankedTree
+from TARgET.core.fta.state import State
 
 
 @pytest.fixture

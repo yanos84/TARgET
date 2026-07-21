@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-from TARgET.fta.rankedfta import ranked_Fta
+from TARgET.core.fta.rankedfta import ranked_Fta
 
 def export_ranked_fta_to_xml(automaton: ranked_Fta, file_name: str) -> None:
     """
@@ -73,10 +73,10 @@ if __name__ == "__main__":
     #export_ranked_fta_to_xml(random_fta, "random_rfta.xml")
 
 
-    from core.symbol import Ranked_Symbol
-    from fta.state import State
-    from fta.rankedfta import ranked_Fta
-    from fta.rankedRule import ranked_Rule
+    from TARgET.core.base.symbol import Ranked_Symbol
+    from TARgET.core.fta.state import State
+    from TARgET.core.fta.rankedfta import ranked_Fta
+    from TARgET.core.fta.rankedRule import ranked_Rule
 
     # Define states
     q0 = State("q0", is_Final=False)
@@ -130,5 +130,5 @@ if __name__ == "__main__":
         fta_states=[qa, qb, qc],
         transitions=[r11, r12, r13, r14, r15, r16, r17, r18, r19, r20]
     )
-    export_ranked_fta_to_xml(fta2, "dfta_for_minim_2.xml")
+    export_ranked_fta_to_xml(fta2, "dfta_for_minim_3.xml")
 

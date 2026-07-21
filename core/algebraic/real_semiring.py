@@ -1,4 +1,4 @@
-from TARgET.algebric.semiring import Semiring
+from .semiring import Semiring
 
 class RealSemiring(Semiring):
 
@@ -38,11 +38,13 @@ class RealSemiring(Semiring):
     def __repr__(self):
         return f"ℝ({self.value})"
     
-# Example usage 
-a = RealSemiring(3.5)
-b = RealSemiring(2.5)   
-print(a + b)          # ℝ(6.0)
-print(a * b)          # ℝ(8.75)
-print(RealSemiring.zero())  # ℝ(0.0)
-print(RealSemiring.one())   # ℝ(1.0)
-print(RealSemiring(4.2))  # ℝ(4.2)
+# Example usage
+
+if __name__ == "__main__": 
+    a = RealSemiring(3.5)
+    b = RealSemiring(2.5)   
+    print(a + b)          # ℝ(6.0)
+    print(a * b)          # ℝ(8.75)
+    print(RealSemiring.zero())  # ℝ(0.0)
+    print(RealSemiring.one())   # ℝ(1.0)
+    print(RealSemiring(4.2))  # ℝ(4.2)

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from TARgET.algebric.semiring import Semiring
-from TARgET.rte.rte import Rte, Zero, One, Atom, function, Plus, CProduct, CStar
-from TARgET.rte.weighted.weight import Weight
+from ...algebraic.semiring import Semiring
+from ..rte import Rte, Zero, One, Atom, function, Plus, CProduct, CStar
+from .weight import Weight
 
 class RteWeighting(ABC):
     """
@@ -99,8 +99,8 @@ class SemiringRteWeighting(RteWeighting):
 #example usage
 
 if __name__ == "__main__":
-    from algebric.trop_semiring import TropicalSemiring as TS
-    from core.symbol import Ranked_Symbol
+    from ...algebraic.trop_semiring import TropicalSemiring as TS
+    from ...base.symbol import Ranked_Symbol
     #from rte.weighted.weight_rte_print import WeightedRtePrinter as WRP
     f= Ranked_Symbol('f', rank = 2)
     a = Ranked_Symbol('a')
