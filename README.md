@@ -3,11 +3,11 @@
 
 "TARgET: <ins>T</ins>ree <ins>A</ins>utomata and <ins>Reg</ins>ular <ins>E</ins>xpression <ins>T</ins>oolkit is an open-source Python library for the modeling, manipulation, transformation, and analysis of tree automata and related formal models. It provides a unified framework for implementing algorithms from formal language theory, term rewriting, and automata-based verification, while remaining extensible for research and educational purposes.
 
-The toolkit offers a comprehensive collection of data structures and algorithms for constructing and manipulating finite tree automata, regular tree expressions, and term rewriting systems. It includes operations such as automata transformations, language-preserving constructions, reachability analysis, tree transformations, and visualization through Graphviz. These components are designed to facilitate the implementation, experimentation, and evaluation of algorithms commonly encountered in formal methods and program verification.
+The library offers a comprehensive collection of data structures and algorithms for constructing and manipulating finite tree automata, regular tree expressions, and term rewriting systems. It includes operations such as automata transformations, language-preserving constructions, reachability analysis, tree transformations, and visualization through Graphviz. These components are designed to facilitate the implementation, experimentation, and evaluation of algorithms commonly encountered in formal methods and program verification.
 
-TARgET emphasizes modularity and extensibility. Its object-oriented architecture enables users to integrate new algorithms, define custom transformations, and extend existing components without modifying the core library. This design makes the toolkit suitable both as a reusable software library for research projects and as a foundation for developing new methods in automata theory and formal verification.
+TARgET emphasizes modularity and extensibility. Its object-oriented architecture enables users to integrate new algorithms, define custom transformations, and extend existing components without modifying the core library. This design makes the library suitable both as a reusable software library for research projects and as a foundation for developing new methods in automata theory and formal verification.
 
-To further assist users, TARgET provides an optional AI-assisted module capable of supporting exploration of the library and generating guidance for available operations. This functionality complements the core toolkit while remaining independent of its primary analysis capabilities.
+To further assist users, TARgET provides an optional AI-assisted module capable of supporting exploration of the library and generating guidance for available operations. This functionality complements the core library while remaining independent of its primary analysis capabilities.
 
 The project is implemented in Python and is accompanied by comprehensive API documentation, examples, and reproducible Conda environments, making it suitable for research, teaching, and rapid prototyping in areas including tree formal language theory, tree automata, term rewriting, model checking, and software verification.
 
@@ -42,24 +42,24 @@ TARgET provides a comprehensive framework for working with tree automata and rel
 
 - **AI-Assisted Extensibility**
   - An optional AI assistant designed to facilitate the development of new TARgET modules.
-  - Assists contributors in implementing new operations while adhering to the toolkit's architecture and software specifications.
+  - Assists contributors in implementing new operations while adhering to the library's architecture and software specifications.
   - Promotes consistency, maintainability, and faster integration of new functionalities into the framework.
 
 ## INSTALLATION
 
 
-TARgET supports multiple installation methods to accommodate different user requirements. The recommended approach is to use one of the provided Conda environments, which ensure that all required dependencies are installed with compatible versions. A standard environment is available for the core toolkit, while an extended environment includes the optional AI assistant and its additional dependencies. Alternatively, TARgET can be installed via `pip`, with optional extras available to enable AI-assisted functionality.
+TARgET supports multiple installation methods to accommodate different user requirements. The recommended approach is to use one of the provided Conda environments, which ensure that all required dependencies are installed with compatible versions. A standard environment is available for the core library, while an extended environment includes the optional AI assistant and its additional dependencies. Alternatively, TARgET can be installed via `pip`, with optional extras available to enable AI-assisted functionality.
 
-### Conda (Core Toolkit)
+### Conda (Core Library)
 
-Create and activate the Conda environment for the core TARgET toolkit:
+Create and activate the Conda environment for the core TARgET library:
 
 ```bash
 conda env create -f environment.yml
 conda activate target
 ```
 
-### Conda (Toolkit + AI Assistant)
+### Conda (Library + AI Assistant)
 
 Create and activate the Conda environment including the optional AI assistant:
 
@@ -70,7 +70,7 @@ conda activate target_ai
 
 ### pip
 
-Install the latest release of the core toolkit from PyPI:
+Install the latest release of the core library from PyPI (Comming soon):
 
 ```bash
 pip install target
@@ -84,7 +84,7 @@ pip install "target[ai]"
 
 > **Note**
 >
-> The AI assistant is an optional component intended to assist contributors and advanced users in extending TARgET. It provides guidance for developing new modules and operations while adhering to the toolkit's architecture, design principles, and implementation specifications. The core functionality of TARgET is fully available without the AI assistant.
+> The AI assistant is an optional component intended to assist contributors and advanced users in extending TARgET. It provides guidance for developing new modules and operations while adhering to the library's architecture, design principles, and implementation specifications. The core functionality of TARgET is fully available without the AI assistant.
 
 
 ## Quick Start
@@ -110,11 +110,11 @@ from TARgET.<package> import ...
 # Process or visualize the results
 ```
 
-Detailed, executable examples are provided within each package of the toolkit and serve as practical references for their respective APIs and functionalities. Users are encouraged to consult the documentation of the relevant package for complete usage examples and implementation details.
+Detailed, executable examples are provided within each package of the library and serve as practical references for their respective APIs and functionalities. Users are encouraged to consult the documentation of the relevant package for complete usage examples and implementation details.
 
 
 
-The following examples illustrate some of the core capabilities of TARgET. Additional examples are provided within each package of the toolkit.
+The following examples illustrate some of the core capabilities of TARgET. Additional examples are provided within each package of the library.
 
 ### Example 1: Constructing, determinizing and Visualizing a bottom up Finite Ranked Tree Automaton
 
@@ -185,7 +185,7 @@ We got this result for the randomly generated FTA:
 
 ### Weighted Regular Tree Expressions
 
-The following example demonstrates how to construct a weighted regular tree expression. The resulting expression can subsequently be manipulated using the operations provided by the toolkit, such as simplification, derivatives, transformations, or conversion algorithms.
+The following example demonstrates how to construct a weighted regular tree expression. The resulting expression can subsequently be manipulated using the operations provided by the library, such as simplification, derivatives, transformations, or conversion algorithms.
 
 ```python
 from algebric.trop_semiring import TropicalSemiring as TS
@@ -203,7 +203,7 @@ print("The total weight is" , W.weight(E))   # 𝕋(3.0)
 
 ## DOCUMENTATION
 
-TARgET is accompanied by comprehensive API documentation covering all packages, classes, methods, and modules included in the toolkit. The documentation is automatically generated from the source code and its docstrings, ensuring that it remains synchronized with the implementation.
+TARgET is accompanied by comprehensive API documentation covering all packages, classes, methods, and modules included in the library. The documentation is automatically generated from the source code and its docstrings, ensuring that it remains synchronized with the implementation.
 
 In addition to the API reference, each package provides illustrative examples demonstrating the use of its main components and algorithms.
 
@@ -220,11 +220,11 @@ The generated HTML documentation will be available in the `docs/` directory and 
 
 If you use TARgET in your research, please cite the accompanying article once it becomes available. Citation information, including the DOI and BibTeX entry, will be added to this repository upon publication.
 
-Until then, please cite the TARgET repository if you reference the toolkit in academic work.
+Until then, please cite the TARgET repository if you reference the library in academic work.
 
 ## CONTRIBUTING
 
-Contributions to TARgET are welcome. The toolkit has been designed as a modular and extensible framework, allowing researchers and developers to implement new formal models, algorithms, and analysis techniques while preserving consistency with the existing architecture.
+Contributions to TARgET are welcome. The library has been designed as a modular and extensible framework, allowing researchers and developers to implement new formal models, algorithms, and analysis techniques while preserving consistency with the existing architecture.
 
 Contributors are encouraged to follow the project's coding conventions and documentation practices. The optional AI assistant can assist in the development of new modules by providing guidance aligned with TARgET's architecture, implementation patterns, and software specifications.
 

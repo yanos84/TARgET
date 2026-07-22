@@ -1,8 +1,8 @@
 import argparse
-from TARgET.engine.fta.drawing.rankedFtaDraw import draw_ranked_fta
+from TARgET.tools.drawing.rankedFtaDraw import draw_ranked_fta
 #from engine.fta.acceptors.rankedAcceptor import RankedAcceptor
 #from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
-from TARgET.engine.utils.rankedFta_xml_import import load_fta_from_xml
+from TARgET.tools.utils.rankedFta_xml_import import load_fta_from_xml
 
 
 """

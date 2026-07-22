@@ -134,7 +134,7 @@ class dfta_minimizer(abs_minimize):
 
 # Example usage
 if __name__ == "__main__":
-    from engine.utils.rankedFta_xml_import import load_fta_from_xml
+    from TARgET.tools.utils.rankedFta_xml_import import load_fta_from_xml
     fta = load_fta_from_xml("TARgET/dfta_for_minim.xml")
 
     print("Original FTA:")

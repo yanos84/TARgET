@@ -5,13 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "target"
 version = "0.1.0"
-description = "Transformation, Reachability, and Analysis Graph Toolkit (TARgET)"
+description = "Tree Automata and Regular Expression Toolkit (TARgET)"
 readme = "README.md"
 requires-python = ">=3.13"
 license = { file = "LICENSE" }
 
 authors = [
-    { name = "Younes Guellouma" }
+    { name = "Younes Guellouma, Ahlem Bellabaci, Djelloul Ziadi and Hadda Cherroun" }
 ]
 
 keywords = [
