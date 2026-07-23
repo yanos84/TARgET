@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from gui.api.models import AskRequest, AskResponse
-from gui.api.dependencies import retriever, get_model, MODELS_DIR
+from TARgET.api.gui.api.models import AskRequest, AskResponse
+from TARgET.api.gui.api.dependencies import retriever, get_model, MODELS_DIR
 from ai_helper.prompt import build_prompt
 
 app = FastAPI(title="TARgET AI Helper")

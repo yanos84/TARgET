@@ -68,9 +68,9 @@ conda env create -f environment_ai.yml
 conda activate target_ai
 ```
 
-### pip
+### pip (Comming soon)
 
-Install the latest release of the core library from PyPI (Comming soon):
+Install the latest release of the core library from PyPI :
 
 ```bash
 pip install target
@@ -214,6 +214,8 @@ pydoctor --make-html --html-output docs TARgET
 ```
 
 The generated HTML documentation will be available in the `docs/` directory and can be opened in any modern web browser.
+
+The actualized documentation is available at <yanos84.github.io/TARgET>
 
 
 ## CITATION
