@@ -1,7 +1,7 @@
 import pytest
 import icontract
 
-from TARgET.tests.contracts.engine.fta.acceptor_contracts import (
+from tests.contracts.engine.fta.acceptor_contracts import (
     ContractedRankedBottomUpAcceptor as RA
 )
 

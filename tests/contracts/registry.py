@@ -1,7 +1,7 @@
-from TARgET.tests.contracts.engine.fta.acceptor_contracts import (
+from tests.contracts.engine.fta.acceptor_contracts import (
     ContractedRankedBottomUpAcceptor,
 )
-from TARgET.tests.contracts.engine.fta.complement_contracts import (
+from tests.contracts.engine.fta.complement_contracts import (
     ContractedComplement,
 )
 

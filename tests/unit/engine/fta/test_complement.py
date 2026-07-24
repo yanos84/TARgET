@@ -2,7 +2,7 @@ from TARgET.core.fta.rankedfta import ranked_Fta
 from TARgET.core.fta.state import State
 from TARgET.core.base.symbol import Ranked_Symbol
 
-from TARgET.tests.contracts.engine.fta.complement_contracts import ContractedComplement
+from tests.contracts.engine.fta.complement_contracts import ContractedComplement
 
 
 def test_complement_flips_final_states():

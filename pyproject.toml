@@ -11,7 +11,7 @@ requires-python = ">=3.13"
 license = { file = "LICENSE" }
 
 authors = [
-    { name = "Younes Guellouma, Ahlem Bellabaci, Djelloul Ziadi and Hadda Cherroun" }
+    { name = "Younes Guellouma, Ahlem Bellabaci, Djelloul Ziadi, Hadda Cherroun" }
 ]
 
 keywords = [
@@ -64,9 +64,12 @@ Homepage = "https://github.com/yanos84/TARgET"
 Documentation = "https://github.com/yanos84/TARgET"
 Repository = "https://github.com/yanos84/TARgET/tree/main/apidocs"
 
+[project.scripts]
+target = "TARgET.api.cli.main:main"
+
 [tool.setuptools]
 include-package-data = true
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["TARgET*"]

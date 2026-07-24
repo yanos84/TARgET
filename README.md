@@ -86,6 +86,16 @@ pip install "target[ai]"
 >
 > The AI assistant is an optional component intended to assist contributors and advanced users in extending TARgET. It provides guidance for developing new modules and operations while adhering to the library's architecture, design principles, and implementation specifications. The core functionality of TARgET is fully available without the AI assistant.
 
+### Running the tests
+
+TARgET uses a `src` layout. Install the package in editable mode before running the test suite:
+
+    python -m pip install -e .
+
+Then run:
+
+    python -m pytest
+
 
 ## Quick Start
 
