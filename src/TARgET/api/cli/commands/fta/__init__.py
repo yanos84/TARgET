@@ -3,10 +3,17 @@ import argparse
 """
 Commands for operating on finite tree automata.
 1. Draw a ranked finite tree automaton (RFTA) from an XML file.
+2. Decide whether a ranked tree is accepted by a given ranked finite tree automaton (RFTA).
+Syntax:
+    python -m TARgET.api.cli.commands.fta <command> [<args>]
+    or target fta <command> [<args>] (from anywhere if the project is installed)
+Available commands:
+    draw: Draw a ranked finite tree automaton (RFTA) from an XML file.
+    accept: Decide whether a ranked tree is accepted by a given ranked finite tree automaton (RFTA).
 """
 
 from .draw import register_command as register_draw_command
-#from .accept import register_command as register_accept_command
+from .accept import register_command as register_accept_command
 #from .determinize import register_command as register_determinize_command
 
 
@@ -25,5 +32,5 @@ def register_commands(subparsers):
     )
 
     register_draw_command(fta_subparsers)  # Register the draw command for FTAs
-    #register_accept_command(fta_subparsers)
+    register_accept_command(fta_subparsers)
     #register_determinize_command(fta_subparsers)

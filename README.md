@@ -211,6 +211,65 @@ W = SemiringRteWeighting(TS)
 print("The total weight is" , W.weight(E))   # 𝕋(3.0)
 ```
 
+## Extending the CLI
+
+TARgET exposes its functionality through a hierarchical command-line interface. CLI commands are organized by domain, such as `fta` and `rte`.
+
+To add a new command:
+
+### 1. Create a command module
+
+Create a module in the appropriate command group:
+
+```text
+src/TARgET/api/cli/commands/
+└── fta/
+    ├── __init__.py
+    ├── draw.py
+    └── new_command.py
+```
+### 2. Define the command
+
+Each command should provide a registration function:
+```python
+def register_command(subparsers):
+    parser = subparsers.add_parser(
+        "new-command",
+        help="Description of the command."
+    )
+
+    parser.add_argument("input_file")
+    parser.set_defaults(handler=run)
+
+
+def run(args):
+    # Implement the command here
+    ...
+```
+
+### 3. Register the command in its command group
+
+In fta/__init__.py:
+
+```python
+from .new_command import register_command
+
+
+def register_commands(subparsers):
+    register_command(subparsers)
+
+#The command group itself is then registered by the main CLI:
+register_fta_commands(fta_subparsers)
+```
+After installing TARgET in editable mode:
+
+```python -m pip install -e .```
+
+the command can be used directly:
+
+```target fta new-command args```
+
+
 ## DOCUMENTATION
 
 TARgET is accompanied by comprehensive API documentation covering all packages, classes, methods, and modules included in the library. The documentation is automatically generated from the source code and its docstrings, ensuring that it remains synchronized with the implementation.

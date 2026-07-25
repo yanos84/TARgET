@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer</title>
+    <meta name="generator" content="pydoctor 25.10.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          TARgET <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.html" class="internal-link" title="This class">dfta<wbr></wbr>_minimizer</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#check_determinism" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.check_determinism">check<wbr></wbr>_determinism</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_final_states" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_final_states">get<wbr></wbr>_final<wbr></wbr>_states</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_partition_index" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_partition_index">get<wbr></wbr>_partition<wbr></wbr>_index</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#minimize" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.minimize">minimize</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#redendant_rules" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.redendant_rules">redendant<wbr></wbr>_rules</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.html" class="internal-link" title="The parent of this class">dfta<wbr></wbr>_standard<wbr></wbr>_minimization</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.html" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer">dfta<wbr></wbr>_minimizer</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapse-sidebar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <main class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">TARgET</a></code><wbr></wbr>.<code><a href="TARgET.src.html" class="internal-link" title="TARgET.src">src</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.html" class="internal-link" title="TARgET.src.TARgET">TARgET</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.engine.html" class="internal-link" title="TARgET.src.TARgET.engine">engine</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.engine.fta.html" class="internal-link" title="TARgET.src.TARgET.engine.fta">fta</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.engine.fta.minimization.html" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization">minimization</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.html" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization">dfta_standard_minimization</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.html" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer">dfta_minimizer</a></code></code></h1>
+          <div id="show-private">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">dfta_minimizer</span>(abs_minimize):</code></p><p><a href="classIndex.html#TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="pre">Minimizer for Deterministic Finite Tree Automata (DFTA) using
+a standard partition refinement algorithm. 
+The algorithm starts with an initial partition of states into final and non-final sets. It then iteratively refines the partitions by checking if states in the same partition can be distinguished based on their transitions and the partitions of their child states. This process continues until no further refinement is possible, resulting in a minimized DFTA where each partition corresponds to a single state. The resulting minimized DFTA is equivalent to the original DFTA but has fewer states, making it more efficient for processing trees.
+The minimization process relies on the semantics of the DFTA, which is defined by the BottomUpRankedSemantics class. This semantics allows the algorithm to compute the states that can be reached from the initial states and lead to a final state through the transitions defined in the automaton.
+Attributes:
+- None
+Methods:
+- __init__: Initializes the dfta_minimizer class.
+- check_determinism: Checks if the given FTA is deterministic using BottomUpRankedSemantics class.
+- get_final_states: Returns the set of final states of the given FTA.
+- get_partition_index: Returns the index of the partition (of sets of states) containing the given state.
+- redendant_rules: Checks if a given rule is redundant in a set of transitions.
+- minimize: Minimizes the given deterministic FTA using partition refinement and returns a new minimized DFTA.
+The minimize method first checks if the input FTA is deterministic. It then initializes the partition of states into final and non-final sets. The algorithm iteratively refines the partitions by grouping states based on their transitions and the partitions of their child states. Once the partitions are stable, it constructs</p></div>
+        </div>
+
+        <div id="split-tables">
+          <table class="children sortable" id="id159">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.__init__">__init__</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#check_determinism" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.check_determinism">check<wbr></wbr>_determinism</a></code></td>
+    <td>Check if the given FTA is deterministic using BottomUpRankedSemantics class.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_final_states" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_final_states">get<wbr></wbr>_final<wbr></wbr>_states</a></code></td>
+    <td>Return the set of final states of the given FTA.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_partition_index" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_partition_index">get<wbr></wbr>_partition<wbr></wbr>_index</a></code></td>
+    <td>Return the index of the partition (of sets of states) containing the given state.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#minimize" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.minimize">minimize</a></code></td>
+    <td>Minimize the given deterministic FTA using partition refinement. Returns a new minimized DFTA.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#redendant_rules" class="internal-link" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.redendant_rules">redendant<wbr></wbr>_rules</a></code></td>
+    <td>Check if a given rule is redundant in a set of transitions.</td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="child-list">
+          <div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__init__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#__init__" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.check_determinism">
+    
+  </a>
+  <a name="check_determinism">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">check_determinism</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">fta</span>) -&gt; <code>ranked_Fta</code>:</span>
+    
+    <a class="headerLink" href="#check_determinism" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.check_determinism">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Check if the given FTA is deterministic using BottomUpRankedSemantics class.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_final_states">
+    
+  </a>
+  <a name="get_final_states">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">get_final_states</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">fta</span>):</span>
+    
+    <a class="headerLink" href="#get_final_states" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_final_states">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return the set of final states of the given FTA.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_partition_index">
+    
+  </a>
+  <a name="get_partition_index">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">get_partition_index</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">partitions, </span><span class="rst-sig-param">state</span>):</span>
+    
+    <a class="headerLink" href="#get_partition_index" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.get_partition_index">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return the index of the partition (of sets of states) containing the given state.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.minimize">
+    
+  </a>
+  <a name="minimize">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">minimize</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">fta</span>):</span>
+    
+    <a class="headerLink" href="#minimize" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.minimize">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Minimize the given deterministic FTA using partition refinement. Returns a new minimized DFTA.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.redendant_rules">
+    
+  </a>
+  <a name="redendant_rules">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">redendant_rules</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">rule: <code>ranked_Rule</code>, </span><span class="rst-sig-param">transitions: <code>set</code></span>) -&gt; <code>bool</code>:</span>
+    
+    <a class="headerLink" href="#redendant_rules" title="TARgET.src.TARgET.engine.fta.minimization.dfta_standard_minimization.dfta_minimizer.redendant_rules">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Check if a given rule is redundant in a set of transitions.</p></div>
+  </div>
+</div>
+        </div>
+      
+      </main>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for TARgET,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    25.10.1 at 2026-07-25 10:31:09.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

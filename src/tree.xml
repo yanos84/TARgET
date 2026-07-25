@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tree type="ranked">
+    <node symbol="f" rank="2">
+        <node symbol="a" rank="0" />
+        <node symbol="a" rank="0" />
+    </node>
+</tree>

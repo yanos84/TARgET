@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>TARgET.src.TARgET.core.base.tree.AbstractTree</title>
+    <meta name="generator" content="pydoctor 25.10.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          TARgET <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="This class"><wbr></wbr>Abstract<wbr></wbr>Tree</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__str__" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.__str__">__str__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_child" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.add_child">add<wbr></wbr>_child</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_well_formed" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.is_well_formed">is<wbr></wbr>_well<wbr></wbr>_formed</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#structure" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.structure">structure</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#symbol" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.symbol">symbol</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#children" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.children">children</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#parent" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.parent">parent</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_children" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree._children">_children</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_parent" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree._parent">_parent</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="TARgET.src.TARgET.core.base.tree.html" class="internal-link" title="The parent of this class">tree</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree"><wbr></wbr>Abstract<wbr></wbr>Tree</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapse-sidebar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <main class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">TARgET</a></code><wbr></wbr>.<code><a href="TARgET.src.html" class="internal-link" title="TARgET.src">src</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.html" class="internal-link" title="TARgET.src.TARgET">TARgET</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.core.html" class="internal-link" title="TARgET.src.TARgET.core">core</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.core.base.html" class="internal-link" title="TARgET.src.TARgET.core.base">base</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.core.base.tree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree">tree</a></code><wbr></wbr>.<code><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree">AbstractTree</a></code></code></h1>
+          <div id="show-private">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">AbstractTree</span>(ABC):</code></p><p>Known subclasses: <code><a href="TARgET.src.TARgET.core.base.rankedTree.RankedTree.html" class="internal-link">TARgET.src.TARgET.core.base.rankedTree.RankedTree</a></code>, <code><a href="TARgET.src.TARgET.core.base.unrankedTree.UnrankedTree.html" class="internal-link">TARgET.src.TARgET.core.base.unrankedTree.UnrankedTree</a></code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.__init__">AbstractTree(symbol)</a></code></p><p><a href="classIndex.html#TARgET.src.TARgET.core.base.tree.AbstractTree">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>Abstract base class for tree structures. This class defines the basic structure and operations for a tree, including adding children and checking well-formedness. Attributes:</p>
+<ul class="rst-simple">
+<li>symbol: The symbol associated with the node, which can be a string or a more complex object depending on the specific tree implementation.</li>
+<li>children: A list of child nodes, which are also instances of AbstractTree.</li>
+<li>parent: An optional reference to the parent node, allowing  for traversal up the tree.</li>
+</ul>
+<p>Methods:</p>
+<ul class="rst-simple">
+<li>__init__: Initializes the tree node with a given symbol and sets up the children and parent references.</li>
+<li>add_child: Adds a child node to the current node, ensuring that the child is an instance of AbstractTree and properly sets the parent reference.</li>
+<li>is_well_formed: An abstract method that must be implemented by subclasses to check if the tree structure adheres to specific constraints (e.g., ranked or unranked).</li>
+<li>__str__: Provides a string representation of the tree, showing the symbol and its children in a readable format.</li>
+<li>structure: Returns a tuple representation of the tree structure, which can be useful for comparisons and debugging.</li>
+</ul>
+</div>
+        </div>
+
+        <div id="split-tables">
+          <table class="children sortable" id="id80">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.__init__">__init__</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__str__" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.__str__">__str__</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_child" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.add_child">add<wbr></wbr>_child</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_well_formed" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.is_well_formed">is<wbr></wbr>_well<wbr></wbr>_formed</a></code></td>
+    <td>Checks structural constraints (ranked/unranked)</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#structure" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.structure">structure</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#symbol" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.symbol">symbol</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#children" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.children">children</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#parent" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree.parent">parent</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_children" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree._children">_children</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_parent" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree._parent">_parent</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="child-list">
+          <div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__init__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">symbol: <code>str</code></span>):</span>
+    
+    <a class="headerLink" href="#__init__" title="TARgET.src.TARgET.core.base.tree.AbstractTree.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="TARgET.src.TARgET.core.base.rankedTree.RankedTree.html" class="internal-link">TARgET.src.TARgET.core.base.rankedTree.RankedTree</a></code></div>
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.__str__">
+    
+  </a>
+  <a name="__str__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__str__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>) -&gt; <code>str</code>:</span>
+    
+    <a class="headerLink" href="#__str__" title="TARgET.src.TARgET.core.base.tree.AbstractTree.__str__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.add_child">
+    
+  </a>
+  <a name="add_child">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">add_child</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">child: <code><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree">AbstractTree</a></code></span>):</span>
+    
+    <a class="headerLink" href="#add_child" title="TARgET.src.TARgET.core.base.tree.AbstractTree.add_child">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="TARgET.src.TARgET.core.base.rankedTree.RankedTree.html" class="internal-link">TARgET.src.TARgET.core.base.rankedTree.RankedTree</a></code></div>
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.is_well_formed">
+    
+  </a>
+  <a name="is_well_formed">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <div><span class="decorator">@abstractmethod<br /></span></div>
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">is_well_formed</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>) -&gt; <code>bool</code>:</span>
+    
+    <a class="headerLink" href="#is_well_formed" title="TARgET.src.TARgET.core.base.tree.AbstractTree.is_well_formed">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="TARgET.src.TARgET.core.base.rankedTree.RankedTree.html" class="internal-link">TARgET.src.TARgET.core.base.rankedTree.RankedTree</a></code>, <code><a href="TARgET.src.TARgET.core.base.unrankedTree.UnrankedTree.html" class="internal-link">TARgET.src.TARgET.core.base.unrankedTree.UnrankedTree</a></code></div>
+    <div><p>Checks structural constraints (ranked/unranked)</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.structure">
+    
+  </a>
+  <a name="structure">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">structure</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#structure" title="TARgET.src.TARgET.core.base.tree.AbstractTree.structure">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.symbol">
+    
+  </a>
+  <a name="symbol">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">symbol</span> =
+    
+    <a class="headerLink" href="#symbol" title="TARgET.src.TARgET.core.base.tree.AbstractTree.symbol">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.children">
+    
+  </a>
+  <a name="children">
+    
+  </a>
+  <div class="functionHeader">
+    <div><span class="decorator">@property<br /></span></div>
+    <span class="py-defname">children</span>: <code>list[<wbr></wbr><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree">AbstractTree</a>]</code> =
+    
+    <a class="headerLink" href="#children" title="TARgET.src.TARgET.core.base.tree.AbstractTree.children">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree.parent">
+    
+  </a>
+  <a name="parent">
+    
+  </a>
+  <div class="functionHeader">
+    <div><span class="decorator">@property<br /></span></div>
+    <span class="py-defname">parent</span>: <code><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree">AbstractTree</a> | None</code> =
+    
+    <a class="headerLink" href="#parent" title="TARgET.src.TARgET.core.base.tree.AbstractTree.parent">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree._children">
+    
+  </a>
+  <a name="_children">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_children</span>: <code>list[<wbr></wbr><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree">AbstractTree</a>]</code> =
+    
+    <a class="headerLink" href="#_children" title="TARgET.src.TARgET.core.base.tree.AbstractTree._children">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="TARgET.src.TARgET.core.base.tree.AbstractTree._parent">
+    
+  </a>
+  <a name="_parent">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_parent</span>: <code><a href="TARgET.src.TARgET.core.base.tree.AbstractTree.html" class="internal-link" title="TARgET.src.TARgET.core.base.tree.AbstractTree">AbstractTree</a> | None</code> =
+    
+    <a class="headerLink" href="#_parent" title="TARgET.src.TARgET.core.base.tree.AbstractTree._parent">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </main>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for TARgET,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    25.10.1 at 2026-07-25 10:31:09.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
