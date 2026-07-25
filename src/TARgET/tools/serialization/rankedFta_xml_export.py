@@ -60,7 +60,7 @@ def export_ranked_fta_to_xml(automaton: ranked_Fta, file_name: str) -> None:
 # Example usage
 
 if __name__ == "__main__":
-    from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
+    from TARgET.engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
     generator = RandomRankedFtaGenerator(
     n_states=6,
     n_symbols=4,

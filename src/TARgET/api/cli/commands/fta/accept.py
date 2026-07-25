@@ -1,12 +1,13 @@
-from TARgET.tools.utils.rankedFta_xml_import import load_fta_from_xml
-from TARgET.tools.utils.rankedTree_xml_import import TreeXMLImporter
+from TARgET.tools.serialization.rankedFta_xml_import import load_fta_from_xml
+from TARgET.tools.serialization.rankedTree_xml_import import TreeXMLImporter
 from TARgET.engine.fta.acceptors.rankedAcceptor import RankedBottomUpAcceptor as RankedAcceptor
 
 """
 A cli command that decides whether a ranked tree is accepted by a given ranked finite tree automaton (RFTA).
 Syntax:
     python -m TARgET.api.cli.commands.fta.accept <fta_file> <tree_file> [-o <output>] (from the root of the TARgET project)
-    or target fta accept <fta_file> <tree_file> [-o <output>] (from anywhere if the project is installed)"""
+    or target fta accept <fta_file> <tree_file> [-o <output>] (from anywhere if the project is installed)
+"""
 
 
 def run(args):

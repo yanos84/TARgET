@@ -1,4 +1,4 @@
-from TARgET.tools.utils.rankedFta_xml_import import load_fta_from_xml
+from TARgET.tools.serialization.rankedFta_xml_import import load_fta_from_xml
 from TARgET.tools.drawing.rankedFtaDraw import draw_ranked_fta
 
 """
@@ -35,7 +35,7 @@ def register_command(subparsers):
     """
     draw_parser = subparsers.add_parser(
         "draw",
-        help="Draw a ranked finite tree automaton.",
+        help="Draw a ranked finite tree automaton. If no output file is specified, the drawn RFTA will be saved as 'fta' in the current directory.  The default format is PNG.  You can specify the format using the --format option (choices: png, pdf, svg).  ",
     )
 
     draw_parser.add_argument("fta_file")

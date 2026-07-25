@@ -279,7 +279,11 @@ In addition to the API reference, each package provides illustrative examples de
 The documentation can be generated locally using:
 
 ```bash
-pydoctor --make-html --html-output docs TARgET
+pydoctor \
+  --project-name TARgET \
+  --html-output docs \
+  --project-base-dir . \
+  src/TARgET
 ```
 
 The generated HTML documentation will be available in the `docs/` directory and can be opened in any modern web browser.

@@ -1,6 +1,6 @@
 import argparse
 from .commands.fta import register_commands as register_fta_commands
-#from .commands.rte import register_commands as register_rte_commands
+from .commands.rte import register_commands as register_rte_commands
 #from TARgET.tools.drawing.rankedFtaDraw import draw_ranked_fta
 #from engine.fta.acceptors.rankedAcceptor import RankedAcceptor
 #from engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
@@ -31,7 +31,7 @@ def main():
     )
 
     register_fta_commands(subparsers)
-    #register_rte_commands(subparsers)
+    register_rte_commands(subparsers)
 
     args = parser.parse_args()
     args.handler(args)

@@ -10,11 +10,14 @@ Syntax:
 Available commands:
     draw: Draw a ranked finite tree automaton (RFTA) from an XML file.
     accept: Decide whether a ranked tree is accepted by a given ranked finite tree automaton (RFTA).
+    determinize: Determinize a given ranked finite tree automaton (RFTA).
+    minimize: Minimize a given deterministic ranked finite tree automaton (DFTA).
 """
 
 from .draw import register_command as register_draw_command
 from .accept import register_command as register_accept_command
-#from .determinize import register_command as register_determinize_command
+from .determin import register_command as register_determinize_command
+from .minimize import register_command as register_minimize_command
 
 
 def register_commands(subparsers):
@@ -33,4 +36,5 @@ def register_commands(subparsers):
 
     register_draw_command(fta_subparsers)  # Register the draw command for FTAs
     register_accept_command(fta_subparsers)
-    #register_determinize_command(fta_subparsers)
+    register_determinize_command(fta_subparsers)
+    register_minimize_command(fta_subparsers)
