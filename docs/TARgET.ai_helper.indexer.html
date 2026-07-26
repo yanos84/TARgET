@@ -158,14 +158,87 @@
             </div>
         
 
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_build_signature" class="internal-link" title="TARgET.ai_helper.indexer._build_signature">_build<wbr></wbr>_signature</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_class_unit" class="internal-link" title="TARgET.ai_helper.indexer._class_unit">_class<wbr></wbr>_unit</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_extract_class_units" class="internal-link" title="TARgET.ai_helper.indexer._extract_class_units">_extract<wbr></wbr>_class<wbr></wbr>_units</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_function_unit" class="internal-link" title="TARgET.ai_helper.indexer._function_unit">_function<wbr></wbr>_unit</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_get_decorators" class="internal-link" title="TARgET.ai_helper.indexer._get_decorators">_get<wbr></wbr>_decorators</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_get_name" class="internal-link" title="TARgET.ai_helper.indexer._get_name">_get<wbr></wbr>_name</a></code>
+            </div>
+        
+
     </li>
 </ul> 
 
         
          
 
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+    
+    <li class="">
         
-         
+        
+        
+
+        
+            <div class="itemName"><code><a href="#IGNORED_DIR_NAMES" class="internal-link" title="TARgET.ai_helper.indexer.IGNORED_DIR_NAMES">IGNORED<wbr></wbr>_DIR<wbr></wbr>_NAMES</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
 
         
          
@@ -297,17 +370,52 @@
     
     <td>Class</td>
     <td><code><a href="TARgET.ai_helper.indexer.SemanticUnit.html" class="internal-link" title="TARgET.ai_helper.indexer.SemanticUnit"><wbr></wbr>Semantic<wbr></wbr>Unit</a></code></td>
-    <td>Represents a class or function in the codebase, capturing its essential information for indexing and retrieval.</td>
+    <td>Represents a source-code unit extracted from a Python codebase.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#extract_units_from_file" class="internal-link" title="TARgET.ai_helper.indexer.extract_units_from_file">extract<wbr></wbr>_units<wbr></wbr>_from<wbr></wbr>_file</a></code></td>
-    <td>Extracts semantic units (classes and functions) from a given Python file.</td>
+    <td>Extracts source-code units from one Python file.</td>
   </tr><tr class="function">
     
     <td>Function</td>
     <td><code><a href="#index_toolkit" class="internal-link" title="TARgET.ai_helper.indexer.index_toolkit">index<wbr></wbr>_toolkit</a></code></td>
-    <td>Indexes all Python files in the given toolkit path, extracting semantic units from each file.</td>
+    <td>Recursively indexes all Python files in a toolkit.</td>
+  </tr><tr class="constant">
+    
+    <td>Constant</td>
+    <td><code><a href="#IGNORED_DIR_NAMES" class="internal-link" title="TARgET.ai_helper.indexer.IGNORED_DIR_NAMES">IGNORED<wbr></wbr>_DIR<wbr></wbr>_NAMES</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><code><a href="#_build_signature" class="internal-link" title="TARgET.ai_helper.indexer._build_signature">_build<wbr></wbr>_signature</a></code></td>
+    <td>Builds a source-like signature for a function or method.</td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><code><a href="#_class_unit" class="internal-link" title="TARgET.ai_helper.indexer._class_unit">_class<wbr></wbr>_unit</a></code></td>
+    <td>Builds a SemanticUnit for a class.</td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><code><a href="#_extract_class_units" class="internal-link" title="TARgET.ai_helper.indexer._extract_class_units">_extract<wbr></wbr>_class<wbr></wbr>_units</a></code></td>
+    <td>Extracts a class and its methods.</td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><code><a href="#_function_unit" class="internal-link" title="TARgET.ai_helper.indexer._function_unit">_function<wbr></wbr>_unit</a></code></td>
+    <td>Builds a SemanticUnit for a function or method.</td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><code><a href="#_get_decorators" class="internal-link" title="TARgET.ai_helper.indexer._get_decorators">_get<wbr></wbr>_decorators</a></code></td>
+    <td>Returns decorators applied to a class or function.</td>
+  </tr><tr class="function private">
+    
+    <td>Function</td>
+    <td><code><a href="#_get_name" class="internal-link" title="TARgET.ai_helper.indexer._get_name">_get<wbr></wbr>_name</a></code></td>
+    <td>Converts an AST expression into a readable name.</td>
   </tr>
 </table>
           
@@ -338,7 +446,16 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Extracts semantic units (classes and functions) from a given Python file.</p></div>
+    <div><p class="pre">Extracts source-code units from one Python file.
+
+The extracted units include:
+
+- the module;
+- top-level classes;
+- methods;
+- nested classes;
+- top-level functions;
+- async functions and methods.</p></div>
   </div>
 </div><div class="basefunction">
   
@@ -362,7 +479,190 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Indexes all Python files in the given toolkit path, extracting semantic units from each file.</p></div>
+    <div><p>Recursively indexes all Python files in a toolkit.</p></div>
+  </div>
+</div><div class="baseconstant">
+  
+  
+  <a name="TARgET.ai_helper.indexer.IGNORED_DIR_NAMES">
+    
+  </a>
+  <a name="IGNORED_DIR_NAMES">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">IGNORED_DIR_NAMES</span>: <code>set[<wbr></wbr>str]</code> =
+    
+    <a class="headerLink" href="#IGNORED_DIR_NAMES" title="TARgET.ai_helper.indexer.IGNORED_DIR_NAMES">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>set([<wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">.git</span><span class="rst-variable-quote">'</span>,
+     <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">.hg</span><span class="rst-variable-quote">'</span>,
+     <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">.svn</span><span class="rst-variable-quote">'</span>,
+     <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">__pycache__</span><span class="rst-variable-quote">'</span>,
+     <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">.mypy_cache</span><span class="rst-variable-quote">'</span>,
+     <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">.pytest_cache</span><span class="rst-variable-quote">'</span>,
+     <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">.ruff_cache</span><span class="rst-variable-quote">'</span>,
+<span class="rst-variable-ellipsis">...</span></code></pre></td></tr></table>
+  </div>
+</div><div class="basefunction private">
+  
+  
+  <a name="TARgET.ai_helper.indexer._build_signature">
+    
+  </a>
+  <a name="_build_signature">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">_build_signature</span><span class="function-signature">(<span class="rst-sig-param">node: <code>ast.AST</code></span>) -&gt; <code>str</code>:</span>
+    
+    <a class="headerLink" href="#_build_signature" title="TARgET.ai_helper.indexer._build_signature">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Builds a source-like signature for a function or method.</p></div>
+  </div>
+</div><div class="basefunction private">
+  
+  
+  <a name="TARgET.ai_helper.indexer._class_unit">
+    
+  </a>
+  <a name="_class_unit">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">_class_unit</span><span class="function-signature long-signature">(<span class="rst-sig-param">node: <code>ast.ClassDef</code>, </span><span class="rst-sig-param">path: <code>Path</code>, </span><span class="rst-sig-param">source: <code>str</code>, </span><span class="rst-sig-param">module: <code>str</code>, </span><span class="rst-sig-param">parent: <code>str | None</code> = None</span>) -&gt; <code><a href="TARgET.ai_helper.indexer.SemanticUnit.html" class="internal-link" title="TARgET.ai_helper.indexer.SemanticUnit">SemanticUnit</a></code>:</span>
+    
+    <a class="headerLink" href="#_class_unit" title="TARgET.ai_helper.indexer._class_unit">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Builds a SemanticUnit for a class.</p></div>
+  </div>
+</div><div class="basefunction private">
+  
+  
+  <a name="TARgET.ai_helper.indexer._extract_class_units">
+    
+  </a>
+  <a name="_extract_class_units">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">_extract_class_units</span><span class="function-signature long-signature">(<span class="rst-sig-param">node: <code>ast.ClassDef</code>, </span><span class="rst-sig-param">path: <code>Path</code>, </span><span class="rst-sig-param">source: <code>str</code>, </span><span class="rst-sig-param">module: <code>str</code>, </span><span class="rst-sig-param">parent: <code>str | None</code> = None</span>) -&gt; <code>list[<wbr></wbr><a href="TARgET.ai_helper.indexer.SemanticUnit.html" class="internal-link" title="TARgET.ai_helper.indexer.SemanticUnit">SemanticUnit</a>]</code>:</span>
+    
+    <a class="headerLink" href="#_extract_class_units" title="TARgET.ai_helper.indexer._extract_class_units">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Extracts a class and its methods.</p>
+<p>Nested classes are also recursively indexed.</p>
+</div>
+  </div>
+</div><div class="basefunction private">
+  
+  
+  <a name="TARgET.ai_helper.indexer._function_unit">
+    
+  </a>
+  <a name="_function_unit">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">_function_unit</span><span class="function-signature long-signature">(<span class="rst-sig-param">node: <code>ast.FunctionDef | ast.AsyncFunctionDef</code>, </span><span class="rst-sig-param">path: <code>Path</code>, </span><span class="rst-sig-param">source: <code>str</code>, </span><span class="rst-sig-param">kind: <code>str</code>, </span><span class="rst-sig-param">module: <code>str</code>, </span><span class="rst-sig-param">parent: <code>str | None</code> = None</span>) -&gt; <code><a href="TARgET.ai_helper.indexer.SemanticUnit.html" class="internal-link" title="TARgET.ai_helper.indexer.SemanticUnit">SemanticUnit</a></code>:</span>
+    
+    <a class="headerLink" href="#_function_unit" title="TARgET.ai_helper.indexer._function_unit">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Builds a SemanticUnit for a function or method.</p></div>
+  </div>
+</div><div class="basefunction private">
+  
+  
+  <a name="TARgET.ai_helper.indexer._get_decorators">
+    
+  </a>
+  <a name="_get_decorators">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">_get_decorators</span><span class="function-signature">(<span class="rst-sig-param">node: <code>ast.AST</code></span>) -&gt; <code>list[<wbr></wbr>str]</code>:</span>
+    
+    <a class="headerLink" href="#_get_decorators" title="TARgET.ai_helper.indexer._get_decorators">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Returns decorators applied to a class or function.</p></div>
+  </div>
+</div><div class="basefunction private">
+  
+  
+  <a name="TARgET.ai_helper.indexer._get_name">
+    
+  </a>
+  <a name="_get_name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">_get_name</span><span class="function-signature">(<span class="rst-sig-param">node: <code>ast.AST</code></span>) -&gt; <code>str</code>:</span>
+    
+    <a class="headerLink" href="#_get_name" title="TARgET.ai_helper.indexer._get_name">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Converts an AST expression into a readable name.
+
+This supports names such as:
+
+    Foo
+    module.Foo
+    typing.Generic[T]</p></div>
   </div>
 </div>
         </div>
@@ -376,7 +676,7 @@
   <div class="container-fluid">
     <a href="index.html">API Documentation</a> for TARgET,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    25.10.1 at 2026-07-25 23:16:26.
+    25.10.1 at 2026-07-26 14:02:02.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 

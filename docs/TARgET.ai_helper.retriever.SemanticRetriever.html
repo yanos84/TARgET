@@ -145,6 +145,16 @@
             </div>
         
 
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_unit_to_text" class="internal-link" title="TARgET.ai_helper.retriever.SemanticRetriever._unit_to_text">_unit<wbr></wbr>_to<wbr></wbr>_text</a></code>
+            </div>
+        
+
     </li>
 </ul> 
 
@@ -272,11 +282,13 @@
         </div>
 
         <div class="extrasDocstring">
-          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">SemanticRetriever</span>:</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="TARgET.ai_helper.retriever.SemanticRetriever.__init__">SemanticRetriever(units)</a></code></p><p><a href="classIndex.html#TARgET.ai_helper.retriever.SemanticRetriever">View In Hierarchy</a></p>
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">SemanticRetriever</span>:</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="TARgET.ai_helper.retriever.SemanticRetriever.__init__">SemanticRetriever(units, model_name)</a></code></p><p><a href="classIndex.html#TARgET.ai_helper.retriever.SemanticRetriever">View In Hierarchy</a></p>
         </div>
 
         <div class="moduleDocstring">
-          <div><p>The SemanticRetriever class is responsible for indexing and retrieving semantic units (classes and functions) from a codebase based on their embeddings. It uses the SentenceTransformer model to generate embeddings for the semantic units and FAISS for efficient similarity search. The retrieve method allows querying the indexed semantic units using a natural language query, returning the most relevant units based on their embeddings. This class is essential for enabling the AI assistant to understand and utilize the existing codebase effectively when responding to user queries.</p></div>
+          <div><p>Retrieves relevant source-code units from a codebase.</p>
+<p>Embeddings are generated from both semantic metadata and actual source code. This allows retrieval to match user questions against implementation details, not only class names and docstrings.</p>
+</div>
         </div>
 
         <div id="split-tables">
@@ -287,12 +299,12 @@
     
     <td>Method</td>
     <td><code><a href="#__init__" class="internal-link" title="TARgET.ai_helper.retriever.SemanticRetriever.__init__">__init__</a></code></td>
-    <td>Initializes the SemanticRetriever with a list of SemanticUnit objects. It generates embeddings for each unit using the SentenceTransformer model and builds a FAISS index for efficient retrieval. The embeddings capture the semantic meaning of the units, allowing for similarity-based searches...</td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><code><a href="#retrieve" class="internal-link" title="TARgET.ai_helper.retriever.SemanticRetriever.retrieve">retrieve</a></code></td>
-    <td>Retrieves the top-k most relevant semantic units based on the provided query. It generates an embedding for the query using the SentenceTransformer model and performs a similarity search against the indexed embeddings...</td>
+    <td>Retrieves the k most relevant source-code units.</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
@@ -313,6 +325,11 @@
     <td>Instance Variable</td>
     <td><code><a href="#units" class="internal-link" title="TARgET.ai_helper.retriever.SemanticRetriever.units">units</a></code></td>
     <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="staticmethod private">
+    
+    <td>Static Method</td>
+    <td><code><a href="#_unit_to_text" class="internal-link" title="TARgET.ai_helper.retriever.SemanticRetriever._unit_to_text">_unit<wbr></wbr>_to<wbr></wbr>_text</a></code></td>
+    <td>Converts a semantic unit into the text used for embedding.</td>
   </tr>
 </table>
           
@@ -333,7 +350,7 @@
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span>&#160;<span class="py-defname">__init__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">units</span>):</span>
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__init__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">units: <code>list[<wbr></wbr><a href="TARgET.ai_helper.indexer.SemanticUnit.html" class="internal-link" title="TARgET.ai_helper.indexer.SemanticUnit">SemanticUnit</a>]</code>, </span><span class="rst-sig-param">model_name: <code>str</code> = <span class="rst-variable-quote">'</span><span class="rst-variable-string">all-MiniLM-L6-v2</span><span class="rst-variable-quote">'</span></span>):</span>
     
     <a class="headerLink" href="#__init__" title="TARgET.ai_helper.retriever.SemanticRetriever.__init__">
       
@@ -343,7 +360,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Initializes the SemanticRetriever with a list of SemanticUnit objects. It generates embeddings for each unit using the SentenceTransformer model and builds a FAISS index for efficient retrieval. The embeddings capture the semantic meaning of the units, allowing for similarity-based searches. The retrieve method can then be used to find the most relevant semantic units based on a user's query.</p></div>
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -357,7 +374,7 @@
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span>&#160;<span class="py-defname">retrieve</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">query: <code>str</code>, </span><span class="rst-sig-param">k=4</span>):</span>
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">retrieve</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">query: <code>str</code>, </span><span class="rst-sig-param">k: <code>int</code> = 4</span>) -&gt; <code>list[<wbr></wbr><a href="TARgET.ai_helper.indexer.SemanticUnit.html" class="internal-link" title="TARgET.ai_helper.indexer.SemanticUnit">SemanticUnit</a>]</code>:</span>
     
     <a class="headerLink" href="#retrieve" title="TARgET.ai_helper.retriever.SemanticRetriever.retrieve">
       
@@ -367,7 +384,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Retrieves the top-k most relevant semantic units based on the provided query. It generates an embedding for the query using the SentenceTransformer model and performs a similarity search against the indexed embeddings. The method returns a list of the most relevant SemanticUnit objects, allowing the AI assistant to access the most pertinent information from the codebase when responding to user queries.</p></div>
+    <div><p>Retrieves the k most relevant source-code units.</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -465,6 +482,30 @@
     <div><p class="undocumented">Undocumented</p></div>
     
   </div>
+</div><div class="basestaticmethod private">
+  
+  
+  <a name="TARgET.ai_helper.retriever.SemanticRetriever._unit_to_text">
+    
+  </a>
+  <a name="_unit_to_text">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <div><span class="decorator">@staticmethod<br /></span></div>
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">_unit_to_text</span><span class="function-signature">(<span class="rst-sig-param">unit: <code><a href="TARgET.ai_helper.indexer.SemanticUnit.html" class="internal-link" title="TARgET.ai_helper.indexer.SemanticUnit">SemanticUnit</a></code></span>) -&gt; <code>str</code>:</span>
+    
+    <a class="headerLink" href="#_unit_to_text" title="TARgET.ai_helper.retriever.SemanticRetriever._unit_to_text">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Converts a semantic unit into the text used for embedding.</p></div>
+  </div>
 </div>
         </div>
       
@@ -477,7 +518,7 @@
   <div class="container-fluid">
     <a href="index.html">API Documentation</a> for TARgET,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    25.10.1 at 2026-07-25 23:16:26.
+    25.10.1 at 2026-07-26 14:02:02.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 

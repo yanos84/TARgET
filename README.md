@@ -290,6 +290,39 @@ The generated HTML documentation will be available in the `docs/` directory and 
 
 The actualized documentation is available at <yanos84.github.io/TARgET>
 
+## AI Assistant
+
+TARgET includes an AI assistant in the `ai_helper` package (see installation). It provides a local, code-aware assistant that helps contributors understand and work with the toolkit.
+
+The assistant indexes the Python source code of the toolkit using the Python AST. It extracts all modules, classes, methods, and functions together with their source code, signatures, documentation, inheritance information, and other structural metadata.
+
+The indexed source-code units are embedded using a `SentenceTransformer` model and stored in a FAISS index. When a user asks a question, the assistant retrieves the most relevant source-code units and provides their actual implementations as context to a locally running large language model.
+
+The overall workflow is:
+
+```text
+Python source code
+        │
+        ▼
+AST-based indexing
+        │
+        ▼
+Source-code units
+        │
+        ▼
+Semantic embeddings
+        │
+        ▼
+FAISS similarity search
+        │
+        ▼
+Relevant source code
+        │
+        ▼
+Local language model
+
+The optional `ai_helper` component requires a local LLM to be provided by the user. Generation parameters such as the temperature, context size, maximum number of generated tokens, and other model settings can be adjusted in the `ai_helper` configuration to control the balance between determinism, creativity, and available hardware resources.
+
 
 ## CITATION
 

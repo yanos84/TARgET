@@ -135,6 +135,36 @@
             </div>
         
 
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#build_assistant" class="internal-link" title="TARgET.ai_helper.run.build_assistant">build<wbr></wbr>_assistant</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_model_path" class="internal-link" title="TARgET.ai_helper.run.get_model_path">get<wbr></wbr>_model<wbr></wbr>_path</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#main" class="internal-link" title="TARgET.ai_helper.run.main">main</a></code>
+            </div>
+        
+
     </li>
 </ul> 
 
@@ -150,7 +180,7 @@
         
 
         
-            <div class="itemName"><code><a href="#MODELS_DIR" class="internal-link" title="TARgET.ai_helper.run.MODELS_DIR">MODELS<wbr></wbr>_DIR</a></code>
+            <div class="itemName"><code><a href="#DEFAULT_MODELS_DIR" class="internal-link" title="TARgET.ai_helper.run.DEFAULT_MODELS_DIR">DEFAULT<wbr></wbr>_MODELS<wbr></wbr>_DIR</a></code>
             </div>
         
 
@@ -160,57 +190,7 @@
         
 
         
-            <div class="itemName"><code><a href="#llm" class="internal-link" title="TARgET.ai_helper.run.llm">llm</a></code>
-            </div>
-        
-
-    </li><li class="">
-        
-        
-        
-
-        
-            <div class="itemName"><code><a href="#model_path" class="internal-link" title="TARgET.ai_helper.run.model_path">model<wbr></wbr>_path</a></code>
-            </div>
-        
-
-    </li><li class="">
-        
-        
-        
-
-        
-            <div class="itemName"><code><a href="#models" class="internal-link" title="TARgET.ai_helper.run.models">models</a></code>
-            </div>
-        
-
-    </li><li class="">
-        
-        
-        
-
-        
-            <div class="itemName"><code><a href="#retriever" class="internal-link" title="TARgET.ai_helper.run.retriever">retriever</a></code>
-            </div>
-        
-
-    </li><li class="">
-        
-        
-        
-
-        
-            <div class="itemName"><code><a href="#saved" class="internal-link" title="TARgET.ai_helper.run.saved">saved</a></code>
-            </div>
-        
-
-    </li><li class="">
-        
-        
-        
-
-        
-            <div class="itemName"><code><a href="#units" class="internal-link" title="TARgET.ai_helper.run.units">units</a></code>
+            <div class="itemName"><code><a href="#DEFAULT_TOOLKIT_PATH" class="internal-link" title="TARgET.ai_helper.run.DEFAULT_TOOLKIT_PATH">DEFAULT<wbr></wbr>_TOOLKIT<wbr></wbr>_PATH</a></code>
             </div>
         
 
@@ -348,40 +328,30 @@
     <td>Function</td>
     <td><code><a href="#ask" class="internal-link" title="TARgET.ai_helper.run.ask">ask</a></code></td>
     <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#build_assistant" class="internal-link" title="TARgET.ai_helper.run.build_assistant">build<wbr></wbr>_assistant</a></code></td>
+    <td>Loads the LLM and indexes the given toolkit path, returning (llm, retriever) ready to be used by ask().</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_model_path" class="internal-link" title="TARgET.ai_helper.run.get_model_path">get<wbr></wbr>_model<wbr></wbr>_path</a></code></td>
+    <td>Loads a previously saved model path if it still exists on disk; otherwise lists available .gguf models in models_dir and prompts the user to choose one, saving the choice for next time.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#main" class="internal-link" title="TARgET.ai_helper.run.main">main</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
   </tr><tr class="constant">
     
     <td>Constant</td>
-    <td><code><a href="#MODELS_DIR" class="internal-link" title="TARgET.ai_helper.run.MODELS_DIR">MODELS<wbr></wbr>_DIR</a></code></td>
+    <td><code><a href="#DEFAULT_MODELS_DIR" class="internal-link" title="TARgET.ai_helper.run.DEFAULT_MODELS_DIR">DEFAULT<wbr></wbr>_MODELS<wbr></wbr>_DIR</a></code></td>
     <td><span class="rst-undocumented">Undocumented</span></td>
-  </tr><tr class="variable">
+  </tr><tr class="constant">
     
-    <td>Variable</td>
-    <td><code><a href="#llm" class="internal-link" title="TARgET.ai_helper.run.llm">llm</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
-  </tr><tr class="variable">
-    
-    <td>Variable</td>
-    <td><code><a href="#model_path" class="internal-link" title="TARgET.ai_helper.run.model_path">model<wbr></wbr>_path</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
-  </tr><tr class="variable">
-    
-    <td>Variable</td>
-    <td><code><a href="#models" class="internal-link" title="TARgET.ai_helper.run.models">models</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
-  </tr><tr class="variable">
-    
-    <td>Variable</td>
-    <td><code><a href="#retriever" class="internal-link" title="TARgET.ai_helper.run.retriever">retriever</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
-  </tr><tr class="variable">
-    
-    <td>Variable</td>
-    <td><code><a href="#saved" class="internal-link" title="TARgET.ai_helper.run.saved">saved</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
-  </tr><tr class="variable">
-    
-    <td>Variable</td>
-    <td><code><a href="#units" class="internal-link" title="TARgET.ai_helper.run.units">units</a></code></td>
+    <td>Constant</td>
+    <td><code><a href="#DEFAULT_TOOLKIT_PATH" class="internal-link" title="TARgET.ai_helper.run.DEFAULT_TOOLKIT_PATH">DEFAULT<wbr></wbr>_TOOLKIT<wbr></wbr>_PATH</a></code></td>
     <td><span class="rst-undocumented">Undocumented</span></td>
   </tr>
 </table>
@@ -403,9 +373,81 @@
   <div class="functionHeader">
     
     
-    <span class="py-keyword">def</span>&#160;<span class="py-defname">ask</span><span class="function-signature">(<span class="rst-sig-param">query: <code>str</code></span>):</span>
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">ask</span><span class="function-signature">(<span class="rst-sig-param">llm, </span><span class="rst-sig-param">retriever, </span><span class="rst-sig-param">query: <code>str</code></span>):</span>
     
     <a class="headerLink" href="#ask" title="TARgET.ai_helper.run.ask">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="TARgET.ai_helper.run.build_assistant">
+    
+  </a>
+  <a name="build_assistant">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">build_assistant</span><span class="function-signature">(<span class="rst-sig-param">toolkit_path: <code>str</code>, </span><span class="rst-sig-param">models_dir: <code>str</code></span>):</span>
+    
+    <a class="headerLink" href="#build_assistant" title="TARgET.ai_helper.run.build_assistant">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Loads the LLM and indexes the given toolkit path, returning (llm, retriever) ready to be used by ask().</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="TARgET.ai_helper.run.get_model_path">
+    
+  </a>
+  <a name="get_model_path">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">get_model_path</span><span class="function-signature">(<span class="rst-sig-param">models_dir: <code>str</code></span>) -&gt; <code>Path</code>:</span>
+    
+    <a class="headerLink" href="#get_model_path" title="TARgET.ai_helper.run.get_model_path">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Loads a previously saved model path if it still exists on disk; otherwise lists available .gguf models in models_dir and prompts the user to choose one, saving the choice for next time.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="TARgET.ai_helper.run.main">
+    
+  </a>
+  <a name="main">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">main</span><span class="function-signature">():</span>
+    
+    <a class="headerLink" href="#main" title="TARgET.ai_helper.run.main">
       
       
       ¶
@@ -418,17 +460,17 @@
 </div><div class="baseconstant">
   
   
-  <a name="TARgET.ai_helper.run.MODELS_DIR">
+  <a name="TARgET.ai_helper.run.DEFAULT_MODELS_DIR">
     
   </a>
-  <a name="MODELS_DIR">
+  <a name="DEFAULT_MODELS_DIR">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">MODELS_DIR</span>: <code>str</code> =
+    <span class="py-defname">DEFAULT_MODELS_DIR</span> =
     
-    <a class="headerLink" href="#MODELS_DIR" title="TARgET.ai_helper.run.MODELS_DIR">
+    <a class="headerLink" href="#DEFAULT_MODELS_DIR" title="TARgET.ai_helper.run.DEFAULT_MODELS_DIR">
       
       
       ¶
@@ -437,22 +479,22 @@
   <div class="functionBody">
     
     <div><p class="undocumented">Undocumented</p></div>
-    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code><span class="rst-variable-quote">'</span><span class="rst-variable-string">/run/media/yanos/48D8EB77D8EB6224/Python_projects/TARgET/ai_helper/models</span><span class="rst-variable-quote">'</span></code></pre></td></tr></table>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>Path(__file__).resolve().parent / <span class="rst-variable-quote">'</span><span class="rst-variable-string">models</span><span class="rst-variable-quote">'</span> / <span class="rst-variable-quote">'</span><span class="rst-variable-string">gguf</span><span class="rst-variable-quote">'</span></code></pre></td></tr></table>
   </div>
-</div><div class="basevariable">
+</div><div class="baseconstant">
   
   
-  <a name="TARgET.ai_helper.run.llm">
+  <a name="TARgET.ai_helper.run.DEFAULT_TOOLKIT_PATH">
     
   </a>
-  <a name="llm">
+  <a name="DEFAULT_TOOLKIT_PATH">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">llm</span> =
+    <span class="py-defname">DEFAULT_TOOLKIT_PATH</span> =
     
-    <a class="headerLink" href="#llm" title="TARgET.ai_helper.run.llm">
+    <a class="headerLink" href="#DEFAULT_TOOLKIT_PATH" title="TARgET.ai_helper.run.DEFAULT_TOOLKIT_PATH">
       
       
       ¶
@@ -461,127 +503,7 @@
   <div class="functionBody">
     
     <div><p class="undocumented">Undocumented</p></div>
-    
-  </div>
-</div><div class="basevariable">
-  
-  
-  <a name="TARgET.ai_helper.run.model_path">
-    
-  </a>
-  <a name="model_path">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">model_path</span> =
-    
-    <a class="headerLink" href="#model_path" title="TARgET.ai_helper.run.model_path">
-      
-      
-      ¶
-    </a>
-  </div>
-  <div class="functionBody">
-    
-    <div><p class="undocumented">Undocumented</p></div>
-    
-  </div>
-</div><div class="basevariable">
-  
-  
-  <a name="TARgET.ai_helper.run.models">
-    
-  </a>
-  <a name="models">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">models</span> =
-    
-    <a class="headerLink" href="#models" title="TARgET.ai_helper.run.models">
-      
-      
-      ¶
-    </a>
-  </div>
-  <div class="functionBody">
-    
-    <div><p class="undocumented">Undocumented</p></div>
-    
-  </div>
-</div><div class="basevariable">
-  
-  
-  <a name="TARgET.ai_helper.run.retriever">
-    
-  </a>
-  <a name="retriever">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">retriever</span> =
-    
-    <a class="headerLink" href="#retriever" title="TARgET.ai_helper.run.retriever">
-      
-      
-      ¶
-    </a>
-  </div>
-  <div class="functionBody">
-    
-    <div><p class="undocumented">Undocumented</p></div>
-    
-  </div>
-</div><div class="basevariable">
-  
-  
-  <a name="TARgET.ai_helper.run.saved">
-    
-  </a>
-  <a name="saved">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">saved</span> =
-    
-    <a class="headerLink" href="#saved" title="TARgET.ai_helper.run.saved">
-      
-      
-      ¶
-    </a>
-  </div>
-  <div class="functionBody">
-    
-    <div><p class="undocumented">Undocumented</p></div>
-    
-  </div>
-</div><div class="basevariable">
-  
-  
-  <a name="TARgET.ai_helper.run.units">
-    
-  </a>
-  <a name="units">
-    
-  </a>
-  <div class="functionHeader">
-    
-    <span class="py-defname">units</span> =
-    
-    <a class="headerLink" href="#units" title="TARgET.ai_helper.run.units">
-      
-      
-      ¶
-    </a>
-  </div>
-  <div class="functionBody">
-    
-    <div><p class="undocumented">Undocumented</p></div>
-    
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>Path(__file__).resolve().parent.parent</code></pre></td></tr></table>
   </div>
 </div>
         </div>
@@ -595,7 +517,7 @@
   <div class="container-fluid">
     <a href="index.html">API Documentation</a> for TARgET,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    25.10.1 at 2026-07-25 23:16:26.
+    25.10.1 at 2026-07-26 14:02:02.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 

@@ -1,55 +1,80 @@
 from typing import List
+
 from ai_helper.indexer import SemanticUnit
 
-"""
-This module provides functionality for building prompts for the AI assistant based on
-indexed semantic units and user queries. The build_prompt function takes a list of
-SemanticUnit objects and a user query, and constructs a structured prompt that includes
-a system message, the context derived from the semantic units, and the user's request.
-The prompt is designed to guide the AI assistant in providing accurate and relevant
-responses based on the existing codebase and its abstractions. The prompt emphasizes the
-importance of adhering to existing APIs and class hierarchies, discouraging the AI from
-inventing new APIs that are not present in the context. This structured approach helps
-ensure that the AI assistant's responses are grounded in the actual code and documentation
-of the toolkit.
-"""
 
+def build_prompt(
+    units: List[SemanticUnit],
+    user_query: str,
+) -> str:
+    """
+    Builds an LLM prompt containing the actual source code of the most relevant
+    retrieved units.
+    """
 
-def build_prompt(units: List[SemanticUnit], user_query: str) -> str:
-    """
-    Constructs a prompt for the AI assistant based on the provided semantic units and
-    user query. The prompt includes a system message, context derived from the semantic
-    units, and the user's request. It emphasizes adherence to existing APIs and class
-    hierarchies, discouraging the AI from inventing new APIs that are not present in
-    the context.
-    """
     blocks = []
 
-    for u in units:
-        # For methods, make the owning class explicit so the model doesn't
-        # confuse a method with a free-standing function of the same name.
-        name_line = f"{u.parent}.{u.name}" if u.parent else u.name
+    for unit in units:
+
+        name = (
+            f"{unit.parent}.{unit.name}"
+            if unit.parent
+            else unit.name
+        )
+
+        metadata = (
+            f"[TYPE] {unit.kind}\n"
+            f"[NAME] {name}\n"
+            f"[FILE] {unit.file}\n"
+            f"[MODULE] {unit.module}\n"
+            f"[SIGNATURE] {unit.signature}\n"
+        )
+
+        if unit.bases:
+            metadata += (
+                f"[BASES] "
+                f"{', '.join(unit.bases)}\n"
+            )
+
+        if unit.decorators:
+            metadata += (
+                f"[DECORATORS] "
+                f"{', '.join(unit.decorators)}\n"
+            )
 
         block = (
-            f"[TYPE] {u.kind}\n"
-            f"[NAME] {name_line}\n"
-            f"[FILE] {u.file}\n"
-            f"[SIGNATURE] {u.signature}\n"
-            f"[DOCSTRING]\n{u.docstring}\n"
+            f"{metadata}\n"
+            f"[DOCSTRING]\n"
+            f"{unit.docstring}\n\n"
+            f"[SOURCE CODE]\n"
+            f"{unit.code}\n"
         )
+
         blocks.append(block)
 
     context = "\n".join(blocks)
 
-    prompt = (
+    return (
         "SYSTEM:\n"
-        "You are an AI assistant specialized in this Python toolkit.\n"
-        "You must strictly follow existing abstractions and class hierarchies.\n"
-        "Do NOT invent APIs.\n\n"
+        "You are an AI assistant specialized in this Python toolkit.\n\n"
+
+        "The CONTEXT contains actual source code extracted from the toolkit.\n"
+        "Use the source code as the primary source of truth.\n\n"
+
+        "You must:\n"
+        "- follow the existing implementation;\n"
+        "- respect existing class hierarchies and abstractions;\n"
+        "- use existing names and interfaces;\n"
+        "- explain behavior based on the provided source code;\n"
+        "- avoid inventing APIs or implementations that are not supported by "
+        "the source code.\n\n"
+
+        "If the provided context is insufficient to answer the question, "
+        "say so explicitly instead of guessing.\n\n"
+
         "CONTEXT:\n"
         f"{context}\n\n"
+
         "USER REQUEST:\n"
         f"{user_query}\n"
     )
-
-    return prompt

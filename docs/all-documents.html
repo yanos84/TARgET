@@ -123,7 +123,7 @@
             <div class="type">Module</div>
             <div class="kind">Module</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">No module docstring; 2/2 functions, 1/1 class documented</span></div>
+            <div class="summary"><span class="rst-undocumented">No module docstring; 0/1 constant, 8/8 functions, 1/1 class documented</span></div>
           </li><li id="TARgET.ai_helper.models">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.models</div>
@@ -171,7 +171,7 @@
             <div class="type">Module</div>
             <div class="kind">Module</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+            <div class="summary"><span class="rst-undocumented">No module docstring; 0/2 constant, 2/4 functions documented</span></div>
           </li><li id="TARgET.api">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.api</div>
@@ -1036,6 +1036,14 @@
             <div class="kind">Variable</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.indexer.IGNORED_DIR_NAMES">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.IGNORED<wbr></wbr>_DIR<wbr></wbr>_NAMES</div>
+            <div class="url">TARgET.ai_helper.indexer.html#IGNORED_DIR_NAMES</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Constant</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
           </li><li id="TARgET.ai_helper.indexer.SemanticUnit">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Unit</div>
@@ -1043,7 +1051,7 @@
             <div class="type">Class</div>
             <div class="kind">Class</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Represents a class or function in the codebase, capturing its essential information for indexing and retrieval.</div>
+            <div class="summary">Represents a source-code unit extracted from a Python codebase.</div>
           </li><li id="TARgET.ai_helper.indexer.SemanticUnit.kind">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Unit<wbr></wbr>.kind</div>
@@ -1100,14 +1108,94 @@
             <div class="kind">Class Variable</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="TARgET.ai_helper.indexer.extract_units_from_file 0">
+          </li><li id="TARgET.ai_helper.indexer.SemanticUnit.parent">
             
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.extract<wbr></wbr>_units<wbr></wbr>_from<wbr></wbr>_file 0</div>
-            <div class="url">TARgET.ai_helper.indexer.html#extract_units_from_file%200</div>
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Unit<wbr></wbr>.parent</div>
+            <div class="url">TARgET.ai_helper.indexer.SemanticUnit.html#parent</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.indexer.SemanticUnit.module">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Unit<wbr></wbr>.module</div>
+            <div class="url">TARgET.ai_helper.indexer.SemanticUnit.html#module</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.indexer.SemanticUnit.decorators">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Unit<wbr></wbr>.decorators</div>
+            <div class="url">TARgET.ai_helper.indexer.SemanticUnit.html#decorators</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.indexer.SemanticUnit.start_line">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Unit<wbr></wbr>.start<wbr></wbr>_line</div>
+            <div class="url">TARgET.ai_helper.indexer.SemanticUnit.html#start_line</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.indexer.SemanticUnit.end_line">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Unit<wbr></wbr>.end<wbr></wbr>_line</div>
+            <div class="url">TARgET.ai_helper.indexer.SemanticUnit.html#end_line</div>
+            <div class="type">Attribute</div>
+            <div class="kind">Class Variable</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.indexer._get_name">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>._get<wbr></wbr>_name</div>
+            <div class="url">TARgET.ai_helper.indexer.html#_get_name</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary">Extracts semantic units (classes and functions) from a given Python file.</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Converts an AST expression into a readable name.</div>
+          </li><li id="TARgET.ai_helper.indexer._build_signature">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>._build<wbr></wbr>_signature</div>
+            <div class="url">TARgET.ai_helper.indexer.html#_build_signature</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Builds a source-like signature for a function or method.</div>
+          </li><li id="TARgET.ai_helper.indexer._get_decorators">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>._get<wbr></wbr>_decorators</div>
+            <div class="url">TARgET.ai_helper.indexer.html#_get_decorators</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Returns decorators applied to a class or function.</div>
+          </li><li id="TARgET.ai_helper.indexer._function_unit">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>._function<wbr></wbr>_unit</div>
+            <div class="url">TARgET.ai_helper.indexer.html#_function_unit</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Builds a SemanticUnit for a function or method.</div>
+          </li><li id="TARgET.ai_helper.indexer._class_unit">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>._class<wbr></wbr>_unit</div>
+            <div class="url">TARgET.ai_helper.indexer.html#_class_unit</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Builds a SemanticUnit for a class.</div>
+          </li><li id="TARgET.ai_helper.indexer._extract_class_units">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>._extract<wbr></wbr>_class<wbr></wbr>_units</div>
+            <div class="url">TARgET.ai_helper.indexer.html#_extract_class_units</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Extracts a class and its methods.</div>
           </li><li id="TARgET.ai_helper.indexer.extract_units_from_file">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.extract<wbr></wbr>_units<wbr></wbr>_from<wbr></wbr>_file</div>
@@ -1115,7 +1203,7 @@
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Extracts semantic units (classes and functions) from a given Python file.</div>
+            <div class="summary">Extracts source-code units from one Python file.</div>
           </li><li id="TARgET.ai_helper.indexer.index_toolkit">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.indexer<wbr></wbr>.index<wbr></wbr>_toolkit</div>
@@ -1123,7 +1211,7 @@
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Indexes all Python files in the given toolkit path, extracting semantic units from each file.</div>
+            <div class="summary">Recursively indexes all Python files in a toolkit.</div>
           </li><li id="TARgET.ai_helper.models.model_config.CONFIG_FILE">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.models<wbr></wbr>.model<wbr></wbr>_config<wbr></wbr>.CONFIG<wbr></wbr>_FILE</div>
@@ -1171,7 +1259,7 @@
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Constructs a prompt for the AI assistant based on the provided semantic units and user query. The prompt includes a system message, context derived from the semantic units, and the user's request. It emphasizes adherence to existing APIs and class hierarchies, discouraging the AI from inventing new APIs that are not present in the context.</div>
+            <div class="summary">Builds an LLM prompt containing the actual source code of the most relevant retrieved units.</div>
           </li><li id="TARgET.ai_helper.retriever.SemanticRetriever">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.retriever<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Retriever</div>
@@ -1179,7 +1267,7 @@
             <div class="type">Class</div>
             <div class="kind">Class</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">The SemanticRetriever class is responsible for indexing and retrieving semantic units (classes and functions) from a codebase based on their embeddings. It uses the SentenceTransformer model to generate embeddings for the semantic units and FAISS for efficient similarity search...</div>
+            <div class="summary">Retrieves relevant source-code units from a codebase.</div>
           </li><li id="TARgET.ai_helper.retriever.SemanticRetriever.__init__">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.retriever<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Retriever<wbr></wbr>.__init__</div>
@@ -1187,7 +1275,7 @@
             <div class="type">Function</div>
             <div class="kind">Method</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Initializes the SemanticRetriever with a list of SemanticUnit objects. It generates embeddings for each unit using the SentenceTransformer model and builds a FAISS index for efficient retrieval. The embeddings capture the semantic meaning of the units, allowing for similarity-based searches...</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
           </li><li id="TARgET.ai_helper.retriever.SemanticRetriever.units">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.retriever<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Retriever<wbr></wbr>.units</div>
@@ -1220,6 +1308,14 @@
             <div class="kind">Instance Variable</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.retriever.SemanticRetriever._unit_to_text">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.retriever<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Retriever<wbr></wbr>._unit<wbr></wbr>_to<wbr></wbr>_text</div>
+            <div class="url">TARgET.ai_helper.retriever.SemanticRetriever.html#_unit_to_text</div>
+            <div class="type">Function</div>
+            <div class="kind">Static Method</div>
+            <div class="privacy">PRIVATE</div>
+            <div class="summary">Converts a semantic unit into the text used for embedding.</div>
           </li><li id="TARgET.ai_helper.retriever.SemanticRetriever.retrieve">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.retriever<wbr></wbr>.<wbr></wbr>Semantic<wbr></wbr>Retriever<wbr></wbr>.retrieve</div>
@@ -1227,67 +1323,51 @@
             <div class="type">Function</div>
             <div class="kind">Method</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary">Retrieves the top-k most relevant semantic units based on the provided query. It generates an embedding for the query using the SentenceTransformer model and performs a similarity search against the indexed embeddings...</div>
-          </li><li id="TARgET.ai_helper.run.MODELS_DIR">
+            <div class="summary">Retrieves the k most relevant source-code units.</div>
+          </li><li id="TARgET.ai_helper.run.DEFAULT_TOOLKIT_PATH">
             
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.MODELS<wbr></wbr>_DIR</div>
-            <div class="url">TARgET.ai_helper.run.html#MODELS_DIR</div>
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.DEFAULT<wbr></wbr>_TOOLKIT<wbr></wbr>_PATH</div>
+            <div class="url">TARgET.ai_helper.run.html#DEFAULT_TOOLKIT_PATH</div>
             <div class="type">Attribute</div>
             <div class="kind">Constant</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="TARgET.ai_helper.run.saved">
+          </li><li id="TARgET.ai_helper.run.DEFAULT_MODELS_DIR">
             
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.saved</div>
-            <div class="url">TARgET.ai_helper.run.html#saved</div>
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.DEFAULT<wbr></wbr>_MODELS<wbr></wbr>_DIR</div>
+            <div class="url">TARgET.ai_helper.run.html#DEFAULT_MODELS_DIR</div>
             <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
+            <div class="kind">Constant</div>
             <div class="privacy">PUBLIC</div>
             <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="TARgET.ai_helper.run.model_path">
+          </li><li id="TARgET.ai_helper.run.get_model_path">
             
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.model<wbr></wbr>_path</div>
-            <div class="url">TARgET.ai_helper.run.html#model_path</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.get<wbr></wbr>_model<wbr></wbr>_path</div>
+            <div class="url">TARgET.ai_helper.run.html#get_model_path</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="TARgET.ai_helper.run.models">
+            <div class="summary">Loads a previously saved model path if it still exists on disk; otherwise lists available .gguf models in models_dir and prompts the user to choose one, saving the choice for next time.</div>
+          </li><li id="TARgET.ai_helper.run.build_assistant">
             
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.models</div>
-            <div class="url">TARgET.ai_helper.run.html#models</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.build<wbr></wbr>_assistant</div>
+            <div class="url">TARgET.ai_helper.run.html#build_assistant</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="TARgET.ai_helper.run.llm">
-            
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.llm</div>
-            <div class="url">TARgET.ai_helper.run.html#llm</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="TARgET.ai_helper.run.units">
-            
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.units</div>
-            <div class="url">TARgET.ai_helper.run.html#units</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
-          </li><li id="TARgET.ai_helper.run.retriever">
-            
-            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.retriever</div>
-            <div class="url">TARgET.ai_helper.run.html#retriever</div>
-            <div class="type">Attribute</div>
-            <div class="kind">Variable</div>
-            <div class="privacy">PUBLIC</div>
-            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+            <div class="summary">Loads the LLM and indexes the given toolkit path, returning (llm, retriever) ready to be used by ask().</div>
           </li><li id="TARgET.ai_helper.run.ask">
             
             <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.ask</div>
             <div class="url">TARgET.ai_helper.run.html#ask</div>
+            <div class="type">Function</div>
+            <div class="kind">Function</div>
+            <div class="privacy">PUBLIC</div>
+            <div class="summary"><span class="rst-undocumented">Undocumented</span></div>
+          </li><li id="TARgET.ai_helper.run.main">
+            
+            <div class="fullName"><wbr></wbr>TARg<wbr></wbr>ET<wbr></wbr>.ai<wbr></wbr>_helper<wbr></wbr>.run<wbr></wbr>.main</div>
+            <div class="url">TARgET.ai_helper.run.html#main</div>
             <div class="type">Function</div>
             <div class="kind">Function</div>
             <div class="privacy">PUBLIC</div>

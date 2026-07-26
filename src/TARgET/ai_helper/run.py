@@ -3,11 +3,11 @@ import os
 from pathlib import Path
 
 from llama_cpp import Llama
-from ai_helper.indexer import index_toolkit
-from ai_helper.retriever import SemanticRetriever
-from ai_helper.prompt import build_prompt
-from ai_helper.models.model_finder import list_models, choose_model
-from ai_helper.models.model_config import load_model, save_model
+from .indexer import index_toolkit
+from .retriever import SemanticRetriever
+from .prompt import build_prompt
+from .models.model_finder import list_models, choose_model
+from .models.model_config import load_model, save_model
 
 """
 This module serves as the main entry point for the AI assistant. It handles loading the LLM model,
@@ -55,7 +55,7 @@ def build_assistant(toolkit_path: str, models_dir: str):
 
     llm = Llama(
         model_path=str(model_path),
-        n_ctx=2048,
+        n_ctx=4096,
         n_threads=8,
         verbose=False,
     )
@@ -69,8 +69,15 @@ def build_assistant(toolkit_path: str, models_dir: str):
 
 
 def ask(llm, retriever, query: str):
-    retrieved = retriever.retrieve(query)
-    prompt = build_prompt(retrieved, query)
+    retrieved = retriever.retrieve(
+        query,
+        k=4,
+    )
+
+    prompt = build_prompt(
+        retrieved,
+        query,
+    )
 
     output = llm(
         prompt,
@@ -79,7 +86,9 @@ def ask(llm, retriever, query: str):
         stop=["</s>"],
     )
 
-    print(output["choices"][0]["text"])
+    print(
+        output["choices"][0]["text"]
+    )
 
 
 def main():
