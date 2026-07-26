@@ -320,8 +320,10 @@ Relevant source code
         │
         ▼
 Local language model
+```
 
-The optional `ai_helper` component requires a local LLM to be provided by the user. Generation parameters such as the temperature, context size, maximum number of generated tokens, and other model settings can be adjusted in the `ai_helper` configuration to control the balance between determinism, creativity, and available hardware resources.
+The optional `ai_helper` component requires a local LLM to be provided by the user. Generation parameters such as temperature, context size, maximum number of generated tokens, and other model settings can be adjusted in the `ai_helper` configuration to balance determinism, creativity, and available hardware resources.
+
 
 
 ## CITATION
