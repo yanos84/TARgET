@@ -27,15 +27,15 @@ TARgET provides a comprehensive framework for working with tree automata and rel
   - Construction and manipulation of finite tree automata.
   - Language analysis and automata operations.
 
-- **Term Rewriting**
-  - Representation of terms and rewrite rules.
-  - Rewriting and reachability analysis.
+- **Regular Structures and Expressions**
+  - Representation of rational tree expressions.
+  - Supporting weighted extensions for both expressions and automata.
 
-- **Tree Transformations**
+- **Transformations**
   - Support for implementing and applying transformation algorithms.
 
 - **Visualization**
-  - Graphviz-based visualization of automata, trees, and related structures.
+  - Graphviz-based visualization of automata. Printing expressions and related structures.
 
 - **Documentation and Examples**
   - Comprehensive API documentation and example workflows.
