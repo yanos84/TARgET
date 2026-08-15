@@ -2,28 +2,27 @@ from itertools import product
 from TARgET.core.fta.rankedfta import ranked_Fta
 from TARgET.core.fta.state import State
 from TARgET.core.fta.rankedRule import ranked_Rule
-from typing import List
 
 
 def canonical_name(states):
     """
-    states: iterable[State]
-    returns: canonical string name encoding the subset
+    Return a canonical string name encoding a subset of states.
     """
     return "{" + ",".join(sorted(s.name for s in states)) + "}"
 
 
 def get_or_create_state(states, cache):
     """
-    states: iterable[State]
-    cache: dict[str, State]
+    Return the deterministic state corresponding to a subset of states.
     """
     name = canonical_name(states)
+
     if name not in cache:
         cache[name] = State(
             name=name,
             is_Final=any(s.is_Final for s in states)
         )
+
     return cache[name]
 
 
@@ -32,57 +31,100 @@ def decode_state(state):
     Extract original state names from a deterministic state name.
     """
     name = state.name.strip()
+
     if name == "{}":
         return set()
+
     return set(name[1:-1].split(","))
 
 
 def determinize(fta):
     """
-    Determinize a bottom-up ranked FTA using canonical state names.
-    Returns a deterministic FTA with standard State and Rule objects.
+    Determinize a bottom-up ranked FTA using subset construction.
+
+    Returns a deterministic FTA.
     """
 
-    det_states_cache = {}     # name -> State
+    det_states_cache = {}
     det_rules = []
     worklist = []
 
     # --------------------------------------------------
-    # Step 1: base states (nullary transitions)
+    # Step 1: nullary transitions
     # --------------------------------------------------
+    #
+    # All transitions with the same nullary symbol must
+    # be combined into one subset transition.
+    #
+    # Example:
+    #     a() -> q0
+    #     a() -> q1
+    #
+    # becomes:
+    #     a() -> {q0,q1}
+    #
+    nullary_destinations = {}
+
     for rule in fta.transitions:
         if rule.func.rank == 0:
-            s = get_or_create_state([rule.output_state], det_states_cache)
-
-            det_rule = ranked_Rule(
-                func=rule.func,
-                input_states=[],
-                output_state=s
+            nullary_destinations.setdefault(rule.func.name, []).append(
+                rule.output_state
             )
 
-            if det_rule not in det_rules:
-                det_rules.append(det_rule)
+    for symbol_name, destinations in nullary_destinations.items():
 
-            if s not in worklist:
-                worklist.append(s)
-        # --------------------------------------------------
+        # Retrieve the actual symbol object.
+        symbol = next(
+            symbol for symbol in fta.alphabet
+            if symbol.name == symbol_name
+        )
+
+        # Remove duplicate states while preserving the subset semantics.
+        destination_set = set(destinations)
+
+        det_state = get_or_create_state(
+            destination_set,
+            det_states_cache
+        )
+
+        det_rule = ranked_Rule(
+            func=symbol,
+            input_states=[],
+            output_state=det_state
+        )
+
+        if det_rule not in det_rules:
+            det_rules.append(det_rule)
+
+        if det_state not in worklist:
+            worklist.append(det_state)
+
+    # --------------------------------------------------
     # Step 2: main worklist loop
     # --------------------------------------------------
     processed = set()
+
     while worklist:
         current = worklist.pop()
+
         if current.name in processed:
             continue
+
         processed.add(current.name)
 
         for symbol in fta.alphabet:
             k = symbol.rank
+
             if k == 0:
                 continue
 
             # current participates at each argument position
             for pos in range(k):
-                for others in product(det_states_cache.values(), repeat=k-1):
+
+                for others in product(
+                    det_states_cache.values(),
+                    repeat=k - 1
+                ):
 
                     children = list(others)
                     children.insert(pos, current)
@@ -91,12 +133,15 @@ def determinize(fta):
                     output_subset = set()
 
                     for rule in fta.transitions:
+
                         if rule.func != symbol:
                             continue
 
                         ok = True
+
                         for i in range(k):
                             child_names = decode_state(children[i])
+
                             if rule.input_states[i].name not in child_names:
                                 ok = False
                                 break
@@ -108,7 +153,8 @@ def determinize(fta):
                         continue
 
                     out_state = get_or_create_state(
-                        output_subset, det_states_cache
+                        output_subset,
+                        det_states_cache
                     )
 
                     new_rule = ranked_Rule(
@@ -120,10 +166,8 @@ def determinize(fta):
                     if new_rule not in det_rules:
                         det_rules.append(new_rule)
 
-                    if out_state not in processed:
+                    if out_state.name not in processed:
                         worklist.append(out_state)
-
-
 
     # --------------------------------------------------
     # Step 3: build deterministic FTA
@@ -131,10 +175,8 @@ def determinize(fta):
     return ranked_Fta(
         fta_states=list(det_states_cache.values()),
         alphabet=fta.alphabet,
-        transitions=det_rules,
-        #finals=[s for s in det_states_cache.values() if s.final]
+        transitions=det_rules
     )
-
 
 
 # Example usage:*
@@ -158,5 +200,52 @@ if __name__ == "__main__":
         transitions=[rule1, rule2, rule3, rule4, rule5]
     )
 
+    determ_fta = determinize(fta)
+    determ_fta.print_Fta()
+
+#____ A second example 
+ # States
+    q0 = State(name="q0", is_Final=False)
+    q1 = State(name="q1", is_Final=False)
+    qf = State(name="qf", is_Final=True)
+
+    # Symbols
+    a = Ranked_Symbol(name="a", rank=0)
+    g = Ranked_Symbol(name="g", rank=1)
+
+    # Nondeterministic nullary transitions:
+    #
+    # a() -> q0
+    # a() -> q1
+    #
+    rule1 = ranked_Rule(
+        func=a,
+        input_states=[],
+        output_state=q0
+    )
+
+    rule2 = ranked_Rule(
+        func=a,
+        input_states=[],
+        output_state=q1
+    )
+
+    # g(q0) -> qf
+    rule3 = ranked_Rule(
+        func=g,
+        input_states=[q0],
+        output_state=qf
+    )
+
+    fta = ranked_Fta(
+        fta_states=[q0, q1, qf],
+        alphabet=[a, g],
+        transitions=[rule1, rule2, rule3]
+    )
+
+    print("Original FTA:")
+    fta.print_Fta()
+
+    print("\nDeterminized FTA:")
     determ_fta = determinize(fta)
     determ_fta.print_Fta()

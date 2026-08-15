@@ -1,15 +1,14 @@
 from .abs_emptiness import AbsEmptiness
 from TARgET.core.fta.rankedfta import ranked_Fta
 
+
+from .abs_emptiness import AbsEmptiness
+from TARgET.core.fta.rankedfta import ranked_Fta
+
+
 class RankedEmptiness(AbsEmptiness):
-    """Class to check the emptiness of a ranked finite tree automaton (RFTA).
-    The emptiness of an RFTA is determined by checking if there are any states that can be reached from the initial states and lead to a final state through the transitions defined in the automaton. This is done by iteratively marking states as "good" if they can be reached from the initial states and can lead to a final state. If no final state can be marked as "good", then the automaton is considered empty.
-    Attributes:
-    - None
-    Methods:
-    - __init__: Initializes the RankedEmptiness class.
-    - is_empty: Checks if the given ranked finite tree automaton is empty and returns a boolean value indicating the result.
-    """
+    """Class to check if a ranked finite tree automaton is empty."""
+
     def __init__(self):
         super().__init__()
 
@@ -19,29 +18,72 @@ class RankedEmptiness(AbsEmptiness):
 
         :param fta: The ranked finite tree automaton to check.
 
-        :returns: ``True`` if the automaton recognizes the empty language; otherwise, ``False``.
+        :returns: ``True`` if the automaton recognizes the empty language;
+            otherwise, ``False``.
         """
 
-        Good = set()
+        # Good contains the names of states that can be reached
+        # by some ground tree.
+        good = set()
 
         # Step 1: rank-0 rules
         for rule in fta.transitions:
             if rule.func.rank == 0:
-                Good.add(rule.output_state.name)
+                good.add(rule.output_state.name)
 
+        # Step 2: propagate reachable states
         changed = True
         while changed:
             changed = False
+
             for rule in fta.transitions:
                 if rule.func.rank > 0:
-                    if all(s in Good for s in rule.input_states):
-                        if rule.output_state.name not in Good:
-                            Good.add(rule.output_state.name)
+                    if all(state.name in good for state in rule.input_states):
+                        if rule.output_state.name not in good:
+                            good.add(rule.output_state.name)
                             changed = True
 
-        return Good.isdisjoint(fta.get_final_states())
+        # get_final_states() returns state names.
+        final_states = set(fta.get_final_states())
+
+        # The language is empty if no final state is reachable.
+        return good.isdisjoint(final_states)
 
 #example usage
+
+def test_non_empty_rfta_with_nested_tree():
+    # States
+    q0 = State(name="q0", is_Final=False)
+    qf = State(name="qf", is_Final=True)
+
+    # Symbols
+    a = Ranked_Symbol(name="a", rank=0)
+    g = Ranked_Symbol(name="g", rank=1)
+
+    # a() -> q0
+    rule_a = ranked_Rule(func=a)
+    rule_a.input_states = []
+    rule_a.output_state = q0
+
+    # g(q0) -> qf
+    rule_g = ranked_Rule(func=g)
+    rule_g.input_states = [q0]
+    rule_g.output_state = qf
+
+    # Automaton
+    automaton = ranked_Fta(
+        fta_name="non_empty_test",
+        alphabet=[a, g],
+        fta_states=[q0, qf],
+        transitions=[rule_a, rule_g],
+    )
+
+    # Test
+    #emptiness_checker = RankedEmptiness()
+    #print(emptiness_checker.is_empty(automaton))  # Should print False
+
+    assert emptiness_checker.is_empty(automaton) is False
+
 if __name__ == "__main__":
     from TARgET.core.fta.rankedfta import ranked_Fta, Ranked_Symbol, ranked_Rule, State
 
@@ -66,3 +108,40 @@ if __name__ == "__main__":
     if not is_empty:
         nada = 'not '
     print(f"The ranked finite tree automaton is {nada} empty")
+
+#______second example _________
+    # States
+    q0 = State(name="q0", is_Final=False)
+    qf = State(name="qf", is_Final=True)
+
+    # Symbols
+    a = Ranked_Symbol(name="a", rank=0)
+    g = Ranked_Symbol(name="g", rank=1)
+
+    # Rules:
+    # a() -> q0
+    rule_a = ranked_Rule(func=a)
+    rule_a.input_states = []
+    rule_a.output_state = q0
+
+    # g(q0) -> qf
+    rule_g = ranked_Rule(func=g)
+    rule_g.input_states = [q0]
+    rule_g.output_state = qf
+
+    automaton = ranked_Fta(
+        fta_name="non_empty_test",
+        alphabet=[a, g],
+        fta_states=[q0, qf],
+        transitions=[rule_a, rule_g],
+    )
+
+    emptiness_checker = RankedEmptiness()
+    is_empty = emptiness_checker.is_empty(automaton)
+
+    if is_empty:
+        print("The ranked finite tree automaton is empty")
+    else:
+        print("The ranked finite tree automaton is not empty")
+
+
