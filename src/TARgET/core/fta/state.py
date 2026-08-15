@@ -37,9 +37,9 @@ class State:
     @property
     def is_Initial(self):
         return self._is_Initial
-    @is_Final.setter
-    def is_Final(self,value:bool):
-        self._is_Final= value
+    @is_Initial.setter
+    def is_Initial(self, value: bool):
+        self._is_Initial = value
 
     def __eq__(self, other):
         if not isinstance(other, State):
@@ -48,3 +48,11 @@ class State:
 
     def __hash__(self):
         return hash(self.name)
+
+# ____example of usage____
+if __name__ == "__main__":
+    q= State(name="q", is_Final=False, is_Initial=False)
+    q.is_Initial = True  # Set the state as initial
+    print(q.name)  # Output: q
+    print(q.is_Final)  # Output: False
+    print(q.is_Initial)  # Output: True
