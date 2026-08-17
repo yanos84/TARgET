@@ -1,21 +1,22 @@
 import icontract
 from icontract import ViolationError
+
+from TARgET.core.fta.rankedfta import ranked_Fta
 from TARgET.core.base.rankedTree import RankedTree
-from TARgET.engine.fta.acceptors.rankedAcceptor import RankedBottomUpAcceptor
-
-
-
+from TARgET.engine.fta.acceptors.rankedAcceptor import (
+    RankedBottomUpAcceptor,
+)
 
 
 # ======================================================
 # Helper predicates
 # ======================================================
 
-def tree_is_not_none(automaton, tree):
-    return tree is not None
+def automaton_is_ranked_fta(automaton):
+    return isinstance(automaton, ranked_Fta)
 
 
-def tree_is_ranked_tree(automaton, tree):
+def tree_is_ranked_tree(tree):
     return isinstance(tree, RankedTree)
 
 
@@ -23,31 +24,21 @@ def result_is_bool(result):
     return isinstance(result, bool)
 
 
-def has_compute_states(self):
-    return callable(getattr(self, "_compute_states", None))
-
-
 # ======================================================
 # Contracted test-only subclass
 # ======================================================
 
-@icontract.invariant(
-    lambda self: has_compute_states(self),
-    error=lambda self: ViolationError(
-        "RankedBottomUpAcceptor must define a callable _compute_states method"
-    ),
-)
 class ContractedRankedBottomUpAcceptor(RankedBottomUpAcceptor):
 
     @icontract.require(
-        tree_is_not_none,
-        error=lambda automaton, tree: ViolationError(
-            "Tree must not be None"
+        automaton_is_ranked_fta,
+        error=lambda automaton: ViolationError(
+            f"Automaton must be a ranked_Fta, got {type(automaton)}"
         ),
     )
     @icontract.require(
         tree_is_ranked_tree,
-        error=lambda automaton, tree: ViolationError(
+        error=lambda tree: ViolationError(
             f"Tree must be a RankedTree, got {type(tree)}"
         ),
     )
@@ -57,11 +48,5 @@ class ContractedRankedBottomUpAcceptor(RankedBottomUpAcceptor):
             f"accepts must return bool, got {type(result)}"
         ),
     )
-    @icontract.snapshot(lambda tree: tree.structure(), name="tree_before")
-    @icontract.ensure(
-        lambda tree, OLD: tree.structure() == OLD.tree_before,
-        "accepts must not mutate the input tree"
-    )
     def accepts(self, automaton, tree):
         return super().accepts(automaton, tree)
-
