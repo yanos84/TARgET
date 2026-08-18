@@ -252,3 +252,48 @@ def test_determinism_rejects_invalid_rules():
 def test_determinism_rejects_invalid_semantics():
     with pytest.raises(icontract.ViolationError):
         DC.check([], None)
+
+def test_determinism_empty_transitions():
+    semantics = BottomUpRankedSemantics()
+
+    result = DC.check([], semantics)
+
+    assert result is True
+
+def test_determinism_empty_fta():
+    q0 = State(name="q0", is_Final=False)
+    a = Ranked_Symbol(name="a", rank=0)
+    from TARgET.core.fta.rankedfta import ranked_Fta
+
+    fta = ranked_Fta(
+        fta_name="empty",
+        alphabet=[a],
+        fta_states=[q0],
+        transitions=[]
+    )
+
+    semantics = BottomUpRankedSemantics()
+
+    assert DC.check(
+        fta.transitions,
+        semantics
+    ) is True
+
+
+def test_determinism_multiple_outputs_for_same_transition():
+    q0 = State("q0", is_Final=False)
+    q1 = State("q1", is_Final=True)
+
+    a = Ranked_Symbol("a", rank=0)
+
+    rules = [
+        ranked_Rule(a, [], q0),
+        ranked_Rule(a, [], q1),
+    ]
+
+    semantics = BottomUpRankedSemantics()
+
+    assert DC.check(
+        rules,
+        semantics
+    ) is False

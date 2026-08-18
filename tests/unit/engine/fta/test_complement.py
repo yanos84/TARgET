@@ -16,7 +16,7 @@ def test_complement_flips_final_states():
     # Dummy FTA (minimal structure)
     fta = ranked_Fta(
         alphabet=[f],
-        fta_states={q0, q1},
+        fta_states=[q0, q1],
         transitions=[]
     )
 

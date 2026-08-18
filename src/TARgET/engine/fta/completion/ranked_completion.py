@@ -197,8 +197,28 @@ def test_completion_binary_symbol():
             f" -> {rule.output_state.name}"
         )
 
+#____example 5_____
+
+def test_completion_empty_fta_directly():
+    q0 = State("q0", is_Final=False)
+
+    a = Ranked_Symbol("a", rank=0)
+
+    fta = ranked_Fta(
+        fta_name="empty",
+        alphabet=[a],
+        fta_states=[q0],
+        transitions=[]
+    )
+
+    completed = Completion(fta).compute_completion()
+
+    print("\nCompleted FTA:")
+    print(completed)
+
 if __name__ == "__main__":
     simple_example()
     test_completion_empty_fta()
     test_completion_nondeterministic_fta()
     test_completion_binary_symbol()
+    test_completion_empty_fta_directly()

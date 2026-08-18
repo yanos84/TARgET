@@ -1,7 +1,11 @@
 from TARgET.core.fta.abst_fta import Fta
 from TARgET.core.fta.state import State
-from typing import List
+#from typing import List
 from TARgET.core.base.symbol import Symbol, Ranked_Symbol
+from ..determinism.determinism import Determinism
+from ..determinism.semantics import BottomUpRankedSemantics
+from ..determinization.ranked_determinization import determinize
+from ..completion.ranked_completion import Completion
 import copy
 
 class Complement():
@@ -16,28 +20,48 @@ class Complement():
         self.fta = copy.deepcopy(fta)
     
     def compute_complement(self) -> Fta:
-        """Compute the complement of the FTA.
-        This method negates the acceptance conditions of the states and transitions in the original FTA to create a new FTA that accepts exactly the trees that the original FTA does not accept. The resulting complement FTA can be used for various operations, such as checking for non-acceptance of trees or performing intersection and union with other FTAs. 
-        """
-        # Placeholder for complement computation logic
-        # This should return a new Fta instance representing the complement of self.fta
-        alphabet =getattr(self.fta, 'alphabet', None)
-        if alphabet is not None and isinstance(alphabet, list):
-            for sym in alphabet:
-                if not isinstance(sym, Symbol):
-                    raise TypeError("Alphabet must contain only Symbol instances.")
-            for state in self.fta.fta_states:
-                state.is_Final = not state.is_Final
-            for r in self.fta.transitions:
-                for input in r.input_states:
-                    input.is_Final = not input.is_Final
-                r.output_state.is_Final = not r.output_state.is_Final
-            return self.fta
-        else:
-            raise TypeError("Alphabet must be a list of Symbol instances.")
+        semantics = BottomUpRankedSemantics()
 
+        if not Determinism.check(self.fta.transitions, semantics):
+            self.fta = determinize(self.fta)
+
+        self.fta = Completion(
+            fta=self.fta
+        ).compute_completion()
+
+        alphabet = getattr(self.fta, "alphabet", None)
+
+        if alphabet is None or not isinstance(alphabet, list):
+            raise TypeError(
+                "Alphabet must be a list of Symbol instances."
+            )
+
+        for sym in alphabet:
+            if not isinstance(sym, Symbol):
+                raise TypeError(
+                    "Alphabet must contain only Symbol instances."
+                )
+
+        # Complement: flip final states exactly once.
+        for state in self.fta.fta_states:
+            state.is_Final = not state.is_Final
+
+        return self.fta
 
 ## Example usage
+
+#_____example 0____ general one 
+
+def ground_example_complement():
+    s1 = State(name="q0", is_Final=True)
+    s2 = State(name="q1", is_Final=False)
+    states = [s1, s2]
+    fta = ranked_Fta(fta_name="example_fta", fta_states=states, alphabet=[Ranked_Symbol(name="a", rank=0)], transitions=[])
+
+    complement_calculator = Complement(fta)
+    complement_fta = complement_calculator.compute_complement()  
+    print("Original FTA:",fta) 
+    print("Complement FTA:",complement_fta)
 
 #_____Example 1______ Complement of an FTA with no final states
 
@@ -66,16 +90,33 @@ def test_complement_empty_fta():
     # Original must remain unchanged
     assert q0.is_Final is False
 
+#_____Example 2______ 
+def test_complement_empty_language():
+    """Complement of an FTA with an empty language."""
+
+    q0 = State("q0", is_Final=False)
+
+    a = Ranked_Symbol("a", rank=0)
+
+    fta = ranked_Fta(
+        fta_name="empty_language",
+        alphabet=[a],
+        fta_states=[q0],
+        transitions=[]
+    )
+
+    complement = Complement(fta)
+    comp_fta = complement.compute_complement()
+
+    print("\nOriginal FTA:")
+    print(fta)
+
+    print("\nComplement FTA:")
+    print(comp_fta)
+
 if __name__ == "__main__":
     from TARgET.core.fta.rankedfta import ranked_Fta
-    s1 = State(name="q0", is_Final=True)
-    s2 = State(name="q1", is_Final=False)
-    states = [s1, s2]
-    fta = ranked_Fta(fta_name="example_fta", fta_states=states, alphabet=[Ranked_Symbol(name="a", rank=0)], transitions=[])
 
-    complement_calculator = Complement(fta)
-    complement_fta = complement_calculator.compute_complement()  
-    print("Original FTA:",fta) 
-    print("Complement FTA:",complement_fta)
-
-    test_complement_empty_fta()
+    #ground_example_complement()
+    #test_complement_empty_fta()
+    test_complement_empty_language()
