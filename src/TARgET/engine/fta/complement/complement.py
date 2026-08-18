@@ -38,6 +38,34 @@ class Complement():
 
 
 ## Example usage
+
+#_____Example 1______ Complement of an FTA with no final states
+
+def test_complement_empty_fta():
+    """Complement of an FTA with no final states."""
+
+    q0 = State(name="q0", is_Final=False)
+
+    a = Ranked_Symbol(name="a", rank=0)
+
+    fta = ranked_Fta(
+        fta_name="empty_fta",
+        fta_states=[q0],
+        alphabet=[a],
+        transitions=[],
+    )
+
+    complement = Complement(fta).compute_complement()
+
+    print("Original FTA:",fta) 
+    print("Complement FTA:",complement)
+
+    assert complement is not fta
+    assert complement.fta_states[0].is_Final is True
+
+    # Original must remain unchanged
+    assert q0.is_Final is False
+
 if __name__ == "__main__":
     from TARgET.core.fta.rankedfta import ranked_Fta
     s1 = State(name="q0", is_Final=True)
@@ -49,3 +77,5 @@ if __name__ == "__main__":
     complement_fta = complement_calculator.compute_complement()  
     print("Original FTA:",fta) 
     print("Complement FTA:",complement_fta)
+
+    test_complement_empty_fta()
