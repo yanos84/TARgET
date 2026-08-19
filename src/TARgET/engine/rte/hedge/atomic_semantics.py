@@ -1,7 +1,6 @@
 from TARgET.core.rte.rte import Plus, CProduct, CStar, Atom
 from TARgET.core.rte.hedge.Hedge_Expression import HedgeFunction
 from TARgET.core.rte.hedge.H_expression import (
-    HExpression,
     HZero,
     HOne,
     HAtom,
@@ -11,58 +10,56 @@ from TARgET.core.rte.hedge.H_expression import (
 )
 
 
-def accepts_single_symbol(expression):
+def singleton(expression, a):
     """
-    Checks whether a hedge expression accepts a tree
-    containing exactly one symbol.
+    Checks whether the single-symbol tree a belongs to the
+    semantics of the hedge expression.
 
-    Examples of accepted trees:
+    That is, this procedure decides whether:
 
-        a
+        a ∈ [[expression]]
 
-    and:
-
-        f()
-
-    where f() is represented as:
-
-        f(1)
+    where a is a specific symbol in the alphabet.
 
     Returns:
-        True  -> expression accepts a leaf tree
+        True  -> the single-symbol tree a is accepted
         False -> otherwise
     """
 
-
-    # Atomic symbol:
+    # Atomic expression:
     #
-    # a
+    # b
     #
-    # An atom is already a leaf tree.
+    # The expression accepts exactly the single-symbol tree b.
     if isinstance(expression, Atom):
-        return True
+        return expression.symbol == a
 
 
-    # Unranked function:
+    # Hedge function:
     #
-    # f(R(X))
+    # b(R)
     #
-    # It accepts a leaf only if its horizontal language
-    # accepts the empty word.
+    # This represents the single-symbol tree b exactly when
+    # the horizontal expression R accepts the empty hedge.
     if isinstance(expression, HedgeFunction):
-        return horizontal_nullable(
-            expression.horizontal
+        return (
+            expression.symbol == a
+            and
+            horizontal_nullable(expression.horizontal)
         )
 
 
     # Union:
     #
     # E1 + E2
+    #
+    # A single-symbol tree is accepted if it is accepted
+    # by either operand.
     if isinstance(expression, Plus):
         return (
-            accepts_single_symbol(expression.left)
+            singleton(expression.left, a)
             or
-            accepts_single_symbol(expression.right)
+            singleton(expression.right, a)
         )
 
 
@@ -70,21 +67,40 @@ def accepts_single_symbol(expression):
     #
     # E1 .c E2
     #
-    # A leaf can only be produced if the composition
-    # does not introduce children.
+    # If a = c, both expressions must accept the singleton a.
+    #
+    # If a != c, the singleton a can either already be produced
+    # by E1, or it can be produced by E2 when E1 produces c.
     if isinstance(expression, CProduct):
+        c = expression.symbol
+
+        if a == c:
+            return (
+                singleton(expression.left, a)
+                and
+                singleton(expression.right, a)
+            )
+
         return (
-            accepts_single_symbol(expression.left)
-            and
-            accepts_single_symbol(expression.right)
+            singleton(expression.left, a)
+            or
+            (
+                singleton(expression.left, c)
+                and
+                singleton(expression.right, a)
+            )
         )
 
 
     # c-star:
     #
-    # E*c contains the neutral case.
+    # E*c
+    #
+    # For singleton membership, the closure does not introduce
+    # a new singleton symbol. Therefore, a is accepted exactly
+    # when it is accepted by E.
     if isinstance(expression, CStar):
-        return True
+        return singleton(expression.expression, a)
 
 
     raise TypeError(
@@ -97,11 +113,10 @@ def horizontal_nullable(expression):
     """
     Checks whether a horizontal expression accepts epsilon.
 
-    This corresponds to:
+    That is:
 
-        ε ∈ L(R(X))
+        ε ∈ [[expression]]
     """
-
 
     # Empty word:
     #
@@ -121,8 +136,7 @@ def horizontal_nullable(expression):
     #
     # x
     #
-    # A variable represents a child hedge,
-    # so it cannot disappear.
+    # A variable represents a non-empty child hedge.
     if isinstance(expression, HAtom):
         return False
 
@@ -140,7 +154,7 @@ def horizontal_nullable(expression):
 
     # Concatenation:
     #
-    # R1.R2
+    # R1 . R2
     if isinstance(expression, HConcat):
         return (
             horizontal_nullable(expression.left)
@@ -162,21 +176,14 @@ def horizontal_nullable(expression):
         f"Unsupported horizontal expression type: {type(expression)}"
     )
 
-#Example of use from TARgET.core.rte.hedge
+
+# Example
 if __name__ == "__main__":
     from TARgET.core.base.symbol import Symbol
-
     from TARgET.core.rte.hedge.H_expression import HorizontalExpression
-    from TARgET.core.rte.hedge.Hedge_Expression import HedgeFunction
-
-    from TARgET.core.rte.rte import Atom
-
-
-
 
     a = Symbol("a")
     f = Symbol("f")
-
     x = Symbol("x")
 
 
@@ -186,9 +193,8 @@ if __name__ == "__main__":
     A = Atom(a)
 
     print(A)
-    print(
-        accepts_single_symbol(A)
-    )
+    print(singleton(A, a))   # True
+    print(singleton(A, f))   # False
 
 
     # Function leaf:
@@ -196,7 +202,6 @@ if __name__ == "__main__":
     # f()
     #
     # represented as f(1)
-
     X = HorizontalExpression({x})
 
     F = HedgeFunction(
@@ -205,21 +210,17 @@ if __name__ == "__main__":
     )
 
     print(F)
-    print(
-        accepts_single_symbol(F)
-    )
+    print(singleton(F, f))   # True
+    print(singleton(F, a))   # False
 
 
     # Function with children:
     #
     # f(x)
-
     FX = HedgeFunction(
         f,
         X.atom(x)
     )
 
     print(FX)
-    print(
-        accepts_single_symbol(FX)
-    )
+    print(singleton(FX, f))  # False
