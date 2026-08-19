@@ -19,7 +19,10 @@ class Symbol:
         return self.name
     
     def __eq__(self, symb):
-        return isinstance(symb, Symbol) and self.name == symb.name
+        return (
+            type(symb) is type(self)
+            and self.name == symb.name
+        )
     
     def __hash__(self):
         return hash(self.name)
