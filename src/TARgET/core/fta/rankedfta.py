@@ -55,17 +55,21 @@ class ranked_Fta(Fta):
         _rules = "Rules list:\n "+ ' '.join([i.get_rule_as_str()+"\n" for i in self.transitions])+"\n"
         return _name+_states+_alphabet+_rules   
     
-    def chech_weighted(self)->bool:
-        """
-        Checks if all transitions in the ranked finite tree automaton are weighted or not.
-        :return: True if all transitions are weighted, False if none are weighted, raises ValueError if there is a mix of weighted and unweighted transitions.
-        """
+    def chech_weighted(self) -> bool:
+        if not self.transitions:
+            return False
+
         if all(r.is_weighted for r in self.transitions):
             return True
         elif not any(r.is_weighted for r in self.transitions):
             return False
         else:
-            raise ValueError("Check fta transitions, Some are weighted and some are not (this is to avoid using semiring.one and consider all transitiosn as weighted)")
+            raise ValueError(
+                "Check fta transitions, Some are weighted and some are not "
+                "(this is to avoid using semiring.one and consider all "
+                "transitions as weighted)"
+            )
+
 
     def get_semiring(self):
         """
