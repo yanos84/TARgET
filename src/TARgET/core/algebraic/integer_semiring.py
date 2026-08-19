@@ -40,6 +40,13 @@ class IntegerSemiring(Semiring):
     def __eq__(self, other):
         # Equality check
         return isinstance(other, IntegerSemiring) and self.value == other.value
+    def __eq__(self, other):
+        if not isinstance(other, IntegerSemiring):
+            return NotImplemented
+        return self.value == other.value
+
+    def __hash__(self):
+        return hash(self.value)
 
     def __repr__(self):
         # String representation

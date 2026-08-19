@@ -35,6 +35,14 @@ class TropicalSemiring(Semiring):
     def one(cls):
         return cls(0.0)
 
+    def __eq__(self, other):
+        if not isinstance(other, TropicalSemiring):
+            return NotImplemented
+        return self.value == other.value
+
+    def __hash__(self):
+        return hash(self.value)
+
     def __repr__(self):
         if self.value == math.inf:
             return "𝕋(∞)"

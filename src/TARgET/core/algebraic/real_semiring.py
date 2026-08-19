@@ -35,6 +35,14 @@ class RealSemiring(Semiring):
     def one(cls):
         return cls(1.0)
 
+    def __eq__(self, other):
+        if not isinstance(other, RealSemiring):
+            return NotImplemented
+        return self.value == other.value
+
+    def __hash__(self):
+        return hash(self.value)
+
     def __repr__(self):
         return f"ℝ({self.value})"
     

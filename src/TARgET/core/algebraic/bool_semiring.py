@@ -30,6 +30,14 @@ class BooleanSemiring(Semiring):
 
     def __repr__(self):
         return f"𝔹({self.value})"
+
+    def __eq__(self, other):
+        if not isinstance(other, BooleanSemiring):
+            return NotImplemented
+        return self.value == other.value
+
+    def __hash__(self):
+        return hash(self.value)
     
 
 if __name__ == "__main__":

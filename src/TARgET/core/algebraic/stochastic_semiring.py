@@ -22,7 +22,7 @@ class ProbabilitySemiring(Semiring):
     def __add__(self, other):
         if not isinstance(other, ProbabilitySemiring):
             return NotImplemented
-        return ProbabilitySemiring(self.value + other.value)
+        return ProbabilitySemiring(min(1.0, self.value + other.value))
 
     def __mul__(self, other):
         if not isinstance(other, ProbabilitySemiring):
@@ -39,6 +39,15 @@ class ProbabilitySemiring(Semiring):
 
     def __repr__(self):
         return f"𝔓({self.value:.4f})"
+
+    def __eq__(self, other):
+        if not isinstance(other, ProbabilitySemiring):
+            return NotImplemented
+        return self.value == other.value
+
+    def __hash__(self):
+        return hash(self.value)
+
     
     def __str__(self):
         return f"𝔓({self.value:.4f})"
