@@ -21,35 +21,76 @@ class Ranked_Diff(Abs_Diff):
     
     def diff(self, fta1: ranked_Fta, fta2: ranked_Fta) -> ranked_Fta:
         """
-        Compute the difference between two ranked finite tree automata (RFTAs).
+        Compute the difference between two ranked finite tree automata.
 
-        The resulting automaton accepts exactly the trees accepted by ``fta1`` but not
-        by ``fta2``.
+        The resulting automaton recognizes:
 
-        :param fta1: The first ranked finite tree automaton.
-        :param fta2: The second ranked finite tree automaton.
+            L(fta1) - L(fta2)
 
-        :returns: A ranked finite tree automaton recognizing the difference of the languages accepted by ``fta1`` and ``fta2``.
+        Both automata are considered over the union of their alphabets before
+        complement, determinization, and product are performed.
         """
-        # Step 1: Compute the complement of fta2
-        complement_calculator = Complement(fta2)
+
+        # --------------------------------------------------
+        # Step 1: Construct the common alphabet
+        # --------------------------------------------------
+
+        common_alphabet = list(fta1.alphabet)
+
+        for symbol in fta2.alphabet:
+            if symbol not in common_alphabet:
+                common_alphabet.append(symbol)
+
+        # --------------------------------------------------
+        # Step 2: Rebuild both FTAs over the common alphabet
+        # --------------------------------------------------
+
+        fta1_common = ranked_Fta(
+            fta_name=f"{fta1.name}_common",
+            alphabet=common_alphabet,
+            fta_states=fta1.fta_states,
+            transitions=fta1.transitions,
+        )
+
+        fta2_common = ranked_Fta(
+            fta_name=f"{fta2.name}_common",
+            alphabet=common_alphabet,
+            fta_states=fta2.fta_states,
+            transitions=fta2.transitions,
+        )
+
+        # --------------------------------------------------
+        # Step 3: Complement the second FTA
+        # --------------------------------------------------
+
+        complement_calculator = Complement(fta2_common)
         fta2_complement = complement_calculator.compute_complement()
-        
-        # Step 2: Determinize both fta1 and the complement of fta2
-        det_fta1 = det.determinize(fta1)
+
+        # --------------------------------------------------
+        # Step 4: Determinize both automata
+        # --------------------------------------------------
+
+        det_fta1 = det.determinize(fta1_common)
         det_fta2_complement = det.determinize(fta2_complement)
+
+        # --------------------------------------------------
+        # Step 5: Product
+        # --------------------------------------------------
+
         product_computer = Ranked_prod()
-        product_automaton = product_computer.product(det_fta1, det_fta2_complement)
-     
-        return product_automaton
+
+        return product_computer.product(
+            det_fta1,
+            det_fta2_complement,
+        )
 
     def is_equivalent(self, fta1: ranked_Fta, fta2: ranked_Fta) -> bool:
         """
         Check whether two ranked finite tree automata (RFTAs) are equivalent.
 
-        The equivalence test is performed by computing the difference between the
-        automata and checking whether the resulting automaton recognizes the empty
-        language.
+        Two RFTAs are equivalent if neither language contains a tree that is
+        absent from the other language. This is checked by computing both
+        differences and verifying that both resulting languages are empty.
 
         :param fta1: The first ranked finite tree automaton.
         :param fta2: The second ranked finite tree automaton.
@@ -57,9 +98,15 @@ class Ranked_Diff(Abs_Diff):
         :returns: ``True`` if the automata are equivalent; otherwise, ``False``.
         :rtype: bool
         """
-        difference_fta = self.diff(fta1, fta2)
         emptiness_checker = RankedEmptiness()
-        return emptiness_checker.is_empty(difference_fta)
+
+        difference_1 = self.diff(fta1, fta2)
+        difference_2 = self.diff(fta2, fta1)
+
+        return (
+            emptiness_checker.is_empty(difference_1)
+            and emptiness_checker.is_empty(difference_2)
+        )
 
 
 # Example usage

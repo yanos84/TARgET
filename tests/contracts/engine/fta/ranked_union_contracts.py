@@ -2,19 +2,15 @@ import icontract
 from icontract import ViolationError
 
 from TARgET.core.fta.rankedfta import ranked_Fta
-from TARgET.engine.fta.product.ranked_prod import Ranked_prod
+from TARgET.engine.fta.union.rankedUnion import RankedFtaUnion
 
 
 # ======================================================
 # Helper predicates
 # ======================================================
 
-def fta1_is_ranked_fta(fta1):
-    return isinstance(fta1, ranked_Fta)
-
-
-def fta2_is_ranked_fta(fta2):
-    return isinstance(fta2, ranked_Fta)
+def fta_is_ranked_fta(fta):
+    return isinstance(fta, ranked_Fta)
 
 
 def result_is_ranked_fta(result):
@@ -25,25 +21,25 @@ def result_is_ranked_fta(result):
 # Contracted test-only subclass
 # ======================================================
 
-class ContractedRankedProd(Ranked_prod):
+class ContractedRankedFtaUnion(RankedFtaUnion):
 
     @icontract.require(
-        fta1_is_ranked_fta,
-        error=lambda fta1: ViolationError(
-            f"First FTA must be a ranked_Fta, got {type(fta1)}"
+        lambda self: fta_is_ranked_fta(self.fta1),
+        error=lambda: ViolationError(
+            "fta1 must be a ranked_Fta instance"
         ),
     )
     @icontract.require(
-        fta2_is_ranked_fta,
-        error=lambda fta2: ViolationError(
-            f"Second FTA must be a ranked_Fta, got {type(fta2)}"
+        lambda self: fta_is_ranked_fta(self.fta2),
+        error=lambda: ViolationError(
+            "fta2 must be a ranked_Fta instance"
         ),
     )
     @icontract.ensure(
         result_is_ranked_fta,
         error=lambda result: ViolationError(
-            f"product must return ranked_Fta, got {type(result)}"
+            f"compute must return ranked_Fta, got {type(result)}"
         ),
     )
-    def product(self, fta1, fta2):
-        return super().product(fta1, fta2)
+    def compute(self):
+        return super().compute()

@@ -1,7 +1,7 @@
 import pytest
 import icontract
 
-from tests.contracts.engine.fta.product_contracts import (
+from tests.contracts.engine.fta.ranked_product_contracts import (
     ContractedRankedProd as RP
 )
 
@@ -86,7 +86,7 @@ def test_product_different_symbols(create_different_symbols_fta):
     assert len(product.transitions) == 1
 
     assert product.transitions[0].func.name == "f"
-
+    assert product.transitions[0].output_state.name == "(qf1,pf2)"
     assert product.transitions[0].output_state.is_Final is True
 
 
@@ -104,6 +104,7 @@ def test_product_different_symbols(create_different_symbols_fta):
 #
 # Expected:
 #   4 product transitions
+#   4 product states
 # ======================================================
 
 @pytest.fixture
@@ -354,7 +355,6 @@ def test_product_different_rank(create_different_rank_fta):
     product = product_computer.product(fta1, fta2)
 
     assert len(product.transitions) == 1
-
     assert product.transitions[0].func.name == "a"
 
 
@@ -494,22 +494,138 @@ def test_product_duplicate_states(create_duplicate_state_fta):
 
 
 # ======================================================
+# Test 7
+# Same language
+#
+# {a} ∩ {a} = {a}
+# ======================================================
+
+@pytest.fixture
+def create_accepts_a():
+
+    qf = State(name="qf", is_Final=True)
+    a = Ranked_Symbol(name="a", rank=0)
+
+    fta = ranked_Fta(
+        fta_name="accepts_a",
+        alphabet=[a],
+        fta_states=[qf],
+        transitions=[
+            ranked_Rule(a, [], qf)
+        ]
+    )
+
+    return fta
+
+
+def test_product_same_language(create_accepts_a):
+
+    fta = create_accepts_a
+
+    product_computer = RP()
+
+    product = product_computer.product(fta, fta)
+
+    assert len(product.transitions) == 1
+    assert len(product.fta_states) == 1
+
+    state = product.fta_states[0]
+
+    assert state.name == "(qf,qf)"
+    assert state.is_Final is True
+
+
+# ======================================================
+# Test 8
+# Empty first automaton
+#
+# ∅ ∩ {a} = ∅
+# ======================================================
+
+@pytest.fixture
+def create_empty_fta():
+
+    q0 = State(name="q0", is_Final=False)
+    a = Ranked_Symbol(name="a", rank=0)
+
+    return ranked_Fta(
+        fta_name="empty",
+        alphabet=[a],
+        fta_states=[q0],
+        transitions=[]
+    )
+
+
+def test_product_empty_first(
+    create_empty_fta,
+    create_accepts_a
+):
+
+    empty_fta = create_empty_fta
+    accepts_a = create_accepts_a
+
+    product_computer = RP()
+
+    product = product_computer.product(
+        empty_fta,
+        accepts_a
+    )
+
+    assert len(product.transitions) == 0
+    assert len(product.fta_states) == 0
+
+
+# ======================================================
+# Test 9
+# Empty second automaton
+#
+# {a} ∩ ∅ = ∅
+# ======================================================
+
+def test_product_empty_second(
+    create_empty_fta,
+    create_accepts_a
+):
+
+    empty_fta = create_empty_fta
+    accepts_a = create_accepts_a
+
+    product_computer = RP()
+
+    product = product_computer.product(
+        accepts_a,
+        empty_fta
+    )
+
+    assert len(product.transitions) == 0
+    assert len(product.fta_states) == 0
+
+
+# ======================================================
 # Contract tests
 # ======================================================
 
-def test_product_rejects_invalid_first_fta():
+def test_product_rejects_invalid_first_fta(
+    create_accepts_a
+):
 
     product_computer = RP()
 
     with pytest.raises(icontract.ViolationError):
-        product_computer.product(None, None)
+        product_computer.product(
+            None,
+            create_accepts_a
+        )
 
 
-def test_product_rejects_invalid_second_fta():
-
-    fta1, _ = create_different_symbols_fta.__wrapped__()
+def test_product_rejects_invalid_second_fta(
+    create_accepts_a
+):
 
     product_computer = RP()
 
     with pytest.raises(icontract.ViolationError):
-        product_computer.product(fta1, None)
+        product_computer.product(
+            create_accepts_a,
+            None
+        )
