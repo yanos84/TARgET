@@ -8,74 +8,97 @@ The main functions in this module are:
 
 def productive_states(fta):
     """
-    Identify and return the set of productive states in the given finite tree automaton (FTA).
-    A state is considered productive if it can lead to a final state through the transitions defined in the automaton. The function iteratively marks states as productive if they can reach a final state,"""
-    productive = set()
-    for s in fta.fta_states:
-        if s.is_Final:
-            productive.add(s)
-    #productive = set(fta.final_states)
+    Return the states that can contribute to an accepted tree.
+
+    A state is productive if it can derive a tree that eventually
+    reaches a final state.
+    """
+    productive = {
+        state
+        for state in fta.fta_states
+        if state.is_Final
+    }
+
     changed = True
 
     while changed:
         changed = False
+
         for rule in fta.transitions:
-            # if the output is productive,
-            # then its inputs are productive
             if rule.output_state in productive:
-                for q in rule.input_states:
-                    if q not in productive:
-                        productive.add(q)
+                for state in rule.input_states:
+                    if state not in productive:
+                        productive.add(state)
                         changed = True
 
     return productive
 
+
 def reachable_states(fta):
     """
-    Identify and return the set of reachable states in the given finite tree automaton (FTA).
-    A state is considered reachable if it can be reached from the initial states through the transitions defined in the automaton. The function iteratively marks states as reachable if they can be reached from the"""
-    reachable = set()
-    changed = True
+    Return the states reachable by some ground tree.
 
-    # arity-0 rules (constants)
+    For a bottom-up FTA, reachability starts from the outputs of
+    nullary transitions and propagates bottom-up through transitions.
+    """
+    reachable = set()
+
+    # Nullary symbols generate the initial reachable states.
     for rule in fta.transitions:
         if rule.func.rank == 0:
             reachable.add(rule.output_state)
 
+    changed = True
+
     while changed:
         changed = False
+
         for rule in fta.transitions:
-            if all(q in reachable for q in rule.input_states):
+            if all(
+                state in reachable
+                for state in rule.input_states
+            ):
                 if rule.output_state not in reachable:
                     reachable.add(rule.output_state)
                     changed = True
 
     return reachable
 
+
 def drop_useless_states(fta):
     """
-    Modify the given finite tree automaton (FTA) by removing states that are not both productive and reachable.
-    The function identifies productive and reachable states, and then filters out transitions that involve useless states.
-    The resulting FTA will only contain states and transitions that are relevant for accepting trees, optimizing the automaton for further operations.
-    """ 
+    Remove all states that are either unreachable or non-productive.
+
+    A useful state must be both:
+      - reachable by some ground tree, and
+      - productive toward a final state.
+
+    The FTA is modified in place and returned.
+    """
     productive = productive_states(fta)
     reachable = reachable_states(fta)
 
     useful = productive & reachable
 
-    # filter states
-    #fta.states = {q for q in fta.states if q in useful}
+    # Remove useless states.
+    fta.fta_states = [
+        state
+        for state in fta.fta_states
+        if state in useful
+    ]
 
-    # filter final states
-    #fta.final_states = {q for q in fta.final_states if q in useful}
-
-    # filter transitions
-    new_transitions = []
-    for rule in fta.transitions:
-        if rule.output_state in useful and all(q in useful for q in rule.input_states):
-            new_transitions.append(rule)
-
-    fta.transitions = new_transitions
+    # Remove transitions involving useless states.
+    fta.transitions = [
+        rule
+        for rule in fta.transitions
+        if (
+            rule.output_state in useful
+            and all(
+                state in useful
+                for state in rule.input_states
+            )
+        )
+    ]
 
     return fta
 
