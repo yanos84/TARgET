@@ -265,7 +265,7 @@ def test_cproduct():
     assert isinstance(expr, CProduct)
     assert expr.left == ContractedAtom(a)
     assert expr.right == ContractedAtom(b)
-    assert expr.concat == "c"
+    assert expr.concat == concat
     assert str(expr) == "(a).c(b)"
 
 def test_cproduct_equality():

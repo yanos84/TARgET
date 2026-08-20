@@ -42,6 +42,8 @@ def create_nondeterministic_nullary_fta():
 def test_determinization_returns_ranked_fta(
     create_nondeterministic_nullary_fta
 ):
+    '''
+    Test that the determinization function returns a ranked FTA.'''
     result = contracted_determinize(
         create_nondeterministic_nullary_fta,
         determinize
@@ -53,6 +55,11 @@ def test_determinization_returns_ranked_fta(
 def test_determinization_combines_nullary_transitions(
     create_nondeterministic_nullary_fta
 ):
+    '''
+    Test that the determinization function combines nullary transitions
+    that lead to different states into a single transition leading to a subset
+    of those states.
+    '''
     determ_fta = determinize(create_nondeterministic_nullary_fta)
 
     a_rules = [
@@ -69,11 +76,15 @@ def test_determinization_combines_nullary_transitions(
 
 
 def test_determinization_rejects_invalid_fta():
+    '''
+    Test that the determinization function raises a ViolationError when passed an invalid FTA.'''
     with pytest.raises(icontract.ViolationError):
         contracted_determinize(None, determinize)
 
 
 def test_determinization_empty_fta():
+    '''
+    Test that the determinization function returns an empty FTA when passed an empty FTA.'''
     automaton = ranked_Fta(
         fta_name="empty",
         alphabet=[],
@@ -87,6 +98,8 @@ def test_determinization_empty_fta():
     assert result.transitions == []
 
 def test_determinization_single_state():
+    '''
+    Test that the determinization function returns a single-state FTA when passed a single-state FTA.'''
     q0 = State(name="q0", is_Final=False)
     a = Ranked_Symbol(name="a", rank=0)
 
@@ -106,6 +119,8 @@ def test_determinization_single_state():
     assert result.transitions[0].func.name == "a"
 
 def test_determinization_already_deterministic():
+    '''
+    Test that the determinization function returns the same FTA when passed an already deterministic FTA'''
     q0 = State(name="q0", is_Final=False)
     qf = State(name="qf", is_Final=True)
 
@@ -123,6 +138,8 @@ def test_determinization_already_deterministic():
     )
 
     result = determinize(automaton)
+
+    assert result==automaton
 
     assert len(result.transitions) == 2
 

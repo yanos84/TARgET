@@ -44,6 +44,94 @@ class ranked_Fta(Fta):
         print("Alphabet: "+' '.join([i.name+ "(rank = "+ str(i.rank)+"), " for i in self.alphabet ])[:-1])
         print("Rules list:\n "+ ' '.join([i.get_rule_as_str()+"\n" for i in self.transitions]))
 
+    def __eq__(self, other):
+        """
+        Tests equality of two ranked finite tree automata independently
+        of state names.
+
+        Two FTAs are equal if they have the same alphabet and there exists
+        a bijection between their states preserving:
+        - final status;
+        - initial status;
+        - transition structure.
+        """
+        if not isinstance(other, ranked_Fta):
+            return NotImplemented
+
+        # FTA names are irrelevant.
+        if set(self.alphabet) != set(other.alphabet):
+            return False
+
+        if len(self.fta_states) != len(other.fta_states):
+            return False
+
+        if len(self.transitions) != len(other.transitions):
+            return False
+
+        # Try all possible state mappings.
+        from itertools import permutations
+
+        for permutation in permutations(other.fta_states):
+            state_map = dict(zip(self.fta_states, permutation))
+
+            # Preserve state properties.
+            if any(
+                s.is_Final != state_map[s].is_Final
+                or s.is_Initial != state_map[s].is_Initial
+                for s in self.fta_states
+            ):
+                continue
+
+            # Compare transitions structurally.
+            valid = True
+
+            for rule in self.transitions:
+
+                # Find a corresponding rule in other.
+                found = False
+
+                for other_rule in other.transitions:
+
+                    if rule.func != other_rule.func:
+                        continue
+
+                    if len(rule.input_states) != len(other_rule.input_states):
+                        continue
+
+                    if any(
+                        state_map[s1] != s2
+                        for s1, s2 in zip(
+                            rule.input_states,
+                            other_rule.input_states
+                        )
+                    ):
+                        continue
+
+                    if state_map[rule.output_state] != other_rule.output_state:
+                        continue
+
+                    # If weighted, also compare weights.
+                    if rule.is_weighted != other_rule.is_weighted:
+                        continue
+
+                    if (
+                        rule.is_weighted
+                        and rule.weight != other_rule.weight
+                    ):
+                        continue
+
+                    found = True
+                    break
+
+                if not found:
+                    valid = False
+                    break
+
+            if valid:
+                return True
+
+        return False
+
     def __str__(self):
         """
         Returns a string representation of the ranked finite tree automaton, including its name, states, alphabet, and transition rules.
@@ -95,6 +183,48 @@ class ranked_Fta(Fta):
 
 #Example usage
 
+def test_fta_equal_with_different_state_names():
+    a = Ranked_Symbol("a", 0)
+    f = Ranked_Symbol("f", 1)
+
+    q0 = State("q0", is_Final=False)
+    q1 = State("q1", is_Final=True)
+
+    r0 = State("r0", is_Final=False)
+    r1 = State("r1", is_Final=True)
+
+    rule1 = ranked_Rule(func=a)
+    rule1.input_states = []
+    rule1.output_state = q0
+
+    rule2 = ranked_Rule(func=f)
+    rule2.input_states = [q0]
+    rule2.output_state = q1
+
+    rule3 = ranked_Rule(func=a)
+    rule3.input_states = []
+    rule3.output_state = r0
+
+    rule4 = ranked_Rule(func=f)
+    rule4.input_states = [r0]
+    rule4.output_state = r1
+
+    fta1 = ranked_Fta(
+        fta_name="fta1",
+        alphabet=[a, f],
+        fta_states=[q0, q1],
+        transitions=[rule1, rule2],
+    )
+
+    fta2 = ranked_Fta(
+        fta_name="fta2",
+        alphabet=[a, f],
+        fta_states=[r0, r1],
+        transitions=[rule3, rule4],
+    )
+
+    assert fta1 == fta2
+
 if __name__ == "__main__":
 
     s= State(name="q1", is_Final=False, is_Initial=False)
@@ -114,3 +244,4 @@ if __name__ == "__main__":
     alpha.append(symb)
     automaton = ranked_Fta(fta_name="fta1", alphabet=alpha, fta_states=st, transitions=rules)
     automaton.print_Fta()
+    test_fta_equal_with_different_state_names()
