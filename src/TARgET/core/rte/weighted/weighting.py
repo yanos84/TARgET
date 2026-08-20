@@ -14,7 +14,7 @@ class RteWeighting(ABC):
         pass
 
 
-class SemiringRteWeighting(RteWeighting):
+'''class SemiringRteWeighting(RteWeighting):
     """
     Generic weighting of RTEs over a given semiring.
     """
@@ -55,7 +55,7 @@ class SemiringRteWeighting(RteWeighting):
             # For now, assume star = 1 (valid for tropical / boolean)
             return self.S.one()
 
-        raise TypeError(f"Unsupported RTE type: {type(rte)}")
+        raise TypeError(f"Unsupported RTE type: {type(rte)}")'''
 
 class SemiringRteWeighting(RteWeighting):
     """
@@ -88,8 +88,7 @@ class SemiringRteWeighting(RteWeighting):
             return self.weight(rte.left) * self.weight(rte.right)
 
         if isinstance(rte, CStar):
-            # semiring star or Kleene closure
-            return self.weight(rte.expr).star()
+            return self.weight(rte.expr)
 
         if isinstance(rte, Weight):
             return rte.weight * self.weight(rte.expr)

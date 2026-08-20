@@ -6,19 +6,29 @@ This module implements the nullable property for rational tree expressions (RTEs
 """
 
 
-def nullable(r: Rte)->bool:
-    """
-    Determines whether a given rational tree expression (RTE) is nullable, meaning it can generate the empty tree.
-    """
-    if isinstance(r, (Zero, Atom, function)):
+def nullable(r: Rte) -> bool:
+    if isinstance(r, Zero):
         return False
-    if isinstance(r, (One, CStar)):
+
+    if isinstance(r, One):
         return True
+
+    if isinstance(r, Atom):
+        return False
+
+    if isinstance(r, function):
+        return False
+
     if isinstance(r, Plus):
         return any(nullable(t) for t in r.terms)
+
     if isinstance(r, CProduct):
         return nullable(r.left) and nullable(r.right)
-    raise ValueError("Unknown Rte type")
+
+    if isinstance(r, CStar):
+        return True
+
+    raise TypeError(f"Unsupported RTE type: {type(r)}")
     
 
 # Example uage

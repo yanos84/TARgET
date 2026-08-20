@@ -134,7 +134,7 @@ class Plus(Rte):
     def _key(self):
         return ("Plus", tuple(t._key() for t in self.terms))
     
-class CProduct(Rte):
+'''class CProduct(Rte):
     def __init__(self, left: Rte, right: Rte, concat: Symbol):
         """
         Initializes a CProduct with left and right operands and a concatenation operator.
@@ -160,6 +160,31 @@ class CProduct(Rte):
         return (
             "CProduct",
             self.concat,
+            self.left._key(),
+            self.right._key()
+        )'''
+
+class CProduct(Rte):
+    def __init__(self, left: Rte, right: Rte, concat: Symbol):
+        if not isinstance(concat, Symbol):
+            raise ValueError("Concatenation operator must be a Symbol")
+
+        if isinstance(concat, Ranked_Symbol) and concat.rank != 0:
+            raise ValueError(
+                "Concatenation operator must be a leaf ranked Symbol (rank 0)"
+            )
+
+        self.left = left
+        self.right = right
+        self.concat = concat
+
+    def __str__(self):
+        return f"({self.left}).{self.concat}({self.right})"
+
+    def _key(self):
+        return (
+            "CProduct",
+            self.concat.name,
             self.left._key(),
             self.right._key()
         )

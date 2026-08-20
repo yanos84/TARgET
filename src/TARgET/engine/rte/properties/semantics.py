@@ -1,5 +1,5 @@
 from TARgET.core.rte.rte import Zero, One, function, Atom, CProduct, CStar, Rte, Plus
-from TARgET.engine.rte.properties.nullable import nullable
+from . import nullable
 from TARgET.core.base.symbol import Symbol, Ranked_Symbol
 
 """
