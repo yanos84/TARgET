@@ -397,4 +397,19 @@ def test_determinization_no_transitions():
     assert isinstance(result, ranked_Fta)
     assert result.transitions == []
 
+def test_determinization_equivalence():
+    '''
+    Tests if the determinization produces equivalent automaton'''
+    from TARgET.engine.fta.random.ranked_fta_generator import RandomRankedFtaGenerator
+    from TARgET.engine.fta.equivalence.ranked_equivalence import is_equivalent
+    generator = RandomRankedFtaGenerator(
+    n_states=6,
+    n_symbols=4,
+    max_rank=2,
+    n_rules=15,
+    seed=42
+)
+    random_fta = generator.generate()
+    result = determinize(random_fta)
 
+    assert is_equivalent(random_fta,result)== True

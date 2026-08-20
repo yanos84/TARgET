@@ -114,9 +114,29 @@ def test_complement_empty_language():
     print("\nComplement FTA:")
     print(comp_fta)
 
+def test_complement_completes_fta():
+    q0 = State("q0", is_Final=True)
+
+    a = Ranked_Symbol("a", rank=0)
+    f = Ranked_Symbol("f", rank=1)
+
+    fta = ranked_Fta(
+        alphabet=[a, f],
+        fta_states=[q0],
+        transitions=[]
+    )
+
+    comp_fta = Complement(fta).compute_complement()
+
+    print("States:", [s.name for s in comp_fta.fta_states])
+    print("Transitions:", comp_fta.transitions)
+
+    assert [s.name for s in fta.fta_states] == ["q0"]
+
 if __name__ == "__main__":
     from TARgET.core.fta.rankedfta import ranked_Fta
 
     #ground_example_complement()
     #test_complement_empty_fta()
-    test_complement_empty_language()
+    #test_complement_empty_language()
+    test_complement_completes_fta()

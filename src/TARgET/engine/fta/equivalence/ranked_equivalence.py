@@ -4,7 +4,7 @@ from TARgET.engine.fta.emptiness.ranked_emptiness import RankedEmptiness
 
 
 
-def is_equivalent(self, fta1: ranked_Fta, fta2: ranked_Fta) -> bool:
+def is_equivalent(fta1: ranked_Fta, fta2: ranked_Fta) -> bool:
     """
     Check whether two ranked finite tree automata (RFTAs) are equivalent.
 

@@ -112,7 +112,7 @@ class dfta_minimizer(abs_minimize):
                 partition_states[s] = new_state
 
         # New states set
-        new_states = set(partition_states.values())
+        new_states = list(set(partition_states.values()))
         #new_final_states = {state_map[s] for s in fta.final_states}
         new_transitions = []
         for t in fta.transitions:
@@ -135,7 +135,7 @@ class dfta_minimizer(abs_minimize):
 # Example usage
 if __name__ == "__main__":
     from TARgET.tools.serialization.rankedFta_xml_import import load_fta_from_xml
-    fta = load_fta_from_xml("TARgET/dfta_for_minim.xml")
+    fta = load_fta_from_xml("/run/media/yanos/48D8EB77D8EB6224/Python_projects/target/TARgET/dfta_for_minim.xml")
 
     print("Original FTA:")
     fta.print_Fta()
